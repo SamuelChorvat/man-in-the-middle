@@ -194,7 +194,7 @@ public class IntroCaesarPuzzle : MonoBehaviour
             if (correct == currentWord.Length) {
                 experienceSolved = true;
                 currentObject.SetActive(false);
-                text.text = "Solve this Caesar Cipher :\n\n<align=\"center\"><color=green>Experience</color> lv wkh whdfkhu ri doo wklqjv";
+                text.text = "Decrypt this Caesar cipher :\n\n<align=\"center\"><color=green>Experience</color> lv wkh whdfkhu ri doo wklqjv";
                 StartCoroutine(RevealIsBoxes());
             }
 
@@ -222,7 +222,7 @@ public class IntroCaesarPuzzle : MonoBehaviour
             if (correct == currentWord.Length) {
                 isSolved = true;
                 currentObject.SetActive(false);
-                text.text = "Solve this Caesar Cipher :\n\n<align=\"center\"><color=green>Experience is</color> wkh whdfkhu ri doo wklqjv";
+                text.text = "Decrypt this Caesar cipher :\n\n<align=\"center\"><color=green>Experience is</color> wkh whdfkhu ri doo wklqjv";
                 StartCoroutine(RevealTheBoxes());
             }
 
@@ -251,7 +251,7 @@ public class IntroCaesarPuzzle : MonoBehaviour
             if (correct == currentWord.Length) {
                 theSolved = true;
                 currentObject.SetActive(false);
-                text.text = "Solve this Caesar Cipher :\n\n<align=\"center\"><color=green>Experience is the</color> whdfkhu ri doo wklqjv";
+                text.text = "Decrypt this Caesar cipher :\n\n<align=\"center\"><color=green>Experience is the</color> whdfkhu ri doo wklqjv";
                 StartCoroutine(RevealTeacherBoxes());
             }
 
@@ -284,7 +284,7 @@ public class IntroCaesarPuzzle : MonoBehaviour
             if (correct == currentWord.Length) {
                 teacherSolved = true;
                 currentObject.SetActive(false);
-                text.text = "Solve this Caesar Cipher :\n\n<align=\"center\"><color=green>Experience is the teacher</color> ri doo wklqjv";
+                text.text = "Decrypt this Caesar cipher :\n\n<align=\"center\"><color=green>Experience is the teacher</color> ri doo wklqjv";
                 StartCoroutine(RevealOfBoxes());
             }
 
@@ -312,7 +312,7 @@ public class IntroCaesarPuzzle : MonoBehaviour
             if (correct == currentWord.Length) {
                 ofSolved = true;
                 currentObject.SetActive(false);
-                text.text = "Solve this Caesar Cipher :\n\n<align=\"center\"><color=green>Experience is the teacher of</color> doo wklqjv";
+                text.text = "Decrypt this Caesar cipher :\n\n<align=\"center\"><color=green>Experience is the teacher of</color> doo wklqjv";
                 StartCoroutine(RevealAllBoxes());
             }
 
@@ -341,7 +341,7 @@ public class IntroCaesarPuzzle : MonoBehaviour
             if (correct == currentWord.Length) {
                 allSolved = true;
                 currentObject.SetActive(false);
-                text.text = "Solve this Caesar Cipher :\n\n<align=\"center\"><color=green>Experience is the teacher of all</color> wklqjv";
+                text.text = "Decrypt this Caesar cipher :\n\n<align=\"center\"><color=green>Experience is the teacher of all</color> wklqjv";
                 StartCoroutine(RevealThingsBoxes());
             }
 
@@ -373,7 +373,7 @@ public class IntroCaesarPuzzle : MonoBehaviour
             if (correct == currentWord.Length) {
                 thingsSolved = true;
                 currentObject.SetActive(false);
-                text.text = "Solve this Caesar Cipher :\n\n<align=\"center\"><color=green>Experience is the teacher of all things</color>";
+                text.text = "Decrypt this Caesar cipher :\n\n<align=\"center\"><color=green>Experience is the teacher of all things</color>";
                 contBut.StartReveal();
             }
 
