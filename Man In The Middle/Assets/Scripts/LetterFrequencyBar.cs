@@ -6,19 +6,21 @@ using UnityEngine.UI;
 
 public class LetterFrequencyBar : MonoBehaviour
 {
-    void Start()
-    {
+    public float maxFill;
+    public int intPercentage;
+
+    public void Display() {
         StartCoroutine(ShowFrequencyBar());
     }
 
     private IEnumerator ShowFrequencyBar() {
         this.GetComponent<Image>().fillOrigin = (int)Image.OriginVertical.Bottom;
-        float fillAmount = this.GetComponent<Image>().fillAmount;
+        float fillAmount = maxFill;
         this.GetComponent<Image>().fillAmount = 0f;
         
 
-        int finalPercentage = GetPercentage();
-        float maxPercentage = GetMaxPercentage();
+        int finalPercentage = intPercentage;
+        float maxPercentage = (float)intPercentage/100;
         this.transform.Find("PercentageText").GetComponent<TextMeshProUGUI>().text = "0.00%";
 
         while (this.GetComponent<Image>().fillAmount < fillAmount) {
@@ -34,29 +36,5 @@ public class LetterFrequencyBar : MonoBehaviour
             
             yield return new WaitForSeconds(0.01f);
         }
-    }
-
-    private int GetPercentage() {
-        string percentageString = this.transform.Find("PercentageText").GetComponent<TextMeshProUGUI>().text;
-        percentageString = percentageString.Trim('%');
-        return (int) ((float.Parse(percentageString))*100);
-    }
-
-    private float GetMaxPercentage() {
-        string percentageString = this.transform.Find("PercentageText").GetComponent<TextMeshProUGUI>().text;
-        percentageString = percentageString.Trim('%');
-        return float.Parse(percentageString);
-    }
-
-    private float GetFillAmount() {
-        string percentageString = this.transform.Find("PercentageText").GetComponent<TextMeshProUGUI>().text;
-        percentageString = percentageString.Trim('%');
-
-        if (float.Parse(percentageString) > 12f) {
-            return 1f;
-        } else {
-            return (float.Parse(percentageString) / 100) * 8;
-        }
-
     }
 }
