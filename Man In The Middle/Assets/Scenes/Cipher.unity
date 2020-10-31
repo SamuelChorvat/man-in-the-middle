@@ -8932,7 +8932,7 @@ MonoBehaviour:
   hasOnPlay: 0
   hasOnUpdate: 0
   hasOnStepComplete: 0
-  hasOnComplete: 0
+  hasOnComplete: 1
   hasOnTweenCreated: 0
   hasOnRewind: 0
   onStart:
@@ -8949,7 +8949,19 @@ MonoBehaviour:
       m_Calls: []
   onComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1797991392}
+        m_TargetAssemblyTypeName: FrequencyAnalysisController, Assembly-CSharp
+        m_MethodName: StartSubstitue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onTweenCreated:
     m_PersistentCalls:
       m_Calls: []
@@ -45754,7 +45766,7 @@ MonoBehaviour:
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
   delay: 0
-  duration: 0.5
+  duration: 0.25
   easeType: 6
   easeCurve:
     serializedVersion: 2
@@ -52829,7 +52841,39 @@ MonoBehaviour:
   - {fileID: 1021622079}
   - {fileID: 504128970}
   - {fileID: 253259269}
+  letterObjects:
+  - {fileID: 702946180}
+  - {fileID: 37103974}
+  - {fileID: 1712497169}
+  - {fileID: 1309433573}
+  - {fileID: 404516581}
+  - {fileID: 2087969645}
+  - {fileID: 606951699}
+  - {fileID: 146507935}
+  - {fileID: 272866436}
+  - {fileID: 2095626269}
+  - {fileID: 1392744155}
+  - {fileID: 586442549}
+  - {fileID: 1331879039}
+  - {fileID: 878416973}
+  - {fileID: 989795916}
+  - {fileID: 1650921070}
+  - {fileID: 336740592}
+  - {fileID: 869947380}
+  - {fileID: 534414729}
+  - {fileID: 8459302}
+  - {fileID: 1655994562}
+  - {fileID: 1608389540}
+  - {fileID: 804044345}
+  - {fileID: 1772773981}
+  - {fileID: 180617856}
+  - {fileID: 988724953}
   cipherText: {fileID: 176446526}
+  freqBut: {fileID: 249507750}
+  subBut: {fileID: 425646626}
+  freqWid: {fileID: 205578182}
+  subWid: {fileID: 1559103017}
+  but: {fileID: 2063386485}
 --- !u!1 &1816612560
 GameObject:
   m_ObjectHideFlags: 0

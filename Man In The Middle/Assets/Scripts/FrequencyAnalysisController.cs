@@ -1,10 +1,12 @@
 ﻿using DG.Tweening;
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FrequencyAnalysisController : MonoBehaviour {
     [Tooltip("Reveal")]
@@ -42,11 +44,22 @@ public class FrequencyAnalysisController : MonoBehaviour {
     [Tooltip("Inputs")]
     public TMP_InputField[] inputs;
 
+    [Tooltip("Letter Objects")]
+    public GameObject[] letterObjects;
+
     [Tooltip("Cipher")]
     public TextMeshProUGUI cipherText;
 
+    [Tooltip("Other")]
+    public GameObject freqBut;
+    public GameObject subBut;
+    public GameObject freqWid;
+    public GameObject subWid;
+    public RevealContinueButton but;
+
     private string orgCipherText;
     private bool solved = false;
+    private int correct = 0;
     private string[] alphabet = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "Q", "K", "L", "M", "N", "O", "P", "R", "S", "T", "U", "W", "V", "X", "Y", "Z" };
 
     public void ShowPuzzle() {
@@ -60,7 +73,11 @@ public class FrequencyAnalysisController : MonoBehaviour {
         }
 
         InitializeSubs();
+    }
+
+    public void StartSubstitue() {
         StartCoroutine(Substitute());
+        StartCoroutine(CheckSolution());
     }
 
     private IEnumerator Substitute() {
@@ -233,9 +250,13 @@ public class FrequencyAnalysisController : MonoBehaviour {
                 }
             }
             cipherText.text = temp;
+            if (correct == 26) {
+                solved = true;
+                Solved();
+            }
             yield return new WaitForSeconds(0.5f);
         }
-        
+
     }
 
     private bool IsLetter(char toCheck) {
@@ -265,12 +286,242 @@ public class FrequencyAnalysisController : MonoBehaviour {
                temp.Equals("w", StringComparison.OrdinalIgnoreCase) ||
                temp.Equals("x", StringComparison.OrdinalIgnoreCase) ||
                temp.Equals("y", StringComparison.OrdinalIgnoreCase) ||
-               temp.Equals("z", StringComparison.OrdinalIgnoreCase) ;
+               temp.Equals("z", StringComparison.OrdinalIgnoreCase);
     }
 
     public void InitializeSubs() {
         for (int i = 0; i < inputs.Length; i++) {
             inputs[i].text = alphabet[i];
         }
+    }
+    private IEnumerator CheckSolution() {
+        while (!solved) {
+            int tempCorrect = 0;
+            for(int i = 0; i < letterObjects.Length; i++) {
+                switch (letterObjects[i].name) {
+                    case "A":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("F", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "B":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("G", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "C":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("N", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "D":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("O", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "E":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("P", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "F":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("Q", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "G":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("R", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "H":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("S", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "I":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("T", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "J":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("U", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "K":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("V", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "L":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("W", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "M":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("A", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "N":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("D", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "O":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("E", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "P":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("H", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "Q":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("I", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "R":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("J", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "S":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("K", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "T":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("L", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "U":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("M", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "V":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("X", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "W":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("Y", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "X":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("Z", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "Y":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("B", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+                    case "Z":
+                        if (letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().text.Equals("C", StringComparison.OrdinalIgnoreCase)) {
+                            letterObjects[i].transform.Find("Input").GetComponent<TMP_InputField>().interactable = false;
+                            letterObjects[i].transform.Find("Input").GetComponent<Image>().enabled = false;
+                            letterObjects[i].transform.Find("Input").Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.green;
+                            tempCorrect += 1;
+                        }
+                        break;
+
+                }
+            }
+            correct = tempCorrect;
+            yield return new WaitForSeconds(0.5f);
+        }
+        
+    }
+
+    private void Solved() {
+        cipherText.text = "<color=green>" + cipherText.text;
+        freqBut.SetActive(false);
+        freqWid.SetActive(false);
+        subBut.SetActive(false);
+        subWid.SetActive(false);
+        but.StartReveal();
     }
 }
