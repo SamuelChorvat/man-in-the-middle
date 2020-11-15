@@ -14,6 +14,7 @@ public class RevealContinueButton : MonoBehaviour
     }
 
     public void StartReveal() {
+        this.GetComponent<Image>().fillAmount = 0f;
         this.gameObject.SetActive(true);
         StartCoroutine(Reveal());
     }
