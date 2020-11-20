@@ -54,7 +54,9 @@ public class EBCDemoControl : MonoBehaviour {
         while (!solved) {
             if (animal.text.Equals("panda", StringComparison.OrdinalIgnoreCase) ||
                 animal.text.Equals("bear", StringComparison.OrdinalIgnoreCase) ||
-                animal.text.Equals("panda bear", StringComparison.OrdinalIgnoreCase)) {
+                animal.text.Equals("panda bear", StringComparison.OrdinalIgnoreCase) ||
+                animal.text.Equals("koala", StringComparison.OrdinalIgnoreCase) ||
+                animal.text.Equals("koala bear", StringComparison.OrdinalIgnoreCase)) {
                 solved = true;
                 question.SetActive(false);
                 oldLeft.SetActive(false);
