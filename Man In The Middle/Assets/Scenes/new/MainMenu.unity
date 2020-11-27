@@ -123,6 +123,41 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!21 &16158920
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 2DxFX/Standard/NoiseAnimated
+  m_Shader: {fileID: 4800000, guid: 7dff9a3a3bb403f428685b7b012d739a, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Alpha: 0
+    - _ColorMask: 15
+    - _Distortion: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1001 &178906254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -481,10 +516,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb25e885c7dedc848b8cf85a16eff1ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomizeDelay: 0.03
+  randomizeDelay: 0.05
   textShowDelay: 0
   forceText: 0
-  forceTime: 0.6
+  forceTime: 0.5
   textToWrite: PROTOCOL ATTACKS
   reveal: 0
 --- !u!1 &252181968
@@ -538,7 +573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1041193482}
+  m_Material: {fileID: 16158920}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -841,7 +876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1462480067}
+  m_Material: {fileID: 1232110528}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1225,7 +1260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 792359715}
+  m_Material: {fileID: 675644201}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1323,7 +1358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1307148444}
+  m_Material: {fileID: 1480178201}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1655,6 +1690,45 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 454054, guid: 4a848ecf749c6524c80cfa68c55b31d9, type: 3}
   m_PrefabInstance: {fileID: 576700288}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &585069456
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 2DxFX/Standard/Ghost
+  m_Shader: {fileID: 4800000, guid: ded7385c02255b14dbaf341d486e6beb, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Alpha: 0
+    - _ClipDown: 0.40600002
+    - _ClipLeft: 0.597
+    - _ClipRight: 0.593
+    - _ClipUp: 0.515
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _offset: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &628680809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1829,6 +1903,45 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 454054, guid: 4a848ecf749c6524c80cfa68c55b31d9, type: 3}
   m_PrefabInstance: {fileID: 632131080}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &675644201
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 2DxFX/Standard/Ghost
+  m_Shader: {fileID: 4800000, guid: ded7385c02255b14dbaf341d486e6beb, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Alpha: 0
+    - _ClipDown: 0.865
+    - _ClipLeft: 0.38099998
+    - _ClipRight: 0.444
+    - _ClipUp: 1
+    - _ColorMask: 15
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _offset: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1001 &764320822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1993,45 +2106,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 422640, guid: d73209c600e961c4181444312cc82772, type: 3}
   m_PrefabInstance: {fileID: 782927236}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &792359715
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 2DxFX/Standard/Ghost
-  m_Shader: {fileID: 4800000, guid: ded7385c02255b14dbaf341d486e6beb, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _Alpha: 0
-    - _ClipDown: 0.865
-    - _ClipLeft: 0.38099998
-    - _ClipRight: 0.444
-    - _ClipUp: 1
-    - _ColorMask: 15
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _offset: 1
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1001 &826252071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2308,10 +2382,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e6238b33321f4664883723d9f1c4675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomizeDelay: 0.03
+  randomizeDelay: 0.04
   textShowDelay: 0
   forceText: 0
-  forceTime: 0.1
+  forceTime: 0.05
   textToWrite: Intro to Cryptography
 --- !u!1 &959555033
 GameObject:
@@ -2702,41 +2776,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1041193482
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 2DxFX/Standard/NoiseAnimated
-  m_Shader: {fileID: 4800000, guid: 7dff9a3a3bb403f428685b7b012d739a, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _Alpha: 0
-    - _ColorMask: 15
-    - _Distortion: 1
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1001 &1050275955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2941,10 +2980,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e6238b33321f4664883723d9f1c4675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomizeDelay: 0.03
+  randomizeDelay: 0.04
   textShowDelay: 0
   forceText: 0
-  forceTime: 1
+  forceTime: 0.05
   textToWrite: MAN IN THE MIDDLE
 --- !u!114 &1133557798
 MonoBehaviour:
@@ -3340,15 +3379,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 454054, guid: 4a848ecf749c6524c80cfa68c55b31d9, type: 3}
   m_PrefabInstance: {fileID: 1229614232}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1307148444
+--- !u!21 &1232110528
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 2DxFX/Standard/Ghost
-  m_Shader: {fileID: 4800000, guid: ded7385c02255b14dbaf341d486e6beb, type: 3}
+  m_Name: 2DxFX/Standard/NoiseAnimated
+  m_Shader: {fileID: 4800000, guid: 7dff9a3a3bb403f428685b7b012d739a, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -3365,17 +3404,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Alpha: 0
-    - _ClipDown: 0.72099996
-    - _ClipLeft: 0.724
-    - _ClipRight: 0.724
-    - _ClipUp: 0.515
     - _ColorMask: 15
+    - _Distortion: 1
     - _Stencil: 0
     - _StencilComp: 8
     - _StencilOp: 0
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
-    - _offset: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
@@ -3594,42 +3629,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 454054, guid: 4a848ecf749c6524c80cfa68c55b31d9, type: 3}
   m_PrefabInstance: {fileID: 1412936467}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1462480067
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 2DxFX/Standard/NoiseAnimated
-  m_Shader: {fileID: 4800000, guid: 7dff9a3a3bb403f428685b7b012d739a, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _Alpha: 0
-    - _ColorMask: 15
-    - _Distortion: 1
-    - _Stencil: 0
-    - _StencilComp: 8
-    - _StencilOp: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
---- !u!21 &1488079520
+--- !u!21 &1480178201
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -3654,9 +3654,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Alpha: 0
-    - _ClipDown: 0.40600002
-    - _ClipLeft: 0.597
-    - _ClipRight: 0.593
+    - _ClipDown: 0.72099996
+    - _ClipLeft: 0.724
+    - _ClipRight: 0.724
     - _ClipUp: 0.515
     - _ColorMask: 15
     - _Stencil: 0
@@ -4391,7 +4391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 1488079520}
+  m_Material: {fileID: 585069456}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
