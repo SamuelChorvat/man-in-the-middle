@@ -16593,7 +16593,7 @@ MonoBehaviour:
     Arithmetic modulo \u201Cn\u201D means that you count up to \u201Cn-1\u201D then
     loop back to 0. \n\n<align=\"center\">a mod b = r     \n<align=\"center\">for
     largest whole number k such that a = b.k + r\n<align=\"center\">EXAMPLE ->  7
-    mod 3 = 1  because 7 = 3x2 + 1"
+    mod 3 = 1  because 7 = 3.2 + 1"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 70b6ad6f58d76564fb70b705683bb513, type: 2}
   m_sharedMaterial: {fileID: -8765385849567795585, guid: 70b6ad6f58d76564fb70b705683bb513, type: 2}
