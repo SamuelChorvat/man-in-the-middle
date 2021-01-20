@@ -17,12 +17,15 @@ public class ChapterButton : MonoBehaviour {
 
     [SerializeField]
     private bool unlocked;
+    [SerializeField]
+    private int onClickRotate;
+
     private bool clicked = false;
 
     public void Awake() {
         SetUnlocked(unlocked);
         arrow.GetComponent<RectTransform>().transform.eulerAngles = new Vector3(0, 0, -90);
-        StartCoroutine(HideExtraInfo1());
+        StartCoroutine(HideExtraInfo());
         clicked = false;
     }
 
@@ -51,11 +54,11 @@ public class ChapterButton : MonoBehaviour {
     public void ShowInfo() {
         if (clicked) {
             arrow.GetComponent<RectTransform>().transform.eulerAngles = new Vector3(0, 0, -90);
-            StartCoroutine(HideExtraInfo1());
+            StartCoroutine(HideExtraInfo());
             clicked = false;
         } else {
-            arrow.GetComponent<RectTransform>().transform.eulerAngles = new Vector3(0, 0, -180);
-            StartCoroutine(ShowExtraInfo1());
+            arrow.GetComponent<RectTransform>().transform.eulerAngles = new Vector3(0, 0, onClickRotate);
+            StartCoroutine(ShowExtraInfo());
             clicked = true;
         }
     }
@@ -75,17 +78,6 @@ public class ChapterButton : MonoBehaviour {
 
     private IEnumerator ShowExtraInfo() {
         extraInfo.SetActive(true);
-        while (extraInfo.transform.localScale.y < 1) {
-            extraInfo.transform.localScale = new Vector3(extraInfo.transform.localScale.x, extraInfo.transform.localScale.y + 0.1f, extraInfo.transform.localScale.z);
-            yield return new WaitForSeconds(0.005f);
-        }
-
-        if (unlocked) {
-            StartCoroutine(ShowGoButton());
-        }
-    }
-    private IEnumerator ShowExtraInfo1() {
-        extraInfo.SetActive(true);
         while (clipper.GetComponent<Image>().fillAmount > 0) {
             clipper.GetComponent<Image>().fillAmount -= 0.05f;
             yield return new WaitForSeconds(0.005f);
@@ -98,15 +90,6 @@ public class ChapterButton : MonoBehaviour {
     }
 
     private IEnumerator HideExtraInfo() {
-        HideGoButton();
-        while (extraInfo.transform.localScale.y > 0) {
-            extraInfo.transform.localScale = new Vector3(extraInfo.transform.localScale.x, extraInfo.transform.localScale.y - 0.1f, extraInfo.transform.localScale.z);
-            yield return new WaitForSeconds(0.005f);
-        }
-        extraInfo.SetActive(false);
-    }
-
-    private IEnumerator HideExtraInfo1() {
         HideGoButton();
         clipper.SetActive(true);
         while (clipper.GetComponent<Image>().fillAmount < 1) {
