@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class IntroCryptoController : MonoBehaviour
 {
-    public GameObject extraInfoChapter1;
 
-    public GameObject goButtonChapter1;
-
-    public void OnClickChapter1() {
-
+    public void Start() {
+       
     }
 }

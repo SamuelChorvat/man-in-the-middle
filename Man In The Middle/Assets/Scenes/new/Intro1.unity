@@ -48340,6 +48340,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1603327060}
+  - component: {fileID: 1603327061}
   m_Layer: 0
   m_Name: Intro1Controller
   m_TagString: Untagged
@@ -48361,6 +48362,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1603327061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603327059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e05643d3a7283a540b57c154364b7548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sections:
+  - {fileID: 918737178}
+  - {fileID: 990452037}
+  - {fileID: 410669366}
+  - {fileID: 1871925014}
+  s1objects:
+  - {fileID: 1225706130}
+  - {fileID: 1278606521}
+  s2objects:
+  - {fileID: 1289384114}
+  - {fileID: 1882445420}
+  - {fileID: 2038599511}
+  - {fileID: 1396314378}
+  - {fileID: 1337687406}
+  - {fileID: 1696617898}
+  s1p1cipherTitle: {fileID: 1225706130}
+  s1p1cipherText: {fileID: 1278606521}
+  s2p1caesarTitle: {fileID: 1289384114}
+  s2p1caesarText: {fileID: 1882445420}
+  s2p2caesarIntroPuzzleTextAnimated: {fileID: 2038599511}
+  s2p2caesarIntroPuzzle: {fileID: 1337687406}
+  s2p3caesarIntroProblemsText: {fileID: 1696617898}
 --- !u!1 &1606278760
 GameObject:
   m_ObjectHideFlags: 0
@@ -51470,8 +51505,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'Problem with this cipher is the fact that as soon as you know the scheme
-    you can instantly decrypt any message that is encypted by it. This leads to the
-    following principle.
+    you can instantly decrypt any message that is encrypted by it. This leads to
+    the following principle.
 
 
     <b><color=red>Kerckhoffs''s principle</color></b>:
