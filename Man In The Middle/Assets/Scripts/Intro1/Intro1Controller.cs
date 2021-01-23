@@ -11,6 +11,7 @@ public class Intro1Controller : MonoBehaviour
     public GameObject[] s1objects;
     public GameObject[] s2objects;
     public GameObject[] s3objects;
+    public GameObject[] s4objects;
 
     [Header("Section 1 Part 1")]
     public GameObject s1p1cipherTitle;
@@ -34,8 +35,20 @@ public class Intro1Controller : MonoBehaviour
     [Header("Section 3 Part 2")]
     public GameObject s3p2caesarImprovementPuzzleTextAnimated;
 
+    [Header("Section 4 Part 1")]
+    public GameObject s4p1caesarTitle;
+    public GameObject s4p1caesarImprovementText;
+
+    [Header("Section 4 Part 2")]
+    public GameObject s4p2caesarProblemText;
+
+    [Header("Section 4 Part 3")]
+    public GameObject s4p3caesarPuzzleText;
+    public GameObject s4p3frequencyAnalysisDemo;
+
+
     public void Start() {
-        ShowSection3Part2();
+        ShowSection4Part2();
     }
 
     public void ShowSection1Part1() {
@@ -75,6 +88,25 @@ public class Intro1Controller : MonoBehaviour
         s3p2caesarImprovementPuzzleTextAnimated.SetActive(true);
     }
 
+    public void ShowSection4Part1() {
+        PrepareShow(4);
+        s4p1caesarTitle.SetActive(true);
+        s4p1caesarImprovementText.SetActive(true);
+    }
+
+    public void ShowSection4Part2() {
+        PrepareShow(4);
+        s4p1caesarTitle.SetActive(true);
+        s4p2caesarProblemText.SetActive(true);
+    }
+
+    public void ShowSection4Part3() {
+        PrepareShow(4);
+        s4p1caesarTitle.SetActive(true);
+        s4p3caesarPuzzleText.SetActive(true);
+        s4p3frequencyAnalysisDemo.SetActive(true);
+    }
+
     private void PrepareShow(int n) {
         HideAllSections();
 
@@ -85,7 +117,7 @@ public class Intro1Controller : MonoBehaviour
         } else if (n == 3) {
             HideSection3();
         } else if (n == 4) {
-            //HideSection4();
+            HideSection4();
         }
 
         sections[n - 1].SetActive(true);
@@ -112,6 +144,12 @@ public class Intro1Controller : MonoBehaviour
     private void HideSection3() {
         for (int i = 0; i < s3objects.Length; i++) {
             s3objects[i].SetActive(false);
+        }
+    }
+
+    private void HideSection4() {
+        for (int i = 0; i < s4objects.Length; i++) {
+            s4objects[i].SetActive(false);
         }
     }
 }

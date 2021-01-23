@@ -296,6 +296,45 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &38048675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 38048676}
+  m_Layer: 5
+  m_Name: ModuloArithmeticDemo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &38048676
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38048675}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1053835205}
+  - {fileID: 850739846}
+  - {fileID: 204804243}
+  - {fileID: 351019604}
+  m_Father: {fileID: 990452038}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &81666500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1738,8 +1777,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 816459337}
-  m_Father: {fileID: 990452038}
-  m_RootOrder: 5
+  m_Father: {fileID: 38048676}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2395,6 +2434,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 296220567}
   m_CullTransparentMesh: 0
+--- !u!1 &302961573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 302961574}
+  m_Layer: 5
+  m_Name: VignereDemo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &302961574
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302961573}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1853496044}
+  - {fileID: 1783947852}
+  m_Father: {fileID: 918737179}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &310674142
 GameObject:
   m_ObjectHideFlags: 0
@@ -2986,8 +3062,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 154017147}
-  m_Father: {fileID: 990452038}
-  m_RootOrder: 6
+  m_Father: {fileID: 38048676}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4304,7 +4380,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.012329102, y: -0.0010986328}
+  m_AnchoredPosition: {x: 0.012207031, y: -0.0010986328}
   m_SizeDelta: {x: 0.024291992, y: 0.32702637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!21 &565983428
@@ -7011,8 +7087,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 499603039}
-  m_Father: {fileID: 990452038}
-  m_RootOrder: 4
+  m_Father: {fileID: 38048676}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7869,14 +7945,13 @@ RectTransform:
   - {fileID: 1225706131}
   - {fileID: 1450594528}
   - {fileID: 310674143}
-  - {fileID: 1853496044}
-  - {fileID: 1783947852}
+  - {fileID: 302961574}
   m_Father: {fileID: 921058038}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.014526367, y: 0.0826416}
+  m_AnchoredPosition: {x: 0.0146484375, y: 0.0826416}
   m_SizeDelta: {x: 0.028808594, y: 0.48986816}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &918982851
@@ -9072,16 +9147,13 @@ RectTransform:
   - {fileID: 1289384115}
   - {fileID: 1804700512}
   - {fileID: 985176011}
-  - {fileID: 1053835205}
-  - {fileID: 850739846}
-  - {fileID: 204804243}
-  - {fileID: 351019604}
+  - {fileID: 38048676}
   m_Father: {fileID: 921058038}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.012329102, y: -0.0010986328}
+  m_AnchoredPosition: {x: 0.012207031, y: -0.0010986328}
   m_SizeDelta: {x: 0.024291992, y: 0.32702637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1005852569
@@ -10398,8 +10470,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1136452462}
-  m_Father: {fileID: 990452038}
-  m_RootOrder: 3
+  m_Father: {fileID: 38048676}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14452,6 +14524,7 @@ GameObject:
   - component: {fileID: 1603327060}
   - component: {fileID: 1603327061}
   - component: {fileID: 1603327062}
+  - component: {fileID: 1603327063}
   m_Layer: 0
   m_Name: Intro2Controller
   m_TagString: Untagged
@@ -14515,6 +14588,48 @@ MonoBehaviour:
   - {fileID: 1216607325}
   but: {fileID: 2063386485}
   puzzleObject: {fileID: 1366424733}
+--- !u!114 &1603327063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603327059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0f024937e47c1f4ba2b0e04d2c03f6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sections:
+  - {fileID: 918737178}
+  - {fileID: 990452037}
+  - {fileID: 557236860}
+  s1objects:
+  - {fileID: 1225706130}
+  - {fileID: 1450594527}
+  - {fileID: 310674142}
+  - {fileID: 302961573}
+  s2objects:
+  - {fileID: 1289384114}
+  - {fileID: 1804700511}
+  - {fileID: 985176010}
+  - {fileID: 38048675}
+  s3objects:
+  - {fileID: 729821492}
+  - {fileID: 2083628632}
+  - {fileID: 1431774130}
+  - {fileID: 1366424733}
+  s1p1padsTitle: {fileID: 1225706130}
+  s1p1vignereCipherText: {fileID: 1450594527}
+  s1p2vignerePuzzleText: {fileID: 310674142}
+  s1p2vignerePuzzle: {fileID: 302961573}
+  s2p1moduloTitle: {fileID: 1289384114}
+  s2p1moduloText: {fileID: 1804700511}
+  s2p2moduloPuzzleText: {fileID: 985176010}
+  s2p2moduloPuzzle: {fileID: 38048675}
+  s3p1xorTitle: {fileID: 729821492}
+  s3p1xorText: {fileID: 2083628632}
+  s3p2xorPuzzleText: {fileID: 1431774130}
 --- !u!1 &1622929482
 GameObject:
   m_ObjectHideFlags: 0
@@ -16273,8 +16388,8 @@ RectTransform:
   - {fileID: 447387686}
   - {fileID: 850439111}
   - {fileID: 788744840}
-  m_Father: {fileID: 918737179}
-  m_RootOrder: 4
+  m_Father: {fileID: 302961574}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16747,15 +16862,15 @@ RectTransform:
   m_GameObject: {fileID: 1853496043}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5266557, y: 2.5266557, z: 2.5266557}
+  m_LocalScale: {x: 2.5266554, y: 2.5266554, z: 2.5266554}
   m_Children:
   - {fileID: 167518877}
   - {fileID: 458535077}
   - {fileID: 1953630888}
   - {fileID: 430855835}
   - {fileID: 1019755608}
-  m_Father: {fileID: 918737179}
-  m_RootOrder: 3
+  m_Father: {fileID: 302961574}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -18842,7 +18957,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "One last thing to look at is Exclusive Or (XOR). It is a logical operation
-    that outputs true only when inputs differ (one is true, the other is false).
+    that outputs true only when inputs differ (e.g. one is true, the other is false).
     True and False are commonly represented by 1 and 0 respectively.\n\n<align=\"center\">0
     XOR 0 = 0    \n<align=\"center\">1 XOR 0 = 1     \n<align=\"center\">0 XOR 1
     = 1\n<align=\"center\">1 XOR 1 = 0     "
