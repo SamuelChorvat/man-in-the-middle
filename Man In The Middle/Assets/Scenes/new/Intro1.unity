@@ -48389,6 +48389,13 @@ MonoBehaviour:
   - {fileID: 1396314378}
   - {fileID: 1337687406}
   - {fileID: 1696617898}
+  s3objects:
+  - {fileID: 690256854}
+  - {fileID: 230172368}
+  - {fileID: 1743222471}
+  - {fileID: 1470191864}
+  - {fileID: 1525629263}
+  - {fileID: 1576087487}
   s1p1cipherTitle: {fileID: 1225706130}
   s1p1cipherText: {fileID: 1278606521}
   s2p1caesarTitle: {fileID: 1289384114}
@@ -48396,6 +48403,10 @@ MonoBehaviour:
   s2p2caesarIntroPuzzleTextAnimated: {fileID: 2038599511}
   s2p2caesarIntroPuzzle: {fileID: 1337687406}
   s2p3caesarIntroProblemsText: {fileID: 1696617898}
+  s3p1caesarTitle: {fileID: 690256854}
+  s3p1caesarImprovementText: {fileID: 230172368}
+  s3p2caesarImprovementPuzzleTextAnimated: {fileID: 1743222471}
+  s3p2caesarImprovementPuzzle: {fileID: 1576087487}
 --- !u!1 &1606278760
 GameObject:
   m_ObjectHideFlags: 0
