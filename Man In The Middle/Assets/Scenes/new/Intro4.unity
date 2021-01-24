@@ -2038,16 +2038,16 @@ MonoBehaviour:
     on some number theory:
 
     <align="center"> - a mod b = n where for some "m":
-    a = m.b + n
+    a = m.b + n</align>
 
 
     <align="left">The protocol uses two public parameters
+    </align>
+
+    <align="center">- generator "g" (often 160 bits long)</align>
 
     <align="center">-
-    generator "g" (often 160 bits long)
-
-    <align="center">- prime "p" (often 1024
-    bits long)'
+    prime "p" (often 1024 bits long)</align>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 70b6ad6f58d76564fb70b705683bb513, type: 2}
   m_sharedMaterial: {fileID: -8765385849567795585, guid: 70b6ad6f58d76564fb70b705683bb513, type: 2}
@@ -5923,8 +5923,7 @@ RectTransform:
   - {fileID: 2024418942}
   - {fileID: 2100655404}
   - {fileID: 1821438911}
-  - {fileID: 1265708635}
-  - {fileID: 1287328747}
+  - {fileID: 423547027}
   - {fileID: 804677707}
   m_Father: {fileID: 921058038}
   m_RootOrder: 3
@@ -6103,6 +6102,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 421914187}
   m_CullTransparentMesh: 0
+--- !u!1 &423547026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 423547027}
+  m_Layer: 5
+  m_Name: SignatureTrickDemo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &423547027
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423547026}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1265708635}
+  - {fileID: 1287328747}
+  m_Father: {fileID: 410669367}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &434234162
 GameObject:
   m_ObjectHideFlags: 0
@@ -11424,12 +11460,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 410669367}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -57.13638}
-  m_SizeDelta: {x: 0.015014648, y: 703.79407}
+  m_SizeDelta: {x: 0.014892578, y: 703.79407}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &804677708
 MonoBehaviour:
@@ -11651,6 +11687,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 805316171}
+  - component: {fileID: 805316172}
   m_Layer: 5
   m_Name: KnownAttackDemo
   m_TagString: Untagged
@@ -11667,7 +11704,7 @@ RectTransform:
   m_GameObject: {fileID: 805316170}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 667717331}
   - {fileID: 1788661390}
@@ -11683,6 +11720,111 @@ RectTransform:
   m_AnchoredPosition: {x: -0.00082397, y: -88.5}
   m_SizeDelta: {x: 1440.835, y: 591.0913}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &805316172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805316170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0390bd8b8ffd640b34fe25065ff1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateType: 0
+  isSpeedBased: 0
+  hasOnStart: 0
+  hasOnPlay: 0
+  hasOnUpdate: 0
+  hasOnStepComplete: 0
+  hasOnComplete: 0
+  hasOnTweenCreated: 0
+  hasOnRewind: 0
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  onUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  onStepComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  onTweenCreated:
+    m_PersistentCalls:
+      m_Calls: []
+  onRewind:
+    m_PersistentCalls:
+      m_Calls: []
+  targetIsSelf: 1
+  targetGO: {fileID: 0}
+  tweenTargetIsTargetGO: 1
+  delay: 0
+  duration: 0.5
+  easeType: 6
+  easeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  loopType: 0
+  loops: 1
+  id: 
+  isRelative: 1
+  isFrom: 0
+  isIndependentUpdate: 0
+  autoKill: 1
+  isActive: 1
+  isValid: 1
+  target: {fileID: 805316171}
+  animationType: 5
+  targetType: 11
+  forcedTargetType: 0
+  autoPlay: 0
+  useTargetAsV3: 0
+  endValueFloat: 1
+  endValueV3: {x: 0, y: 0, z: 0}
+  endValueV2: {x: 0, y: 0}
+  endValueColor: {r: 1, g: 1, b: 1, a: 1}
+  endValueString: 
+  endValueRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  endValueTransform: {fileID: 0}
+  optionalBool0: 1
+  optionalFloat0: 0
+  optionalInt0: 0
+  optionalRotationMode: 0
+  optionalScrambleMode: 0
+  optionalString: 
 --- !u!1 &807180494
 GameObject:
   m_ObjectHideFlags: 0
@@ -15345,7 +15487,7 @@ GameObject:
   - component: {fileID: 1127920814}
   - component: {fileID: 1127920813}
   m_Layer: 5
-  m_Name: KnownTextDemo
+  m_Name: KnownAttackDemoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15390,9 +15532,9 @@ MonoBehaviour:
   onTextShowed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1603327066}
-        m_TargetAssemblyTypeName: KnownDemoControl, Assembly-CSharp
-        m_MethodName: ShowDemo
+      - m_Target: {fileID: 805316172}
+        m_TargetAssemblyTypeName: DG.Tweening.DOTweenAnimation, Assembly-CSharp-firstpass
+        m_MethodName: DOPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -17714,16 +17856,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265708634}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 410669367}
-  m_RootOrder: 4
+  m_Father: {fileID: 423547027}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000076294, y: -88}
+  m_AnchoredPosition: {x: 0, y: -88}
   m_SizeDelta: {x: 1447.9137, y: 369.56915}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1265708636
@@ -18139,17 +18281,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287328746}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 386623940}
-  m_Father: {fileID: 410669367}
-  m_RootOrder: 5
+  m_Father: {fileID: 423547027}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000038147, y: -308}
+  m_AnchoredPosition: {x: 0, y: -308}
   m_SizeDelta: {x: 450, y: 138}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1287328748
@@ -19106,12 +19248,12 @@ MonoBehaviour:
 
     <align="center">- one for encryption
 
-    <align="center">    
-    - and one for decryption
+    <align="center">-
+    one for decryption
 
 
-    <align="left">The encryption key is made public,
-    the decryption key is always secret'
+    <align="left">The encryption key is made public, the
+    decryption key is always kept secret'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 70b6ad6f58d76564fb70b705683bb513, type: 2}
   m_sharedMaterial: {fileID: -8765385849567795585, guid: 70b6ad6f58d76564fb70b705683bb513, type: 2}
@@ -22663,6 +22805,7 @@ GameObject:
   - component: {fileID: 1603327064}
   - component: {fileID: 1603327065}
   - component: {fileID: 1603327066}
+  - component: {fileID: 1603327067}
   m_Layer: 0
   m_Name: Intro4Controller
   m_TagString: Untagged
@@ -22854,6 +22997,117 @@ MonoBehaviour:
   attackerArrow: {fileID: 1420481750}
   attackerText1: {fileID: 1421545267}
   attackerText2: {fileID: 1895432423}
+--- !u!114 &1603327067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603327059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c1837c726d8b984bb097f3b2a7baf42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sections:
+  - {fileID: 918737178}
+  - {fileID: 990452037}
+  - {fileID: 410669366}
+  - {fileID: 1871925014}
+  - {fileID: 485937436}
+  s1objects:
+  - {fileID: 1225706130}
+  - {fileID: 279817729}
+  - {fileID: 1733801437}
+  - {fileID: 676826489}
+  - {fileID: 1350059712}
+  - {fileID: 163925945}
+  - {fileID: 1258513917}
+  - {fileID: 210715674}
+  - {fileID: 946422835}
+  s2objects:
+  - {fileID: 1289384114}
+  - {fileID: 1351378395}
+  - {fileID: 597163769}
+  - {fileID: 1741963294}
+  - {fileID: 124727795}
+  - {fileID: 296897811}
+  - {fileID: 1842614281}
+  - {fileID: 506970487}
+  s3objects:
+  - {fileID: 690256854}
+  - {fileID: 2024418941}
+  - {fileID: 2100655403}
+  - {fileID: 1821438910}
+  - {fileID: 423547026}
+  - {fileID: 804677706}
+  s4objects:
+  - {fileID: 2137925074}
+  - {fileID: 421914187}
+  - {fileID: 1778185062}
+  - {fileID: 755154643}
+  - {fileID: 507795129}
+  - {fileID: 1172143005}
+  - {fileID: 1423415332}
+  - {fileID: 973780188}
+  - {fileID: 934667870}
+  - {fileID: 528080583}
+  - {fileID: 659613615}
+  - {fileID: 1644280558}
+  - {fileID: 531337581}
+  s5objects:
+  - {fileID: 1057966519}
+  - {fileID: 794882641}
+  - {fileID: 1232083703}
+  - {fileID: 634213506}
+  - {fileID: 1951208329}
+  - {fileID: 1583148158}
+  - {fileID: 517065712}
+  - {fileID: 1127920811}
+  - {fileID: 805316170}
+  - {fileID: 170520595}
+  s1p1keyProblemTitle: {fileID: 1225706130}
+  s1p1keyProblemText: {fileID: 676826489}
+  s1p2publicKeyEncryptionTitle: {fileID: 279817729}
+  s1p2publicKeyEncryptionText: {fileID: 1350059712}
+  s1p3diffieHellmanTitle: {fileID: 1733801437}
+  s1p3diffieHellmanText: {fileID: 163925945}
+  s1p4diffieHellmanText: {fileID: 1258513917}
+  s1p5diffieHellmanText: {fileID: 210715674}
+  s1p6diffieHellmanDemo: {fileID: 946422835}
+  s2p1elgamalTitle: {fileID: 1289384114}
+  s2p1elgamalText: {fileID: 1741963294}
+  s2p2rsaTitle: {fileID: 1351378395}
+  s2p2rsaText: {fileID: 124727795}
+  s2p3pkcTitle: {fileID: 597163769}
+  s2p3pkcText: {fileID: 296897811}
+  s3p1signaturesTitle: {fileID: 690256854}
+  s3p1signaturesText: {fileID: 2100655403}
+  s3p2signaturesTrickText: {fileID: 1821438910}
+  s3p2signaturesTrickDemo: {fileID: 423547026}
+  s3p3certificatesTitle: {fileID: 2024418941}
+  s3p3certificatesText: {fileID: 804677706}
+  s4p1hashesTitle: {fileID: 2137925074}
+  s4p1hashesText: {fileID: 1172143005}
+  s4p2hashesDemoText: {fileID: 1423415332}
+  s4p3usesHashesTitle: {fileID: 421914187}
+  s4p3usesHashesText: {fileID: 934667870}
+  s4p4hashesAttacksTitle: {fileID: 1778185062}
+  s4p4hashesAttacksText: {fileID: 528080583}
+  s4p5birthdayTitle: {fileID: 755154643}
+  s4p5birthdayText: {fileID: 659613615}
+  s4p6hashesTypesTitle: {fileID: 507795129}
+  s4p6hashesTypesText: {fileID: 1644280558}
+  s5p1macTitle: {fileID: 1057966519}
+  s5p1macText: {fileID: 1951208329}
+  s5p2alteringTitle: {fileID: 794882641}
+  s5p2alteringText: {fileID: 1583148158}
+  s5p3knownTitle: {fileID: 1232083703}
+  s5p3knownText: {fileID: 517065712}
+  s5p4knownAttackDemoText: {fileID: 1127920811}
+  s5p4knownAttackDemo: {fileID: 805316170}
+  s5p5authenticatedTitle: {fileID: 634213506}
+  s5p5authenticatedText: {fileID: 170520595}
 --- !u!1 &1625553867
 GameObject:
   m_ObjectHideFlags: 0
@@ -23235,7 +23489,7 @@ MonoBehaviour:
     on SHA-1 it has some of the same weaknesses</size>\n   - SHA-3: No longer has
     the weaknesses of SHA-1</size>\n\nThe MD family of hashes is also popular:\n  
     <size=90%>- MD4 & MD5: used, but weak\n      <size=80%>- Only useful when we
-    only care about preimage attacks or Integrity</size>\n   - MD6: Seems good and
+    only care about preimage attacks or integrity</size>\n   - MD6: Seems good and
     fast</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 70b6ad6f58d76564fb70b705683bb513, type: 2}

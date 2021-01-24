@@ -21,10 +21,39 @@ public class Intro3Controller : MonoBehaviour
     public GameObject s1p2blockExampleTitle;
     public GameObject s1p2blockExampleText;
 
+    [Header("Section 2 Part 1")]
+    public GameObject s2p1desBruteforceTitle;
+    public GameObject s2p1desBruteforceText;
+
+    [Header("Section 3 Part 1")]
+    public GameObject s3p1blockCipherModesTitle;
+    public GameObject s3p1blockCipherModesText;
+
+    [Header("Section 3 Part 2")]
+    public GameObject s3p2ecbTitle;
+    public GameObject s3p2ecbText;
+
+    [Header("Section 3 Part 3")]
+    public GameObject s3p3cbcTitle;
+    public GameObject s3p3cbcText;
+
+    [Header("Section 4 Part 1")]
+    public GameObject s4p1cbcIssueTitle;
+    public GameObject s4p1cbcIssueText;
+
+    [Header("Section 4 Part 2")]
+    public GameObject s4p2consoleAttackTitle;
+    public GameObject s4p2consoleAttackText;
+
+    [Header("Section 4 Part 3")]
+    public GameObject s4p3ctrTitle;
+    public GameObject s4p3ctrText;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        ShowSection1Part2();
+        ShowSection4Part3();
     }
 
     public void ShowSection1Part1() {
@@ -37,6 +66,48 @@ public class Intro3Controller : MonoBehaviour
         PrepareShow(1);
         s1p2blockExampleTitle.SetActive(true);
         s1p2blockExampleText.SetActive(true);
+    }
+
+    public void ShowSection2Part1() {
+        PrepareShow(2);
+        s2p1desBruteforceTitle.SetActive(true);
+        s2p1desBruteforceText.SetActive(true);
+    }
+
+    public void ShowSection3Part1() {
+        PrepareShow(3);
+        s3p1blockCipherModesTitle.SetActive(true);
+        s3p1blockCipherModesText.SetActive(true);
+    }
+
+    public void ShowSection3Part2() {
+        PrepareShow(3);
+        s3p2ecbTitle.SetActive(true);
+        s3p2ecbText.SetActive(true);
+    }
+
+    public void ShowSection3Part3() {
+        PrepareShow(3);
+        s3p3cbcTitle.SetActive(true);
+        s3p3cbcText.SetActive(true);
+    }
+
+    public void ShowSection4Part1() {
+        PrepareShow(4);
+        s4p1cbcIssueTitle.SetActive(true);
+        s4p1cbcIssueText.SetActive(true);
+    }
+
+    public void ShowSection4Part2() {
+        PrepareShow(4);
+        s4p2consoleAttackTitle.SetActive(true);
+        s4p2consoleAttackText.SetActive(true);
+    }
+
+    public void ShowSection4Part3() {
+        PrepareShow(4);
+        s4p3ctrTitle.SetActive(true);
+        s4p3ctrText.SetActive(true);
     }
 
     private void PrepareShow(int n) {

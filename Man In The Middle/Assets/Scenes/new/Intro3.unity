@@ -1602,7 +1602,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -35.69995, y: 41.469727}
+  m_AnchoredPosition: {x: -36, y: 41.5}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &268092919
@@ -2255,7 +2255,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.0068183476, y: -73.075775}
+  m_AnchoredPosition: {x: -0.0068183476, y: -73}
   m_SizeDelta: {x: 1919.9971, y: 145.48584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &316037963
@@ -2888,7 +2888,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0017089844, y: 0.08337402}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -0.0031738281, y: 0.82543945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!21 &419899883
@@ -3905,7 +3905,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.00026173005, y: -72.91153}
+  m_AnchoredPosition: {x: 0.00026173005, y: -73}
   m_SizeDelta: {x: 1919.9971, y: 145.48584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &579486674
@@ -4284,7 +4284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.0075683594, y: -57.135647}
+  m_AnchoredPosition: {x: 0, y: -57.135647}
   m_SizeDelta: {x: 0.015258789, y: 703.79407}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &676826491
@@ -4842,7 +4842,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.00024414039, y: -73.07614}
+  m_AnchoredPosition: {x: 0.00024414039, y: -73}
   m_SizeDelta: {x: 1919.9971, y: 145.48584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &690256856
@@ -6110,7 +6110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.015899844, y: -72.742966}
+  m_AnchoredPosition: {x: -0.015899844, y: -72.75}
   m_SizeDelta: {x: 1919.9971, y: 145.48584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &889494868
@@ -6576,7 +6576,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0146484375, y: 0.0826416}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0.028808594, y: 0.48986816}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &921058034
@@ -7195,7 +7195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.012207031, y: -0.0010986328}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0.024291992, y: 0.32702637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1005852569
@@ -8663,7 +8663,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.0146484375, y: -57.300804}
+  m_AnchoredPosition: {x: 0, y: -57.300804}
   m_SizeDelta: {x: -0.03527832, y: 703.7937}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1172143007
@@ -8792,15 +8792,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'If you encrypt a hard disk drive (HDD) using CBC mode and then you want
-    to access a specific file you will need to decrypt the whole HDD. When you change
+  m_text: 'The problem with CBC mode is that the decryption of blocks is dependant
+    on the previous ciphertext block. This means it is vulnerable to attack where
+    attacker can manipulate the decryption of a block by tampering with the previous
+    block using the commutative property of XOR.
+
+
+    Also for example, if you encrypt
+    a hard disk drive (HDD) using CBC mode and then you want to access a specific
+    file you will need to decrypt the whole HDD up to that file. When you change
     the file you need to re-encrypt the whole disk again because the old cipher is
-    no longer valid as you modified part of the chain.
-
-
-    Performance will suffer
-    because of these extra calculations and also security might be compromised as
-    you are decrypting unnecessary files that you are not accessing.'
+    no longer valid as you modified part of the chain.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 70b6ad6f58d76564fb70b705683bb513, type: 2}
   m_sharedMaterial: {fileID: -8765385849567795585, guid: 70b6ad6f58d76564fb70b705683bb513, type: 2}
@@ -9109,7 +9111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.0146484375, y: -57.300804}
+  m_AnchoredPosition: {x: 0, y: -57.300804}
   m_SizeDelta: {x: -0.03527832, y: 703.7937}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1219545822
@@ -9239,11 +9241,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Last mode we are going to look at is Counter mode (CTR).\n\nCTR turns
-    a block cipher into a stream cipher. In a stream cipher, <b>each plaintext digit
-    is encrypted one at a time</b> with the corresponding digit of the keystream,
-    to give a digit of the ciphertext stream. \n\nIt generates the next keystream
-    block by encrypting successive values of a \"counter\". Increment-by-one counter
-    is the simplest and most popular. "
+    a block cipher into a stream cipher. In a stream cipher, each plaintext digit
+    is encrypted one at a time with the corresponding digit of the keystream, to
+    give a digit of the ciphertext stream. \n\nIt generates the next keystream block
+    by encrypting successive values of a \"counter\". Increment-by-one counter is
+    the simplest and most popular. "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 70b6ad6f58d76564fb70b705683bb513, type: 2}
   m_sharedMaterial: {fileID: -8765385849567795585, guid: 70b6ad6f58d76564fb70b705683bb513, type: 2}
@@ -9354,7 +9356,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.015899844, y: -72.742966}
+  m_AnchoredPosition: {x: -0.015899844, y: -72.75}
   m_SizeDelta: {x: 1919.9971, y: 145.48584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1225706132
@@ -9488,7 +9490,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.0068183476, y: -73.075775}
+  m_AnchoredPosition: {x: -0.0068183476, y: -73}
   m_SizeDelta: {x: 1919.9971, y: 145.48584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1232531161
@@ -9623,7 +9625,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 34.899902, y: 41.19995}
+  m_AnchoredPosition: {x: 35, y: 41.25}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1233724494
@@ -9862,7 +9864,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.0075683594, y: -57.135647}
+  m_AnchoredPosition: {x: 0, y: -57.135647}
   m_SizeDelta: {x: 0.015258789, y: 703.79407}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1246585407
@@ -10297,7 +10299,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.01373291, y: -72.74243}
+  m_AnchoredPosition: {x: -0.01373291, y: -72.75}
   m_SizeDelta: {x: 1919.9971, y: 145.48584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1289384116
@@ -11702,7 +11704,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.016236987, y: 310.32935}
+  m_AnchoredPosition: {x: 0.016236987, y: 310.25}
   m_SizeDelta: {x: 705.7711, y: 288.64575}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1393178464
@@ -12078,7 +12080,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.0146484375, y: -57.300804}
+  m_AnchoredPosition: {x: 0, y: -57.300804}
   m_SizeDelta: {x: -0.03527832, y: 703.7937}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1458402621
@@ -12207,8 +12209,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<color=red>Exploit</color> the game console''s HDD encryption to access
-    the game data:'
+  m_text: '<color=red>Exploit</color> the game console''s HDD encryption (ECB mode)
+    to access the game data:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 70b6ad6f58d76564fb70b705683bb513, type: 2}
   m_sharedMaterial: {fileID: -8765385849567795585, guid: 70b6ad6f58d76564fb70b705683bb513, type: 2}
@@ -14035,13 +14037,46 @@ MonoBehaviour:
   - {fileID: 889494866}
   - {fileID: 676826489}
   - {fileID: 1246585405}
-  s2objects: []
-  s3objects: []
-  s4objects: []
+  s2objects:
+  - {fileID: 1289384114}
+  - {fileID: 1741963294}
+  - {fileID: 1058385718}
+  s3objects:
+  - {fileID: 690256854}
+  - {fileID: 579486672}
+  - {fileID: 1647507915}
+  - {fileID: 2100655403}
+  - {fileID: 1609943318}
+  - {fileID: 1786757927}
+  - {fileID: 1393178462}
+  - {fileID: 1937541741}
+  s4objects:
+  - {fileID: 2137925074}
+  - {fileID: 316037961}
+  - {fileID: 1232531159}
+  - {fileID: 1172143005}
+  - {fileID: 1603682107}
+  - {fileID: 1458402619}
+  - {fileID: 263532582}
+  - {fileID: 1219545820}
   s1p1blockTitle: {fileID: 1225706130}
   s1p1blockText: {fileID: 676826489}
   s1p2blockExampleTitle: {fileID: 889494866}
   s1p2blockExampleText: {fileID: 1246585405}
+  s2p1desBruteforceTitle: {fileID: 1289384114}
+  s2p1desBruteforceText: {fileID: 1741963294}
+  s3p1blockCipherModesTitle: {fileID: 690256854}
+  s3p1blockCipherModesText: {fileID: 2100655403}
+  s3p2ecbTitle: {fileID: 579486672}
+  s3p2ecbText: {fileID: 1609943318}
+  s3p3cbcTitle: {fileID: 1647507915}
+  s3p3cbcText: {fileID: 1786757927}
+  s4p1cbcIssueTitle: {fileID: 2137925074}
+  s4p1cbcIssueText: {fileID: 1172143005}
+  s4p2consoleAttackTitle: {fileID: 316037961}
+  s4p2consoleAttackText: {fileID: 1458402619}
+  s4p3ctrTitle: {fileID: 1232531159}
+  s4p3ctrText: {fileID: 1219545820}
 --- !u!1 &1603682107
 GameObject:
   m_ObjectHideFlags: 0
@@ -14078,7 +14113,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.0146484375, y: -57.300804}
+  m_AnchoredPosition: {x: 0, y: -57.300804}
   m_SizeDelta: {x: -0.03527832, y: 703.7937}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1603682109
@@ -14332,7 +14367,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0.0021972656, y: -57.136375}
+  m_AnchoredPosition: {x: 0, y: -57.136375}
   m_SizeDelta: {x: -0.004272461, y: 703.79407}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1609943320
@@ -14927,7 +14962,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -195.32007}
+  m_AnchoredPosition: {x: 0, y: -195.25}
   m_SizeDelta: {x: 720.00024, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1646756991
@@ -14972,7 +15007,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.00026173005, y: -72.91153}
+  m_AnchoredPosition: {x: 0.00026173005, y: -73}
   m_SizeDelta: {x: 1919.9971, y: 145.48584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1647507917
@@ -15919,7 +15954,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0.0041503906, y: -57.051903}
+  m_AnchoredPosition: {x: 0, y: -57.051903}
   m_SizeDelta: {x: 0.00024414062, y: 703.7943}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1741963296
@@ -16606,7 +16641,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.0073242188, y: -57.136375}
+  m_AnchoredPosition: {x: 0, y: -57.136375}
   m_SizeDelta: {x: 0.015014648, y: 703.7937}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1786757930
@@ -17752,7 +17787,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0053710938, y: 0.24780273}
+  m_AnchoredPosition: {x: 0, y: 0.25}
   m_SizeDelta: {x: 0.04711914, y: 0.82507324}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1889479181
@@ -17926,7 +17961,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.0017089839, y: 331.32935}
+  m_AnchoredPosition: {x: 0.0017089839, y: 331.25}
   m_SizeDelta: {x: 705.7711, y: 201.01776}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1937541743
@@ -18738,7 +18773,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.0073242188, y: -57.13638}
+  m_AnchoredPosition: {x: 0, y: -57.13638}
   m_SizeDelta: {x: 0.015014648, y: 703.79407}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2100655405
@@ -19327,7 +19362,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.0068183476, y: -73.075775}
+  m_AnchoredPosition: {x: -0.0068183476, y: -73}
   m_SizeDelta: {x: 1919.9971, y: 145.48584}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2137925076
