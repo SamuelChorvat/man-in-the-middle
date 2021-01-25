@@ -27,6 +27,9 @@ public class IntroCaesarPuzzle : MonoBehaviour
     [Tooltip("Reveal Continue Button")]
     public RevealContinueButton contBut;
 
+    [Tooltip("Text Swap")]
+    public GameObject oldText;
+    public GameObject newText;
 
     private bool experienceSolved = false;
     private bool isSolved = false;
@@ -37,7 +40,26 @@ public class IntroCaesarPuzzle : MonoBehaviour
     private bool thingsSolved = false;
 
     public void StartPuzzle() {
+        SwapText();
         StartCoroutine(RevealExperienceBoxes());
+    }
+
+    public void ResetPuzzle() {
+        StopAllCoroutines();
+        SwapTextBack();
+        HideAllBoxes();
+        ResetBooleans();
+        text.text = "Decrypt this Caesar cipher :\n\n<align=\"center\">Hashulhqfh lv wkh whdfkhu ri doo wklqjv";
+    }
+
+    public void SwapText() {
+        oldText.SetActive(false);
+        newText.SetActive(true);
+    }
+
+    public void SwapTextBack() {
+        oldText.SetActive(true);
+        newText.SetActive(false);
     }
 
     private IEnumerator RevealExperienceBoxes() {
@@ -56,6 +78,27 @@ public class IntroCaesarPuzzle : MonoBehaviour
             }
             currentObj.transform.Find(currentWord + "Letter" + i).gameObject.SetActive(true);
         }
+    }
+
+    private void HideAllBoxes() {
+        GameObject[] objects = new GameObject[] { experience_obj, is_obj, the_obj, teacher_obj, of_obj, all_obj, things_obj };
+        String[] words = new String[] { "Experience", "Is", "The", "Teacher", "Of", "All", "Things" };
+        for (int j = 0; j < words.Length; j++) {
+            GameObject currentObj = objects[j];
+            String currentWord = words[j];
+            currentObj.SetActive(false);
+            for (int i = 1; i < currentWord.Length + 1; i++) {
+                currentObj.transform.Find(currentWord + "Line" + i).gameObject.SetActive(false);
+                Image line = currentObj.transform.Find(currentWord + "Line" + i).GetComponent<Image>();
+                line.fillAmount = 0;
+                currentObj.transform.Find(currentWord + "Letter" + i).gameObject.SetActive(false);
+
+                GameObject letterObject = currentObj.transform.Find(currentWord + "Letter" + i).gameObject;
+                letterObject.GetComponent<TMP_InputField>().text = "";
+                letterObject.GetComponent<Image>().color = Color.white;
+            }
+        }
+        
     }
 
     private IEnumerator RevealIsBoxes() {
@@ -379,5 +422,15 @@ public class IntroCaesarPuzzle : MonoBehaviour
 
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    private void ResetBooleans() {
+        experienceSolved = false;
+        isSolved = false;
+        theSolved = false;
+        teacherSolved = false;
+        ofSolved = false;
+        allSolved = false;
+        thingsSolved = false;
     }
 }

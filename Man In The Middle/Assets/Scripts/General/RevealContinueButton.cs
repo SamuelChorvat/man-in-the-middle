@@ -19,6 +19,12 @@ public class RevealContinueButton : MonoBehaviour
         StartCoroutine(Reveal());
     }
 
+    public void ResetButton() {
+        textrev.SetActive(false);
+        this.GetComponent<Image>().fillAmount = 0f;
+        this.gameObject.SetActive(false);
+    }
+
     private IEnumerator Reveal() {
         this.GetComponent<Image>().fillOrigin = (int)Image.OriginHorizontal.Left;
         while (this.GetComponent<Image>().fillAmount < 1) {

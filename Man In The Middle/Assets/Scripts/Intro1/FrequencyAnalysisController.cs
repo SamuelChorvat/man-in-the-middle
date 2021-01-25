@@ -56,14 +56,25 @@ public class FrequencyAnalysisController : MonoBehaviour {
     public GameObject freqWid;
     public GameObject subWid;
     public RevealContinueButton but;
+    public FrequenciesWindowController freqCont;
+    public SubstituteWindowController subCont;
+
+    [Tooltip("Freq Letters")]
+    public FrequencyLetter[] freqLetters;
 
     private string orgCipherText;
     private bool solved = false;
     private int correct = 0;
     private string[] alphabet = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "Q", "K", "L", "M", "N", "O", "P", "R", "S", "T", "U", "W", "V", "X", "Y", "Z" };
 
+    private bool orgSet = false;
+
     public void ShowPuzzle() {
-        orgCipherText = cipherText.text;
+        if (!orgSet) {
+            orgCipherText = cipherText.text;
+            orgSet = true;
+        }
+        
         for (int i = 0; i < revealObjects.Length; i++) {
             revealObjects[i].SetActive(true);
         }
@@ -73,6 +84,29 @@ public class FrequencyAnalysisController : MonoBehaviour {
         }
 
         InitializeSubs();
+    }
+
+    public void ResetPuzzle() {
+        StopAllCoroutines();
+        if (orgSet) {
+            cipherText.text = orgCipherText;
+        }
+        solved = false;
+        correct = 0;
+        alphabet = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "Q", "K", "L", "M", "N", "O", "P", "R", "S", "T", "U", "W", "V", "X", "Y", "Z" };
+        freqCont.CloseWindow();
+        subCont.CloseWindow();
+        freqBut.SetActive(true);
+        subBut.SetActive(true);
+        InitializeSubs();
+
+        for (int i = 0; i < revealObjects.Length; i++) {
+            revealObjects[i].SetActive(false);
+        }
+
+        for (int i = 0; i < freqLetters.Length; i++) {
+            freqLetters[i].ResetLetter();
+        }
     }
 
     public void StartSubstitue() {
