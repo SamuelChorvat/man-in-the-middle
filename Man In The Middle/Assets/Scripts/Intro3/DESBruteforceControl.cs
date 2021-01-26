@@ -11,6 +11,8 @@ public class DESBruteforceControl : MonoBehaviour
     public RevealContinueButton[] butAnim;
     public RevealContinueButton but;
 
+    public DESBruteforce[] scripts;
+
     private int forced = 0;
 
     public void ShowBruteForce() {
@@ -21,6 +23,18 @@ public class DESBruteforceControl : MonoBehaviour
         }
 
         StartCoroutine(ShowButtons());
+    }
+
+    public void ResetDemo() {
+        StopAllCoroutines();
+        forced = 0;
+        for (int i = 0; i < bruteObj.Length; i++) {
+            butAnim[i].ResetButton();
+            scripts[i].ResetBruteForce();
+            bruteObj[i].SetActive(true);
+
+        }
+        demo.SetActive(false);
     }
 
     private IEnumerator ShowButtons() {

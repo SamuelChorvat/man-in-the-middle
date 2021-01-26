@@ -28,6 +28,18 @@ public class GameConsoleAttack : MonoBehaviour
         hddAnim.DORestart();
     }
 
+    public void ResetAttack() {
+        StopAllCoroutines();
+        explanationtext.SetActive(false);
+        gameDataImage.GetComponent<Image>().fillAmount = 1f;
+        turnButObj.SetActive(false);
+        gameDataImage.SetActive(false);
+        userDataText.text = "USER DATA";
+        pasteButObj.SetActive(false);
+        copyButObj.SetActive(false);
+        gameDataImage.SetActive(false);
+    }
+
     public void ShowCopy() {
         copyButObj.SetActive(true);
         copyButAnim.DORestart();

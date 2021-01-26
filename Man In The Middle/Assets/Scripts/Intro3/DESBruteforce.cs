@@ -40,4 +40,14 @@ public class DESBruteforce : MonoBehaviour {
         costText.text = finalFormat;
         cont.ForcedDes();
     }
+
+    public void ResetBruteForce() {
+        StopAllCoroutines();
+        currentCost = 0;
+        moneyObj.SetActive(false);
+        costText.text = "0";
+        fillImage.fillAmount = 0f;
+        fillImage.color = new Color32(255, 127, 0, 255);
+        fillText.text = "";
+    }
 }
