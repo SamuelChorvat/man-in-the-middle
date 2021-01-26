@@ -279,4 +279,20 @@ public class Intro1Controller : MonoBehaviour
             rightArrow.interactable = false;
         }
     }
+
+    public void ClickSection1() {
+        ShowSection1Part1();
+    }
+
+    public void ClickSection2() {
+        ShowSection2Part1();
+    }
+
+    public void ClickSection3() {
+        ShowSection3Part1();
+    }
+
+    public void ClickSection4() {
+        ShowSection4Part1();
+    }
 }

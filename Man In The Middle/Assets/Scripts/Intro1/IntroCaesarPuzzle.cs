@@ -49,7 +49,7 @@ public class IntroCaesarPuzzle : MonoBehaviour
         SwapTextBack();
         HideAllBoxes();
         ResetBooleans();
-        text.text = "Decrypt this Caesar cipher :\n\n<align=\"center\">Hashulhqfh lv wkh whdfkhu ri doo wklqjv";
+        text.text = "Decrypt this Caesar cipher:\n\n<align=\"center\">Hashulhqfh lv wkh whdfkhu ri doo wklqjv";
     }
 
     public void SwapText() {

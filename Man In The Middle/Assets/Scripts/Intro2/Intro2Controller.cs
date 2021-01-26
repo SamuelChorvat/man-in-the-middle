@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class Intro2Controller : MonoBehaviour
 {
+    [Header("Continue Button")]
+    public RevealContinueButton continueButton;
+
     [Header("Sections")]
     public GameObject[] sections;
 
@@ -11,6 +16,12 @@ public class Intro2Controller : MonoBehaviour
     public GameObject[] s1objects;
     public GameObject[] s2objects;
     public GameObject[] s3objects;
+
+    [Header("Part Control Objects")]
+    public Button leftArrow;
+    public Button rightArrow;
+    public TextMeshProUGUI currentPartText;
+    public TextMeshProUGUI maxPartText;
 
     [Header("Section 1 Part 1")]
     public GameObject s1p1padsTitle;
@@ -35,51 +46,61 @@ public class Intro2Controller : MonoBehaviour
     [Header("Section 3 Part 2")]
     public GameObject s3p2xorPuzzleText;
 
+    private int maxSection = 3;
+    private int[] maxPartSection = new int[] { 2, 2, 2 };
+
+    private int currentSection;
+    private int currentPart;
+
     void Start()
     {
         ShowSection3Part2();
     }
 
     public void ShowSection1Part1() {
-        PrepareShow(1);
+        SetCurrentSection(1);
         s1p1padsTitle.SetActive(true);
         s1p1vignereCipherText.SetActive(true);
     }
 
     public void ShowSection1Part2() {
-        PrepareShow(1);
+        SetCurrentSection(1);
         s1p1padsTitle.SetActive(true);
         s1p2vignerePuzzleText.SetActive(true);
         s1p2vignerePuzzle.SetActive(true);
     }
 
     public void ShowSection2Part1() {
-        PrepareShow(2);
+        SetCurrentSection(2);
         s2p1moduloTitle.SetActive(true);
         s2p1moduloText.SetActive(true);
     }
 
     public void ShowSection2Part2() {
-        PrepareShow(2);
+        SetCurrentSection(2);
         s2p1moduloTitle.SetActive(true);
         s2p2moduloPuzzleText.SetActive(true);
         s2p2moduloPuzzle.SetActive(true);
     }
 
     public void ShowSection3Part1() {
-        PrepareShow(3);
+        SetCurrentSection(3);
         s3p1xorTitle.SetActive(true);
         s3p1xorText.SetActive(true);
     }
 
     public void ShowSection3Part2() {
-        PrepareShow(3);
+        SetCurrentSection(3);
         s3p1xorTitle.SetActive(true);
         s3p2xorPuzzleText.SetActive(true);
     }
 
-    private void PrepareShow(int n) {
+    private void SetCurrentSection(int n) {
         HideAllSections();
+        leftArrow.interactable = true;
+        rightArrow.interactable = true;
+        maxPartText.text = maxPartSection[n - 1].ToString();
+        currentSection = n;
 
         if (n == 1) {
             HideSection1();
@@ -113,6 +134,20 @@ public class Intro2Controller : MonoBehaviour
     private void HideSection3() {
         for (int i = 0; i < s3objects.Length; i++) {
             s3objects[i].SetActive(false);
+        }
+    }
+
+    public void SetCurrentPart(int cPart) {
+        continueButton.ResetButton();
+        currentPart = cPart;
+        currentPartText.text = currentPart.ToString();
+
+        if (currentPart == 1) {
+            leftArrow.interactable = false;
+        }
+
+        if (currentPart == maxPartSection[currentSection - 1]) {
+            rightArrow.interactable = false;
         }
     }
 }
