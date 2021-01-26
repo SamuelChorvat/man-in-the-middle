@@ -1,9 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+using Febucci.UI;
+using UnityEngine.SocialPlatforms.GameCenter;
 
 public class Intro4Controller : MonoBehaviour
 {
+    [Header("Continue Button")]
+    public RevealContinueButton continueButton;
 
     [Header("Sections")]
     public GameObject[] sections;
@@ -14,6 +20,18 @@ public class Intro4Controller : MonoBehaviour
     public GameObject[] s3objects;
     public GameObject[] s4objects;
     public GameObject[] s5objects;
+
+    [Header("Part Control Objects")]
+    public GameObject partControl;
+    public GameObject altPartControl;
+    public Button leftArrow;
+    public Button rightArrow;
+    public Button altLeftArrow;
+    public Button altRightArrow;
+    public TextMeshProUGUI currentPartText;
+    public TextMeshProUGUI maxPartText;
+    public TextMeshProUGUI altCurrentPartText;
+    public TextMeshProUGUI altMaxPartText;
 
     [Header("Section 1 Part 1")]
     public GameObject s1p1keyProblemTitle;
@@ -35,6 +53,7 @@ public class Intro4Controller : MonoBehaviour
 
     [Header("Section 1 Part 6")]
     public GameObject s1p6diffieHellmanDemo;
+    public DiffieHellmanControl s1p6diffieHellmanDemoScript;
 
     [Header("Section 2 Part 1")]
     public GameObject s2p1elgamalTitle;
@@ -103,153 +122,341 @@ public class Intro4Controller : MonoBehaviour
     public GameObject s5p5authenticatedTitle;
     public GameObject s5p5authenticatedText;
 
+    private int maxSection = 5;
+    private int[] maxPartSection = new int[] { 6, 3, 3, 6, 5 };
+
+    private int currentSection;
+    private int currentPart;
+
     void Start()
     {
-        ShowSection5Part5();
+        ShowSection1Part1();
+    }
+
+    public void PressLeftPartArow() {
+        if (currentSection == 1) {
+            if (currentPart == 1) {
+                //nothing
+            } else if (currentPart == 2) {
+                ShowSection1Part1();
+            } else if (currentPart == 3) {
+                ShowSection1Part2();
+            } else if (currentPart == 4) {
+                ShowSection1Part3();
+            } else if (currentPart == 5) {
+                ShowSection1Part4();
+            } else if (currentPart == 6) {
+                ShowSection1Part5();
+            }
+        } else if (currentSection == 2) {
+            if (currentPart == 1) {
+                //nothing
+            } else if (currentPart == 2) {
+                ShowSection2Part1();
+            } else if (currentPart == 3) {
+                ShowSection2Part2();
+            }
+
+        } else if (currentSection == 3) {
+            if (currentPart == 1) {
+                //nothing
+            } else if (currentPart == 2) {
+                ShowSection3Part1();
+            } else if (currentPart == 3) {
+                ShowSection3Part2();
+            } 
+
+        } else if (currentSection == 4) {
+            if (currentPart == 1) {
+                //nothing
+            } else if (currentPart == 2) {
+                ShowSection4Part1();
+            } else if (currentPart == 3) {
+                ShowSection4Part2();
+            } else if (currentPart == 4) {
+                ShowSection4Part3();
+            } else if (currentPart == 5) {
+                ShowSection4Part4();
+            } else if (currentPart == 6) {
+                ShowSection4Part5();
+            }
+        } else if (currentSection == 5) {
+            if (currentPart == 1) {
+                //nothing
+            } else if (currentPart == 2) {
+                ShowSection5Part1();
+            } else if (currentPart == 3) {
+                ShowSection5Part2();
+            } else if (currentPart == 4) {
+                ShowSection5Part3();
+            } else if (currentPart == 5) {
+                ShowSection5Part4();
+            } 
+        }
+    }
+
+    public void PressRightPartArow() {
+        if (currentSection == 1) {
+            if (currentPart == 1) {
+                ShowSection1Part2();
+            } else if (currentPart == 2) {
+                ShowSection1Part3();
+            } else if (currentPart == 3) {
+                ShowSection1Part4();
+            } else if (currentPart == 4) {
+                ShowSection1Part5();
+            } else if (currentPart == 5) {
+                ShowSection1Part6();
+            } else if (currentPart == 6) {
+                //nothing
+            }
+        } else if (currentSection == 2) {
+            if (currentPart == 1) {
+                ShowSection2Part2();
+            } else if (currentPart == 2) {
+                ShowSection2Part3();
+            } else if (currentPart == 3) {
+                //nothing
+            }
+
+        } else if (currentSection == 3) {
+            if (currentPart == 1) {
+                ShowSection3Part2();
+            } else if (currentPart == 2) {
+                ShowSection3Part3();
+            } else if (currentPart == 3) {
+                //nothing
+            }
+
+        } else if (currentSection == 4) {
+            if (currentPart == 1) {
+                ShowSection4Part2();
+            } else if (currentPart == 2) {
+                ShowSection4Part3();
+            } else if (currentPart == 3) {
+                ShowSection4Part4();
+            } else if (currentPart == 4) {
+                ShowSection4Part5();
+            } else if (currentPart == 5) {
+                ShowSection4Part6();
+            } else if (currentPart == 6) {
+                //nothing
+            }
+        } else if (currentSection == 5) {
+            if (currentPart == 1) {
+                ShowSection5Part2();
+            } else if (currentPart == 2) {
+                ShowSection5Part3();
+            } else if (currentPart == 3) {
+                ShowSection5Part4();
+            } else if (currentPart == 4) {
+                ShowSection5Part5();
+            } else if (currentPart == 5) {
+                //nothing
+            }
+        }
     }
 
     public void ShowSection1Part1() {
-        PrepareShow(1);
+        SetCurrentSection(1);
+        SetCurrentPart(1);
+
         s1p1keyProblemTitle.SetActive(true);
         s1p1keyProblemText.SetActive(true);
     }
 
     public void ShowSection1Part2() {
-        PrepareShow(1);
+        SetCurrentSection(1);
+        SetCurrentPart(2);
+
         s1p2publicKeyEncryptionTitle.SetActive(true);
         s1p2publicKeyEncryptionText.SetActive(true);
     }
 
     public void ShowSection1Part3() {
-        PrepareShow(1);
+        SetCurrentSection(1);
+        SetCurrentPart(3);
+
         s1p3diffieHellmanTitle.SetActive(true);
         s1p3diffieHellmanText.SetActive(true);
     }
 
     public void ShowSection1Part4() {
-        PrepareShow(1);
+        SetCurrentSection(1);
+        SetCurrentPart(4);
+
         s1p3diffieHellmanTitle.SetActive(true);
         s1p4diffieHellmanText.SetActive(true);
     }
 
     public void ShowSection1Part5() {
-        PrepareShow(1);
+        SetCurrentSection(1);
+        SetCurrentPart(5);
+
         s1p3diffieHellmanTitle.SetActive(true);
         s1p5diffieHellmanText.SetActive(true);
     }
 
     public void ShowSection1Part6() {
-        PrepareShow(1);
+        SetCurrentSection(1);
+        SetCurrentPart(6);
+        partControl.SetActive(false);
+        altPartControl.SetActive(true);
+
         s1p3diffieHellmanTitle.SetActive(true);
         s1p6diffieHellmanDemo.SetActive(true);
+        s1p6diffieHellmanDemoScript.StartDHDemo();
     }
 
     public void ShowSection2Part1() {
-        PrepareShow(2);
+        SetCurrentSection(2);
+        SetCurrentPart(1);
+
         s2p1elgamalTitle.SetActive(true);
         s2p1elgamalText.SetActive(true);  
     }
 
     public void ShowSection2Part2() {
-        PrepareShow(2);
+        SetCurrentSection(2);
+        SetCurrentPart(2);
+
         s2p2rsaTitle.SetActive(true);
         s2p2rsaText.SetActive(true);
     }
 
     public void ShowSection2Part3() {
-        PrepareShow(2);
+        SetCurrentSection(2);
+        SetCurrentPart(3);
+
         s2p3pkcTitle.SetActive(true);
         s2p3pkcText.SetActive(true);
     }
 
     public void ShowSection3Part1() {
-        PrepareShow(3);
+        SetCurrentSection(3);
+        SetCurrentPart(1);
+
         s3p1signaturesTitle.SetActive(true);
         s3p1signaturesText.SetActive(true);
     }
 
     public void ShowSection3Part2() {
-        PrepareShow(3);
+        SetCurrentSection(3);
+        SetCurrentPart(2);
+
         s3p1signaturesTitle.SetActive(true);
         s3p2signaturesTrickText.SetActive(true);
         s3p2signaturesTrickDemo.SetActive(true);
     }
 
     public void ShowSection3Part3() {
-        PrepareShow(3);
+        SetCurrentSection(3);
+        SetCurrentPart(3);
+
         s3p3certificatesTitle.SetActive(true);
         s3p3certificatesText.SetActive(true);
     }
 
     public void ShowSection4Part1() {
-        PrepareShow(4);
+        SetCurrentSection(4);
+        SetCurrentPart(1);
+
         s4p1hashesTitle.SetActive(true);
         s4p1hashesText.SetActive(true);
     }
 
     public void ShowSection4Part2() {
-        PrepareShow(4);
+        SetCurrentSection(4);
+        SetCurrentPart(2);
+
         s4p1hashesTitle.SetActive(true);
         s4p2hashesDemoText.SetActive(true);
     }
 
     public void ShowSection4Part3() {
-        PrepareShow(4);
+        SetCurrentSection(4);
+        SetCurrentPart(3);
+
         s4p3usesHashesTitle.SetActive(true);
         s4p3usesHashesText.SetActive(true);
     }
 
     public void ShowSection4Part4() {
-        PrepareShow(4);
+        SetCurrentSection(4);
+        SetCurrentPart(4);
+
         s4p4hashesAttacksTitle.SetActive(true);
         s4p4hashesAttacksText.SetActive(true);
     }
 
     public void ShowSection4Part5() {
-        PrepareShow(4);
+        SetCurrentSection(4);
+        SetCurrentPart(5);
+
         s4p5birthdayTitle.SetActive(true);
         s4p5birthdayText.SetActive(true);
     }
 
     public void ShowSection4Part6() {
-        PrepareShow(4);
+        SetCurrentSection(4);
+        SetCurrentPart(6);
+
         s4p6hashesTypesTitle.SetActive(true);
         s4p6hashesTypesText.SetActive(true);
     }
 
     public void ShowSection5Part1() {
-        PrepareShow(5);
+        SetCurrentSection(5);
+        SetCurrentPart(1);
+
         s5p1macTitle.SetActive(true);
         s5p1macText.SetActive(true);
     }
 
     public void ShowSection5Part2() {
-        PrepareShow(5);
+        SetCurrentSection(5);
+        SetCurrentPart(2);
+
         s5p2alteringTitle.SetActive(true);
         s5p2alteringText.SetActive(true);
     }
 
     public void ShowSection5Part3() {
-        PrepareShow(5);
+        SetCurrentSection(5);
+        SetCurrentPart(3);
+
         s5p3knownTitle.SetActive(true);
         s5p3knownText.SetActive(true);
     }
 
     public void ShowSection5Part4() {
-        PrepareShow(5);
+        SetCurrentSection(5);
+        SetCurrentPart(4);
+
         s5p3knownTitle.SetActive(true);
         s5p4knownAttackDemoText.SetActive(true);
         s5p4knownAttackDemo.SetActive(true);
     }
 
     public void ShowSection5Part5() {
-        PrepareShow(5);
+        SetCurrentSection(5);
+        SetCurrentPart(5);
+
         s5p5authenticatedTitle.SetActive(true);
         s5p5authenticatedText.SetActive(true);
     }
 
-    private void PrepareShow(int n) {
+    private void SetCurrentSection(int n) {
         HideAllSections();
+        altPartControl.SetActive(false);
+        partControl.SetActive(true);
+        leftArrow.interactable = true;
+        rightArrow.interactable = true;
+        altLeftArrow.interactable = true;
+        altRightArrow.interactable = true;
+        maxPartText.text = maxPartSection[n - 1].ToString();
+        altMaxPartText.text = maxPartSection[n - 1].ToString();
+        currentSection = n;
 
         if (n == 1) {
             HideSection1();
@@ -302,5 +509,41 @@ public class Intro4Controller : MonoBehaviour
         }
     }
 
+    public void SetCurrentPart(int cPart) {
+        continueButton.ResetButton();
+        currentPart = cPart;
+        currentPartText.text = currentPart.ToString();
+        altCurrentPartText.text = currentPart.ToString();
+
+        if (currentPart == 1) {
+            leftArrow.interactable = false;
+            altLeftArrow.interactable = false;
+        }
+
+        if (currentPart == maxPartSection[currentSection - 1]) {
+            rightArrow.interactable = false;
+            altRightArrow.interactable = false;
+        }
+    }
+
+    public void ClickSection1() {
+        ShowSection1Part1();
+    }
+
+    public void ClickSection2() {
+        ShowSection2Part1();
+    }
+
+    public void ClickSection3() {
+        ShowSection3Part1();
+    }
+
+    public void ClickSection4() {
+        ShowSection4Part1();
+    }
+
+    public void ClickSection5() {
+        ShowSection5Part1();
+    }
 
 }

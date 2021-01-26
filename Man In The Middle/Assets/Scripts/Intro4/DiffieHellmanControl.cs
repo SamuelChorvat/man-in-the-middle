@@ -22,7 +22,7 @@ public class DiffieHellmanControl : MonoBehaviour
     public GameObject bobArrowHead;
 
     public void Start() {
-        StartDHDemo();
+        //StartDHDemo();
     }
 
     private void InitializeDemo() {
