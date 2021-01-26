@@ -263,6 +263,7 @@ public class Intro4Controller : MonoBehaviour
 
         s1p1keyProblemTitle.SetActive(true);
         s1p1keyProblemText.SetActive(true);
+        s1p1keyProblemText.GetComponent<TextAnimatorPlayer>().ShowText(s1p1keyProblemText.GetComponent<TextMeshProUGUI>().text);
     }
 
     public void ShowSection1Part2() {
@@ -271,6 +272,7 @@ public class Intro4Controller : MonoBehaviour
 
         s1p2publicKeyEncryptionTitle.SetActive(true);
         s1p2publicKeyEncryptionText.SetActive(true);
+        s1p2publicKeyEncryptionText.GetComponent<TextAnimatorPlayer>().ShowText(s1p2publicKeyEncryptionText.GetComponent<TextMeshProUGUI>().text);
     }
 
     public void ShowSection1Part3() {
@@ -279,6 +281,7 @@ public class Intro4Controller : MonoBehaviour
 
         s1p3diffieHellmanTitle.SetActive(true);
         s1p3diffieHellmanText.SetActive(true);
+        s1p3diffieHellmanText.GetComponent<TextAnimatorPlayer>().ShowText(s1p3diffieHellmanText.GetComponent<TextMeshProUGUI>().text);
     }
 
     public void ShowSection1Part4() {
@@ -287,6 +290,7 @@ public class Intro4Controller : MonoBehaviour
 
         s1p3diffieHellmanTitle.SetActive(true);
         s1p4diffieHellmanText.SetActive(true);
+        s1p4diffieHellmanText.GetComponent<TextAnimatorPlayer>().ShowText(s1p4diffieHellmanText.GetComponent<TextMeshProUGUI>().text);
     }
 
     public void ShowSection1Part5() {
@@ -295,6 +299,7 @@ public class Intro4Controller : MonoBehaviour
 
         s1p3diffieHellmanTitle.SetActive(true);
         s1p5diffieHellmanText.SetActive(true);
+        s1p5diffieHellmanText.GetComponent<TextAnimatorPlayer>().ShowText(s1p5diffieHellmanText.GetComponent<TextMeshProUGUI>().text);
     }
 
     public void ShowSection1Part6() {
@@ -313,7 +318,8 @@ public class Intro4Controller : MonoBehaviour
         SetCurrentPart(1);
 
         s2p1elgamalTitle.SetActive(true);
-        s2p1elgamalText.SetActive(true);  
+        s2p1elgamalText.SetActive(true);
+        s2p1elgamalText.GetComponent<TextAnimatorPlayer>().ShowText(s2p1elgamalText.GetComponent<TextMeshProUGUI>().text);
     }
 
     public void ShowSection2Part2() {
@@ -322,6 +328,7 @@ public class Intro4Controller : MonoBehaviour
 
         s2p2rsaTitle.SetActive(true);
         s2p2rsaText.SetActive(true);
+        s2p2rsaText.GetComponent<TextAnimatorPlayer>().ShowText(s2p2rsaText.GetComponent<TextMeshProUGUI>().text);
     }
 
     public void ShowSection2Part3() {
@@ -330,6 +337,7 @@ public class Intro4Controller : MonoBehaviour
 
         s2p3pkcTitle.SetActive(true);
         s2p3pkcText.SetActive(true);
+        s2p3pkcText.GetComponent<TextAnimatorPlayer>().ShowText(s2p3pkcText.GetComponent<TextMeshProUGUI>().text);
     }
 
     public void ShowSection3Part1() {

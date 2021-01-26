@@ -10,12 +10,12 @@ public class PKCAnotControl : MonoBehaviour
 
     public void ShowAnot1() {
         anot1.SetActive(true);
-        anot1.GetComponent<DOTweenAnimation>().DOPlay();
+        anot1.GetComponent<DOTweenAnimation>().DORestart();
     }
 
     public void ShowAnot2() {
         anot2.SetActive(true);
-        anot2.GetComponent<DOTweenAnimation>().DOPlay();
+        anot2.GetComponent<DOTweenAnimation>().DORestart();
     }
 
 }

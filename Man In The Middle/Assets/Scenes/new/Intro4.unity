@@ -4788,15 +4788,15 @@ MonoBehaviour:
 
 
     So instead of
-    just using public key crypto, systems:
+    just using public key crypto systems:
 
-    - make a new symmetric key
+    1. Make a new symmetric key
 
-    -
-    encrypt that with the public key
+    2.
+    Encrypt that with the public key to share it
 
-    - then encrypt the message with the symmetric
-    key
+    3. Encrypt all following messages
+    with the symmetric key
 
 
     <align="center">E<sub>KP</sub>(KS), {M}<sub>KS</sub>'

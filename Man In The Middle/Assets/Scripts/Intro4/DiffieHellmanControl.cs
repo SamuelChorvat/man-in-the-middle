@@ -53,13 +53,13 @@ public class DiffieHellmanControl : MonoBehaviour
         InitializeDemo();
         aliceName.SetActive(true);
         bobName.SetActive(true);
-        aliceName.GetComponent<DOTweenAnimation>().DOPlay();
-        bobName.GetComponent<DOTweenAnimation>().DOPlay();
+        aliceName.GetComponent<DOTweenAnimation>().DORestart();
+        bobName.GetComponent<DOTweenAnimation>().DORestart();
     }
 
     public void RevealStepButton(string n) {
         stepButtons[Int32.Parse(n)].SetActive(true);
-        stepButtons[Int32.Parse(n)].GetComponent<DOTweenAnimation>().DOPlay();
+        stepButtons[Int32.Parse(n)].GetComponent<DOTweenAnimation>().DORestart();
     }
 
     public void HideStepButton(string n) {
@@ -76,9 +76,9 @@ public class DiffieHellmanControl : MonoBehaviour
             StartCoroutine(AliceArrowShow());
             StartCoroutine(BobArrowShow());
         } else {
-            stepAlice[Int32.Parse(n)].GetComponent<DOTweenAnimation>().DOPlay();
-            stepText[Int32.Parse(n)].GetComponent<DOTweenAnimation>().DOPlay();
-            stepBob[Int32.Parse(n)].GetComponent<DOTweenAnimation>().DOPlay();
+            stepAlice[Int32.Parse(n)].GetComponent<DOTweenAnimation>().DORestart();
+            stepText[Int32.Parse(n)].GetComponent<DOTweenAnimation>().DORestart();
+            stepBob[Int32.Parse(n)].GetComponent<DOTweenAnimation>().DORestart();
         }
     }
 
@@ -88,7 +88,7 @@ public class DiffieHellmanControl : MonoBehaviour
             yield return new WaitForSeconds(0.025f);
         }
         aliceArrowHead.SetActive(true);
-        stepBob[3].GetComponent<DOTweenAnimation>().DOPlay();
+        stepBob[3].GetComponent<DOTweenAnimation>().DORestart();
     }
 
     private IEnumerator BobArrowShow() {
@@ -97,6 +97,6 @@ public class DiffieHellmanControl : MonoBehaviour
             yield return new WaitForSeconds(0.025f);
         }
         bobArrowHead.SetActive(true);
-        stepAlice[3].GetComponent<DOTweenAnimation>().DOPlay();
+        stepAlice[3].GetComponent<DOTweenAnimation>().DORestart();
     }
 }
