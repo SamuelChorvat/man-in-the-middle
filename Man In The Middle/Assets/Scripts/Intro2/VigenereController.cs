@@ -16,6 +16,8 @@ public class VigenereController : MonoBehaviour
     public GameObject tableWindow;
     public DOTweenAnimation tableWindowAnim;
 
+    public VigenereLetter[] letters;
+
     private int correct = 0;
 
     
@@ -24,6 +26,17 @@ public class VigenereController : MonoBehaviour
         for (int i = 0; i < showPuzzleAnims.Length; i++) {
             showPuzzleAnims[i].DORestart();
         }
+    }
+
+    public void ResetPuzzle() {
+        StopAllCoroutines();
+        correct = 0;
+        CloseTableWindow();
+        for (int i = 0; i < letters.Length; i++) {
+            letters[i].ResetLetter();
+        }
+        puzzleObject.SetActive(false);
+        vigenereButton.SetActive(true);
     }
 
     public void OpenTableWindow() {

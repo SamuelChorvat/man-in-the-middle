@@ -12,6 +12,8 @@ public class XORController : MonoBehaviour
 
     public GameObject puzzleObject;
 
+    public XORNum[] xorNums;
+
     private int correct = 0;
 
     
@@ -20,6 +22,15 @@ public class XORController : MonoBehaviour
         for (int i = 0; i < showPuzzleAnims.Length; i++) {
             showPuzzleAnims[i].DORestart();
         }
+    }
+
+    public void ResetPuzzle() {
+        StopAllCoroutines();
+        correct = 0;
+        for (int i = 0; i < xorNums.Length; i++) {
+            xorNums[i].ResetNum();
+        }
+        puzzleObject.SetActive(false);
     }
 
     public void addCorrect() {

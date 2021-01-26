@@ -23,4 +23,12 @@ public class VigenereLetter : MonoBehaviour
             vig.addCorrect();
         }
     }
+
+    public void ResetLetter() {
+        this.gameObject.GetComponent<TMP_InputField>().text = "";
+        this.gameObject.GetComponent<TMP_InputField>().interactable = true;
+        this.gameObject.GetComponent<Image>().enabled = true;
+        this.gameObject.transform.Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.white;
+        solved = false;
+    }
 }

@@ -23,4 +23,13 @@ public class XORNum : MonoBehaviour
             xor.addCorrect();
         }
     }
+
+    public void ResetNum() {
+        StopAllCoroutines();
+        this.gameObject.GetComponent<TMP_InputField>().text = "";
+        solved = false;
+        this.gameObject.GetComponent<TMP_InputField>().interactable = true;
+        this.gameObject.GetComponent<Image>().enabled = true;
+        this.gameObject.transform.Find("Text Area").Find("Text").GetComponent<TextMeshProUGUI>().color = Color.white;
+    }
 }
