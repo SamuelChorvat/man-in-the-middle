@@ -19,8 +19,20 @@ public class BirthdayControl : MonoBehaviour
     private int currentNo = 1;
 
     public void ShowDemo() {
+        ResetDemo();
         birthdayDemo.SetActive(true);
-        birthdayDemo.GetComponent<DOTweenAnimation>().DOPlay();
+        birthdayDemo.GetComponent<DOTweenAnimation>().DORestart();
+    }
+
+    public void ResetDemo() {
+        currentNo = 1;
+        askButton.SetActive(true);
+        probability.text = "0%";
+        noOfPeople.text = "0";
+        for (int i = 0; i < peopleIcon.Length; i++) {
+            peopleIcon[i].SetActive(false);
+        }
+        explanation.SetActive(false);
     }
 
     public void Ask() {
@@ -38,7 +50,7 @@ public class BirthdayControl : MonoBehaviour
 
             if (currentNo == 23) {
                 explanation.SetActive(true);
-                explanation.GetComponent<DOTweenAnimation>().DOPlay();
+                explanation.GetComponent<DOTweenAnimation>().DORestart();
                 but.StartReveal();
             }
 

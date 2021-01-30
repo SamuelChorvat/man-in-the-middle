@@ -977,7 +977,7 @@ MonoBehaviour:
   isRelative: 0
   isFrom: 0
   isIndependentUpdate: 0
-  autoKill: 1
+  autoKill: 0
   isActive: 1
   isValid: 1
   target: {fileID: 72894958}
@@ -2635,7 +2635,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -296.269}
+  m_AnchoredPosition: {x: 0, y: -287}
   m_SizeDelta: {x: 1863.4832, y: 111.25038}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &206508813
@@ -2686,7 +2686,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43.7
+  m_fontSize: 42.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3753,7 +3753,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -35.75, y: 41.5}
+  m_AnchoredPosition: {x: -36, y: 41.5}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &268092919
@@ -12098,7 +12098,7 @@ MonoBehaviour:
   isRelative: 1
   isFrom: 0
   isIndependentUpdate: 0
-  autoKill: 1
+  autoKill: 0
   isActive: 1
   isValid: 1
   target: {fileID: 805316171}
@@ -13151,7 +13151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &918737179
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13945,7 +13945,7 @@ MonoBehaviour:
   isRelative: 1
   isFrom: 0
   isIndependentUpdate: 0
-  autoKill: 1
+  autoKill: 0
   isActive: 1
   isValid: 1
   target: {fileID: 947760941}
@@ -15882,7 +15882,7 @@ MonoBehaviour:
   isRelative: 1
   isFrom: 0
   isIndependentUpdate: 0
-  autoKill: 1
+  autoKill: 0
   isActive: 1
   isValid: 1
   target: {fileID: 1069088105}
@@ -16120,7 +16120,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 805316172}
         m_TargetAssemblyTypeName: DG.Tweening.DOTweenAnimation, Assembly-CSharp-firstpass
-        m_MethodName: DOPlay
+        m_MethodName: DORestart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21761,7 +21761,7 @@ MonoBehaviour:
   isRelative: 0
   isFrom: 0
   isIndependentUpdate: 0
-  autoKill: 1
+  autoKill: 0
   isActive: 1
   isValid: 1
   target: {fileID: 1421545264}
@@ -23728,13 +23728,14 @@ MonoBehaviour:
     to a 128-bit block. Decrypt can be run on any block (not just encryptions).
 
 
-    CBC
-    mode: any change affects all of the rest of the message
+    <color=red>CBC</color>
+    mode: any change affects <color=red>all of the rest of the message</color>
 
-    ECB mode: any change
-    affects only the block
+    <color=red>ECB</color>
+    mode: any change affects <color=red>only the block</color>
 
-    CTR mode: any change affects only the bits altered
+    <color=red>CTR</color>
+    mode: any change affects <color=red>only the bits altered</color>
 
 '
   m_isRightToLeft: 0
@@ -24333,6 +24334,13 @@ MonoBehaviour:
   attackerArrow: {fileID: 1420481750}
   attackerText1: {fileID: 1421545267}
   attackerText2: {fileID: 1895432423}
+  knownDemo: {fileID: 805316170}
+  attackerRes: {fileID: 1069088104}
+  blockImageRes: {fileID: 72894957}
+  blockTextRes: {fileID: 947760940}
+  aliceTextRes: {fileID: 1807961877}
+  attackerText1Res: {fileID: 1421545263}
+  attackerText2Res: {fileID: 1895432419}
 --- !u!114 &1603327067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24433,6 +24441,7 @@ MonoBehaviour:
   s3p1signaturesText: {fileID: 2100655403}
   s3p2signaturesTrickText: {fileID: 1821438910}
   s3p2signaturesTrickDemo: {fileID: 423547026}
+  s3p2signaturesTrickDemoScript: {fileID: 1603327063}
   s3p3certificatesTitle: {fileID: 2024418941}
   s3p3certificatesText: {fileID: 804677706}
   s4p1hashesTitle: {fileID: 2137925074}
@@ -24454,6 +24463,7 @@ MonoBehaviour:
   s5p3knownText: {fileID: 517065712}
   s5p4knownAttackDemoText: {fileID: 1127920811}
   s5p4knownAttackDemo: {fileID: 805316170}
+  s5p4knownAttackDemoScript: {fileID: 1603327066}
   s5p5authenticatedTitle: {fileID: 634213506}
   s5p5authenticatedText: {fileID: 170520595}
 --- !u!1 &1625553867
@@ -27224,7 +27234,7 @@ MonoBehaviour:
   isRelative: 1
   isFrom: 0
   isIndependentUpdate: 0
-  autoKill: 1
+  autoKill: 0
   isActive: 1
   isValid: 1
   target: {fileID: 1807961878}
@@ -27738,7 +27748,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1871925015
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28115,7 +28125,7 @@ MonoBehaviour:
   isRelative: 0
   isFrom: 0
   isIndependentUpdate: 0
-  autoKill: 1
+  autoKill: 0
   isActive: 1
   isValid: 1
   target: {fileID: 1895432420}
@@ -29253,7 +29263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 188.00006, y: 76.09999}
+  m_AnchoredPosition: {x: 188, y: 76}
   m_SizeDelta: {x: 322.31616, y: 110.01041}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2024418941

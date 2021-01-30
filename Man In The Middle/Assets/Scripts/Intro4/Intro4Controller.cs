@@ -74,6 +74,7 @@ public class Intro4Controller : MonoBehaviour
     [Header("Section 3 Part 2")]
     public GameObject s3p2signaturesTrickText;
     public GameObject s3p2signaturesTrickDemo;
+    public SignatureTrickControl s3p2signaturesTrickDemoScript;
 
     [Header("Section 3 Part 3")]
     public GameObject s3p3certificatesTitle;
@@ -117,6 +118,7 @@ public class Intro4Controller : MonoBehaviour
     [Header("Section 5 Part 4")]
     public GameObject s5p4knownAttackDemoText;
     public GameObject s5p4knownAttackDemo;
+    public KnownDemoControl s5p4knownAttackDemoScript;
 
     [Header("Section 5 Part 5")]
     public GameObject s5p5authenticatedTitle;
@@ -346,6 +348,7 @@ public class Intro4Controller : MonoBehaviour
 
         s3p1signaturesTitle.SetActive(true);
         s3p1signaturesText.SetActive(true);
+        s3p1signaturesText.GetComponent<TextAnimatorPlayer>().ShowText(s3p1signaturesText.GetComponent<TextMeshProUGUI>().text);
     }
 
     public void ShowSection3Part2() {
@@ -354,7 +357,9 @@ public class Intro4Controller : MonoBehaviour
 
         s3p1signaturesTitle.SetActive(true);
         s3p2signaturesTrickText.SetActive(true);
+        s3p2signaturesTrickText.GetComponent<TextAnimatorPlayer>().ShowText(s3p2signaturesTrickText.GetComponent<TextMeshProUGUI>().text);
         s3p2signaturesTrickDemo.SetActive(true);
+        s3p2signaturesTrickDemoScript.InitializeSign();
     }
 
     public void ShowSection3Part3() {
@@ -363,6 +368,7 @@ public class Intro4Controller : MonoBehaviour
 
         s3p3certificatesTitle.SetActive(true);
         s3p3certificatesText.SetActive(true);
+        s3p3certificatesText.GetComponent<TextAnimatorPlayer>().ShowText(s3p3certificatesText.GetComponent<TextMeshProUGUI>().text);
     }
 
     public void ShowSection4Part1() {
@@ -371,6 +377,7 @@ public class Intro4Controller : MonoBehaviour
 
         s4p1hashesTitle.SetActive(true);
         s4p1hashesText.SetActive(true);
+        s4p1hashesText.GetComponent<TextAnimatorPlayer>().ShowText(s4p1hashesText.GetComponent<TextMeshProUGUI>().text);
     }
 
     public void ShowSection4Part2() {
@@ -379,6 +386,7 @@ public class Intro4Controller : MonoBehaviour
 
         s4p1hashesTitle.SetActive(true);
         s4p2hashesDemoText.SetActive(true);
+        s4p2hashesDemoText.GetComponent<TextAnimatorPlayer>().ShowText(s4p2hashesDemoText.GetComponent<TextMeshProUGUI>().text);
     }
 
     public void ShowSection4Part3() {
@@ -387,6 +395,7 @@ public class Intro4Controller : MonoBehaviour
 
         s4p3usesHashesTitle.SetActive(true);
         s4p3usesHashesText.SetActive(true);
+        s4p3usesHashesText.GetComponent<TextAnimatorPlayer>().ShowText(s4p3usesHashesText.GetComponent<TextMeshProUGUI>().text);
     }
 
     public void ShowSection4Part4() {
@@ -395,6 +404,7 @@ public class Intro4Controller : MonoBehaviour
 
         s4p4hashesAttacksTitle.SetActive(true);
         s4p4hashesAttacksText.SetActive(true);
+        s4p4hashesAttacksText.GetComponent<TextAnimatorPlayer>().ShowText(s4p4hashesAttacksText.GetComponent<TextMeshProUGUI>().text);
     }
 
     public void ShowSection4Part5() {
@@ -403,6 +413,7 @@ public class Intro4Controller : MonoBehaviour
 
         s4p5birthdayTitle.SetActive(true);
         s4p5birthdayText.SetActive(true);
+        s4p5birthdayText.GetComponent<TextAnimatorPlayer>().ShowText(s4p5birthdayText.GetComponent<TextMeshProUGUI>().text);
     }
 
     public void ShowSection4Part6() {
@@ -411,6 +422,7 @@ public class Intro4Controller : MonoBehaviour
 
         s4p6hashesTypesTitle.SetActive(true);
         s4p6hashesTypesText.SetActive(true);
+        s4p6hashesTypesText.GetComponent<TextAnimatorPlayer>().ShowText(s4p6hashesTypesText.GetComponent<TextMeshProUGUI>().text);
     }
 
     public void ShowSection5Part1() {
@@ -419,6 +431,7 @@ public class Intro4Controller : MonoBehaviour
 
         s5p1macTitle.SetActive(true);
         s5p1macText.SetActive(true);
+        s5p1macText.GetComponent<TextAnimatorPlayer>().ShowText(s5p1macText.GetComponent<TextMeshProUGUI>().text);
     }
 
     public void ShowSection5Part2() {
@@ -427,6 +440,7 @@ public class Intro4Controller : MonoBehaviour
 
         s5p2alteringTitle.SetActive(true);
         s5p2alteringText.SetActive(true);
+        s5p2alteringText.GetComponent<TextAnimatorPlayer>().ShowText(s5p2alteringText.GetComponent<TextMeshProUGUI>().text);
     }
 
     public void ShowSection5Part3() {
@@ -435,6 +449,7 @@ public class Intro4Controller : MonoBehaviour
 
         s5p3knownTitle.SetActive(true);
         s5p3knownText.SetActive(true);
+        s5p3knownText.GetComponent<TextAnimatorPlayer>().ShowText(s5p3knownText.GetComponent<TextMeshProUGUI>().text);
     }
 
     public void ShowSection5Part4() {
@@ -443,7 +458,9 @@ public class Intro4Controller : MonoBehaviour
 
         s5p3knownTitle.SetActive(true);
         s5p4knownAttackDemoText.SetActive(true);
+        s5p4knownAttackDemoText.GetComponent<TextAnimatorPlayer>().ShowText(s5p4knownAttackDemoText.GetComponent<TextMeshProUGUI>().text);
         s5p4knownAttackDemo.SetActive(true);
+        s5p4knownAttackDemoScript.ResetDemo();
     }
 
     public void ShowSection5Part5() {
@@ -452,6 +469,7 @@ public class Intro4Controller : MonoBehaviour
 
         s5p5authenticatedTitle.SetActive(true);
         s5p5authenticatedText.SetActive(true);
+        s5p5authenticatedText.GetComponent<TextAnimatorPlayer>().ShowText(s5p5authenticatedText.GetComponent<TextMeshProUGUI>().text);
     }
 
     private void SetCurrentSection(int n) {

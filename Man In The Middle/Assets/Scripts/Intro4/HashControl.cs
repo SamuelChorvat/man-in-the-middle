@@ -16,8 +16,15 @@ public class HashControl : MonoBehaviour
     private bool butRevealed = false;
 
     public void ShowDemo() {
+        ResetDemo();
         hashDemo.SetActive(true);
-        hashDemo.GetComponent<DOTweenAnimation>().DOPlay();
+        hashDemo.GetComponent<DOTweenAnimation>().DORestart();
+    }
+
+    public void ResetDemo() {
+        messageHash.text = "";
+        messageInput.text = "";
+        butRevealed = false;
     }
 
     public void GetHash() {

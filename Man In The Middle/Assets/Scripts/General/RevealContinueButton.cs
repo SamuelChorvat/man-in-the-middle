@@ -9,17 +9,21 @@ public class RevealContinueButton : MonoBehaviour
     public float delay = 0.001f;
     public GameObject textrev;
 
-    public void Start() {
-        //StartReveal();
-    }
+    private bool revealing = false;
+    private bool disapearing = false;
 
     public void StartReveal() {
-        this.GetComponent<Image>().fillAmount = 0f;
-        this.gameObject.SetActive(true);
-        StartCoroutine(Reveal());
+        if (!revealing && !disapearing) {
+            revealing = true;
+            this.GetComponent<Image>().fillAmount = 0f;
+            this.gameObject.SetActive(true);
+            StartCoroutine(Reveal());
+        }
     }
 
     public void ResetButton() {
+        revealing = false;
+        disapearing = false;
         textrev.SetActive(false);
         this.GetComponent<Image>().fillAmount = 0f;
         this.gameObject.SetActive(false);
@@ -32,10 +36,14 @@ public class RevealContinueButton : MonoBehaviour
             yield return new WaitForSeconds(delay);
         }
         textrev.SetActive(true);
+        revealing = false;
     }
 
     public void StartDissapear() {
-        StartCoroutine(Disapear());
+        if (!disapearing && !revealing) {
+            disapearing = true;
+            StartCoroutine(Disapear());
+        }
     }
 
     private IEnumerator Disapear() {
@@ -44,7 +52,9 @@ public class RevealContinueButton : MonoBehaviour
             this.GetComponent<Image>().fillAmount -= 0.01f;
             yield return new WaitForSeconds(delay);
         }
+        this.GetComponent<Image>().fillAmount = 0f;
         textrev.SetActive(false);
         this.gameObject.SetActive(false);
+        disapearing = false;
     }
 }

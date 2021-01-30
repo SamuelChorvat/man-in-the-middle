@@ -12,7 +12,7 @@ public class SignatureTrickControl : MonoBehaviour
 
     public RevealContinueButton but;
 
-    private void InitializeSign() {
+    public void InitializeSign() {
         signButton.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
         messageRSA.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
         signButton.SetActive(false);
@@ -23,12 +23,12 @@ public class SignatureTrickControl : MonoBehaviour
     public void ShowMessage() {
         InitializeSign();
         messageRSA.SetActive(true);
-        messageRSA.GetComponent<DOTweenAnimation>().DOPlay();
+        messageRSA.GetComponent<DOTweenAnimation>().DORestart();
     }
 
     public void ShowSignButton() {
         signButton.SetActive(true);
-        signButton.GetComponent<DOTweenAnimation>().DOPlay();
+        signButton.GetComponent<DOTweenAnimation>().DORestart();
     }
 
     public void OnSignClick() {
