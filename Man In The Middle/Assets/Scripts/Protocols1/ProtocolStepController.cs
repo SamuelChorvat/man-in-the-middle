@@ -1,13 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ProtocolStepController : MonoBehaviour
 {
+    [Header("Alice")]
     public GameObject alice;
+    
+    [Header("Bob")]
     public GameObject bob;
+
+    [Header("Carol")]
     public GameObject carol;
 
+    [Header("Messages")]
     public GameObject aliceBobMessage;
     public GameObject bobAliceMessage;
     public GameObject aliceCarolMessage;
@@ -15,6 +23,7 @@ public class ProtocolStepController : MonoBehaviour
     public GameObject carolBobMessage;
     public GameObject bobCarolMessage;
 
+    [Header("Arrows")]
     public GameObject aliceBobArrow;
     public GameObject bobAliceArrow;
     public GameObject aliceCarolArrow;
@@ -22,18 +31,117 @@ public class ProtocolStepController : MonoBehaviour
     public GameObject carolBobArrow;
     public GameObject bobCarolArrow;
 
-    public void ResetStep() {
+    //Carol strings
+    private string carolCarol = "Carol";
+    private string carolAlice = "Carol<size=50%>(Alice)</size>";
+    private string carolBob = "Carol<size=50%>(Bob)</size>";
 
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public void ResetProtocolStep() {
+        GameObject[] temp = new GameObject[] {alice, bob, carol};   
+        for (int i = 0; i < temp.Length; i++) {
+            temp[i].GetComponent<Image>().color = Color.white;
+            temp[i].transform.Find("Name").GetComponent<TextMeshProUGUI>().color = Color.white;
+            temp[i].SetActive(false);
+        }
+
+        temp = new GameObject[] { aliceBobMessage, bobAliceMessage, aliceCarolMessage, carolAliceMessage, carolBobMessage, bobCarolMessage };
+        for (int i = 0; i < temp.Length; i++) {
+            temp[i].GetComponent<TextMeshProUGUI>().color = Color.white;
+            temp[i].SetActive(false);
+        }
+
+        temp = new GameObject[] { aliceBobArrow, bobAliceArrow, aliceCarolArrow, carolAliceArrow, carolBobArrow, bobCarolArrow };
+        for (int i = 0; i < temp.Length; i++) {
+            temp[i].GetComponent<Image>().color = Color.white;
+            temp[i].transform.Find("ArrowHead").GetComponent<Image>().color = Color.white;
+            temp[i].SetActive(false);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void SetCarol(string name) {
+        if (name.Equals("Alice")) {
+            SetCarolAlice();
+        } else if (name.Equals("Bob")) {
+            SetCarolBob();
+        } else if (name.Equals("Carol")) {
+            SetCarolCarol();
+        }
+    }
+
+    private void SetCarolCarol() {
+        carol.SetActive(true);
+        carol.GetComponent<Image>().color = Color.white;
+        carol.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = carolCarol;
+        carol.transform.Find("Name").GetComponent<TextMeshProUGUI>().color = Color.white;
+    }
+
+    private void SetCarolAlice() {
+        carol.SetActive(true);
+        carol.GetComponent<Image>().color = Color.red;
+        carol.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = carolAlice;
+        carol.transform.Find("Name").GetComponent<TextMeshProUGUI>().color = Color.red;
+    }
+
+    private void SetCarolBob() {
+        carol.SetActive(true);
+        carol.GetComponent<Image>().color = Color.red;
+        carol.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = carolBob;
+        carol.transform.Find("Name").GetComponent<TextMeshProUGUI>().color = Color.red;
+    }
+
+    public void SetAliceBobMessageArrow(string msg) {
+        aliceBobArrow.SetActive(true);
+        aliceBobMessage.SetActive(true);
+        aliceBobMessage.GetComponent<TextMeshProUGUI>().text = msg;
+    }
+
+    public void SetBobAliceMessageArrow(string msg) {
+        bobAliceArrow.SetActive(true);
+        bobAliceMessage.SetActive(true);
+        bobAliceMessage.GetComponent<TextMeshProUGUI>().text = msg;
+    }
+
+    public void SetAliceCarolMessageArrow(string msg, bool red) {
+        aliceCarolArrow.SetActive(true);
+        aliceCarolMessage.SetActive(true);
+        aliceCarolMessage.GetComponent<TextMeshProUGUI>().text = msg;
+        if (red) {
+            aliceCarolMessage.GetComponent<TextMeshProUGUI>().color = Color.red;
+            aliceCarolArrow.GetComponent<Image>().color = Color.red;
+            aliceCarolArrow.transform.Find("ArrowHead").GetComponent<Image>().color = Color.red;
+        } 
+    }
+
+    public void SetCarolAliceMessageArrow(string msg, bool red) {
+        carolAliceArrow.SetActive(true);
+        carolAliceMessage.SetActive(true);
+        carolAliceMessage.GetComponent<TextMeshProUGUI>().text = msg;
+        if (red) {
+            carolAliceMessage.GetComponent<TextMeshProUGUI>().color = Color.red;
+            carolAliceArrow.GetComponent<Image>().color = Color.red;
+            carolAliceArrow.transform.Find("ArrowHead").GetComponent<Image>().color = Color.red;
+        }
+    }
+
+    public void SetBobCarolMessageArrow(string msg, bool red) {
+        bobCarolArrow.SetActive(true);
+        bobCarolMessage.SetActive(true);
+        bobCarolMessage.GetComponent<TextMeshProUGUI>().text = msg;
+        if (red) {
+            bobCarolMessage.GetComponent<TextMeshProUGUI>().color = Color.red;
+            bobCarolArrow.GetComponent<Image>().color = Color.red;
+            bobCarolArrow.transform.Find("ArrowHead").GetComponent<Image>().color = Color.red;
+        }
+    }
+
+    public void SetCarolBobMessageArrow(string msg, bool red) {
+        carolBobArrow.SetActive(true);
+        carolBobMessage.SetActive(true);
+        carolBobMessage.GetComponent<TextMeshProUGUI>().text = msg;
+        if (red) {
+            carolBobMessage.GetComponent<TextMeshProUGUI>().color = Color.red;
+            carolBobArrow.GetComponent<Image>().color = Color.red;
+            carolBobArrow.transform.Find("ArrowHead").GetComponent<Image>().color = Color.red;
+        }
     }
 }
