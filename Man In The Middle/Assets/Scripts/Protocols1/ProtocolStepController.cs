@@ -144,4 +144,25 @@ public class ProtocolStepController : MonoBehaviour
             carolBobArrow.transform.Find("ArrowHead").GetComponent<Image>().color = Color.red;
         }
     }
+
+    public void Intercept() {
+        if(carol.activeSelf) {
+            return;
+        }
+
+        if (aliceBobArrow.activeSelf) {
+            SetCarolBob();
+            SetAliceCarolMessageArrow(aliceBobMessage.GetComponent<TextMeshProUGUI>().text, false);
+            aliceBobArrow.SetActive(false);
+            aliceBobMessage.SetActive(false);
+            bob.SetActive(false);
+
+        } else if (bobAliceArrow.activeSelf) {
+            SetCarolAlice();
+            SetBobCarolMessageArrow(bobAliceMessage.GetComponent<TextMeshProUGUI>().text, false);
+            bobAliceArrow.SetActive(false);
+            bobAliceMessage.SetActive(false);
+            alice.SetActive(false);
+        }
+    }
 }

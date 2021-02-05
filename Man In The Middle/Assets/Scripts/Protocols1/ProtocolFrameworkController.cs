@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class ProtocolFrameworkController : MonoBehaviour
 {
@@ -17,37 +17,57 @@ public class ProtocolFrameworkController : MonoBehaviour
     [Header("Scroll View Content")]
     public GameObject scrollViewContentObject;
 
-    public GameObject InstantiateProtocolStep() {
+    //References
+    private GameObject lastStepRef = null;
+    private GameObject captureInterceptSendRef = null;
+    private GameObject continueRestartRef = null;
+    private GameObject restartOnlyRef = null;
+
+    public ProtocolStepController lastStepControl = null;
+
+    private GameObject InstantiateProtocolStep() {
         GameObject protocolStep = Instantiate(protocolStepPrefab);
         protocolStep.transform.SetParent(scrollViewContentObject.transform,false);
+        lastStepRef = protocolStep;
+        lastStepControl = protocolStep.GetComponent<ProtocolStepController>();
+        lastStepControl.ResetProtocolStep();
         return protocolStep;
     }
 
-    public GameObject InstantiateCaptureInterceptSend() {
+    private GameObject InstantiateCaptureInterceptSend() {
         GameObject captureInterceptSend = Instantiate(captureInterceptSendPrefab);
         captureInterceptSend.transform.SetParent(scrollViewContentObject.transform, false);
+        captureInterceptSendRef = captureInterceptSend;
+        captureInterceptSendRef.transform.Find("CaptureButton").GetComponent<Button>().onClick.AddListener(Capture);
+        captureInterceptSendRef.transform.Find("InterceptButton").GetComponent<Button>().onClick.AddListener(Intercept);
+        captureInterceptSendRef.transform.Find("SendButton").GetComponent<Button>().onClick.AddListener(Send);
         return captureInterceptSend;
     }
 
-    public GameObject InstantiateContinueRestart() {
+    private GameObject InstantiateContinueRestart() {
         GameObject continueRestart = Instantiate(continueRestartPrefab);
         continueRestart.transform.SetParent(scrollViewContentObject.transform, false);
+        continueRestartRef = continueRestart;
+        continueRestartRef.transform.Find("ContinueButton").GetComponent<Button>().onClick.AddListener(Continue);
+        continueRestartRef.transform.Find("RestartButton").GetComponent<Button>().onClick.AddListener(Restart);
         return continueRestart;
     }
 
-    public GameObject InstantiateRestartOnly() {
+    private GameObject InstantiateRestartOnly() {
         GameObject restartOnly = Instantiate(restartOnlyPrefab);
         restartOnly.transform.SetParent(scrollViewContentObject.transform, false);
+        restartOnlyRef = restartOnly;
+        restartOnlyRef.transform.Find("RestartButton").GetComponent<Button>().onClick.AddListener(Restart);
         return restartOnly;
     }
 
-    public GameObject InstantiateSuccess() {
+    private GameObject InstantiateSuccess() {
         GameObject success = Instantiate(successPrefab);
         success.transform.SetParent(scrollViewContentObject.transform, false);
         return success;
     }
 
-    public GameObject InstantiateFail() {
+    private GameObject InstantiateFail() {
         GameObject fail = Instantiate(failPrefab);
         fail.transform.SetParent(scrollViewContentObject.transform, false);
         return fail;
@@ -60,19 +80,72 @@ public class ProtocolFrameworkController : MonoBehaviour
     }
 
     public void RemoveAll() {
+        lastStepRef = null;
+        captureInterceptSendRef = null;
+        continueRestartRef = null;
+        restartOnlyRef = null;
+        
         foreach (Transform child in scrollViewContentObject.transform) {
             Destroy(child.gameObject);
         }
     }
 
-    public void Start() {
+    private void PrepareForNewStep() {
+        Destroy(captureInterceptSendRef);
+        Destroy(continueRestartRef);
+        Destroy(restartOnlyRef);
+        captureInterceptSendRef = null;
+        continueRestartRef = null;
+        restartOnlyRef = null;
+    }
+
+    public void NewStep() {
+        PrepareForNewStep();
         InstantiateProtocolStep();
         InstantiateCaptureInterceptSend();
         InstantiateContinueRestart();
-        InstantiateRestartOnly();
-        InstantiateSuccess();
+    }
+
+    public void Fail() {
         InstantiateFail();
         InstantiateRestartOnly();
         InstantiateSpace();
+    }
+
+    public void Success() {
+        InstantiateSuccess();
+    }
+
+    private void SetInteractableInterceptButton(bool interactable) {
+        captureInterceptSendRef.transform.Find("InterceptButton").GetComponent<Button>().interactable = interactable;
+    }
+
+    private void SetInteractableCaptureButton(bool interactable) {
+        captureInterceptSendRef.transform.Find("CaptureButton").GetComponent<Button>().interactable = interactable;
+    }
+
+    public void Intercept() {
+        lastStepControl.Intercept();
+        SetInteractableInterceptButton(false);
+    }
+
+    public void Send() {
+
+    }
+
+    public void Capture() {
+        SetInteractableCaptureButton(false);
+    }
+
+    public void Restart() {
+
+    }
+
+    public void Continue() {
+
+    }
+
+    public void Start() {
+        NewStep();
     }
 }

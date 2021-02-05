@@ -10320,6 +10320,7 @@ MonoBehaviour:
   failPrefab: {fileID: 8515122516085629378, guid: 96d4342d40c4d43458504d1c0143aa12, type: 3}
   spacePrefab: {fileID: 6779343662250921060, guid: ca4db58dd6f998447861ebb0608139ff, type: 3}
   scrollViewContentObject: {fileID: 379534159}
+  lastStepControl: {fileID: 0}
 --- !u!1 &1102564174
 GameObject:
   m_ObjectHideFlags: 0
