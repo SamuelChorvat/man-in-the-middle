@@ -90,18 +90,23 @@ public class ProtocolStepController : MonoBehaviour
     }
 
     public void SetAliceBobMessageArrow(string msg) {
+        alice.SetActive(true);
+        bob.SetActive(true);
         aliceBobArrow.SetActive(true);
         aliceBobMessage.SetActive(true);
         aliceBobMessage.GetComponent<TextMeshProUGUI>().text = msg;
     }
 
     public void SetBobAliceMessageArrow(string msg) {
+        alice.SetActive(true);
+        bob.SetActive(true);
         bobAliceArrow.SetActive(true);
         bobAliceMessage.SetActive(true);
         bobAliceMessage.GetComponent<TextMeshProUGUI>().text = msg;
     }
 
     public void SetAliceCarolMessageArrow(string msg, bool red) {
+        alice.SetActive(true);
         aliceCarolArrow.SetActive(true);
         aliceCarolMessage.SetActive(true);
         aliceCarolMessage.GetComponent<TextMeshProUGUI>().text = msg;
@@ -113,6 +118,7 @@ public class ProtocolStepController : MonoBehaviour
     }
 
     public void SetCarolAliceMessageArrow(string msg, bool red) {
+        alice.SetActive(true);
         carolAliceArrow.SetActive(true);
         carolAliceMessage.SetActive(true);
         carolAliceMessage.GetComponent<TextMeshProUGUI>().text = msg;
@@ -124,6 +130,7 @@ public class ProtocolStepController : MonoBehaviour
     }
 
     public void SetBobCarolMessageArrow(string msg, bool red) {
+        bob.SetActive(true);
         bobCarolArrow.SetActive(true);
         bobCarolMessage.SetActive(true);
         bobCarolMessage.GetComponent<TextMeshProUGUI>().text = msg;
@@ -135,6 +142,7 @@ public class ProtocolStepController : MonoBehaviour
     }
 
     public void SetCarolBobMessageArrow(string msg, bool red) {
+        bob.SetActive(true);
         carolBobArrow.SetActive(true);
         carolBobMessage.SetActive(true);
         carolBobMessage.GetComponent<TextMeshProUGUI>().text = msg;

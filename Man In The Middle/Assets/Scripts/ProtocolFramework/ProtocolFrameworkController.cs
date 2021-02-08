@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class ProtocolFrameworkController : MonoBehaviour
 {
+    [Header("Protocol Attack")]
+    public GameObject attackRef;
+    public int attackNo;
+
     [Header("Prefab Refs")]
     public GameObject protocolStepPrefab;
     public GameObject captureInterceptSendPrefab;
@@ -17,13 +21,18 @@ public class ProtocolFrameworkController : MonoBehaviour
     [Header("Scroll View Content")]
     public GameObject scrollViewContentObject;
 
+    [Header("Send Window")]
+    public GameObject sendWindow;
+    public SendWindowController sendWindowController;
+
+    [HideInInspector]
+    public ProtocolStepController lastStepControl = null;
+
     //References
     private GameObject lastStepRef = null;
     private GameObject captureInterceptSendRef = null;
     private GameObject continueRestartRef = null;
     private GameObject restartOnlyRef = null;
-
-    public ProtocolStepController lastStepControl = null;
 
     private GameObject InstantiateProtocolStep() {
         GameObject protocolStep = Instantiate(protocolStepPrefab);
@@ -116,36 +125,49 @@ public class ProtocolFrameworkController : MonoBehaviour
         InstantiateSuccess();
     }
 
-    private void SetInteractableInterceptButton(bool interactable) {
+    public void SetInteractableInterceptButton(bool interactable) {
         captureInterceptSendRef.transform.Find("InterceptButton").GetComponent<Button>().interactable = interactable;
     }
 
-    private void SetInteractableCaptureButton(bool interactable) {
+    public void SetInteractableCaptureButton(bool interactable) {
         captureInterceptSendRef.transform.Find("CaptureButton").GetComponent<Button>().interactable = interactable;
     }
 
     public void Intercept() {
-        lastStepControl.Intercept();
-        SetInteractableInterceptButton(false);
+        if (attackNo == 1) {
+            attackRef.GetComponent<ProtocolAttack1Controller>().Intercept();
+        }
     }
 
     public void Send() {
-
+        if (attackNo == 1) {
+            attackRef.GetComponent<ProtocolAttack1Controller>().Send();
+        }
     }
 
     public void Capture() {
-        SetInteractableCaptureButton(false);
+        if (attackNo == 1) {
+            attackRef.GetComponent<ProtocolAttack1Controller>().Capture();
+        }
     }
 
     public void Restart() {
-
+        if (attackNo == 1) {
+            attackRef.GetComponent<ProtocolAttack1Controller>().Restart();
+        }
     }
 
     public void Continue() {
-
+        if (attackNo == 1) {
+            attackRef.GetComponent<ProtocolAttack1Controller>().Continue();
+        }
     }
 
-    public void Start() {
-        NewStep();
+    public void StartProtocol() {
+        if (attackNo == 1) {
+            attackRef.GetComponent<ProtocolAttack1Controller>().StartProtocol();
+        }
     }
+
+
 }
