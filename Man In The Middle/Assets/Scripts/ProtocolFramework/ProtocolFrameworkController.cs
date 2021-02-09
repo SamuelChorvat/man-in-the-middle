@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +18,7 @@ public class ProtocolFrameworkController : MonoBehaviour
     public GameObject successPrefab;
     public GameObject failPrefab;
     public GameObject spacePrefab;
-    
+
     [Header("Scroll View Content")]
     public GameObject scrollViewContentObject;
 
@@ -33,6 +34,12 @@ public class ProtocolFrameworkController : MonoBehaviour
     private GameObject captureInterceptSendRef = null;
     private GameObject continueRestartRef = null;
     private GameObject restartOnlyRef = null;
+
+
+    public CapturedMessage latestMessage = null;
+    public int aliceBobStep = 0;
+    public int aliceCarolStep = 0;
+    public int bobCarolStep = 0;
 
     private GameObject InstantiateProtocolStep() {
         GameObject protocolStep = Instantiate(protocolStepPrefab);
@@ -58,7 +65,7 @@ public class ProtocolFrameworkController : MonoBehaviour
         continueRestart.transform.SetParent(scrollViewContentObject.transform, false);
         continueRestartRef = continueRestart;
         continueRestartRef.transform.Find("ContinueButton").GetComponent<Button>().onClick.AddListener(Continue);
-        continueRestartRef.transform.Find("RestartButton").GetComponent<Button>().onClick.AddListener(Restart);
+        continueRestartRef.transform.Find("RestartButton").GetComponent<Button>().onClick.AddListener(RestartProtocol);
         return continueRestart;
     }
 
@@ -66,7 +73,7 @@ public class ProtocolFrameworkController : MonoBehaviour
         GameObject restartOnly = Instantiate(restartOnlyPrefab);
         restartOnly.transform.SetParent(scrollViewContentObject.transform, false);
         restartOnlyRef = restartOnly;
-        restartOnlyRef.transform.Find("RestartButton").GetComponent<Button>().onClick.AddListener(Restart);
+        restartOnlyRef.transform.Find("RestartButton").GetComponent<Button>().onClick.AddListener(RestartProtocol);
         return restartOnly;
     }
 
@@ -93,6 +100,11 @@ public class ProtocolFrameworkController : MonoBehaviour
         captureInterceptSendRef = null;
         continueRestartRef = null;
         restartOnlyRef = null;
+
+        latestMessage = null;
+        aliceBobStep = 0;
+        aliceCarolStep = 0;
+        bobCarolStep = 0;
         
         foreach (Transform child in scrollViewContentObject.transform) {
             Destroy(child.gameObject);
@@ -134,26 +146,38 @@ public class ProtocolFrameworkController : MonoBehaviour
     }
 
     public void Intercept() {
+        lastStepControl.Intercept();
+        SetInteractableInterceptButton(false);
+
         if (attackNo == 1) {
             attackRef.GetComponent<ProtocolAttack1Controller>().Intercept();
         }
     }
 
     public void Send() {
+        sendWindowController.ShowWindow();
+        sendWindowController.ResetView();
+
+        if (sendWindowController.capturedMessages.Count == 0) {
+            sendWindowController.sendButton.GetComponent<Button>().interactable = false;
+            sendWindowController.noMessages.SetActive(true);
+            return;
+        }
+
+        sendWindowController.messageView.SetActive(true);
+
         if (attackNo == 1) {
             attackRef.GetComponent<ProtocolAttack1Controller>().Send();
         }
     }
 
     public void Capture() {
+        SetInteractableCaptureButton(false);
+        sendWindowController.capturedMessages.Add(latestMessage);
+        sendWindowController.AddMessage(latestMessage);
+
         if (attackNo == 1) {
             attackRef.GetComponent<ProtocolAttack1Controller>().Capture();
-        }
-    }
-
-    public void Restart() {
-        if (attackNo == 1) {
-            attackRef.GetComponent<ProtocolAttack1Controller>().Restart();
         }
     }
 
@@ -163,11 +187,13 @@ public class ProtocolFrameworkController : MonoBehaviour
         }
     }
 
-    public void StartProtocol() {
+    public void RestartProtocol() {
+        sendWindowController.ResetAll();
+        RemoveAll();
+        this.gameObject.GetComponent<DOTweenAnimation>().DORestart();
+
         if (attackNo == 1) {
-            attackRef.GetComponent<ProtocolAttack1Controller>().StartProtocol();
+            attackRef.GetComponent<ProtocolAttack1Controller>().RestartProtocol();
         }
     }
-
-
 }

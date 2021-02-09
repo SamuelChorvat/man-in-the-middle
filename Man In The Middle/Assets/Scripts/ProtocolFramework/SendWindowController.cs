@@ -27,6 +27,9 @@ public class SendWindowController : MonoBehaviour
     public GameObject selectedMessageEdits;
     public GameObject messageView;
 
+    [Header("Message Prefab")]
+    public GameObject messagePrefab;
+
     [Header("To Buttons")]
     public GameObject aliceSelectedRight;
     public GameObject aliceTextRight;
@@ -35,6 +38,8 @@ public class SendWindowController : MonoBehaviour
 
     [Header("Send Button")]
     public GameObject sendButton;
+
+    public ArrayList capturedMessages = new ArrayList();
 
     public void ResetFromButton() {
         aliceSelectedLeft.SetActive(false);
@@ -97,6 +102,7 @@ public class SendWindowController : MonoBehaviour
         foreach (Transform child in messageScrollViewContent.transform) {
             Destroy(child.gameObject);
         }
+        capturedMessages.Clear();
     }
 
     public void RemoveAllMessageEdits() {
@@ -105,10 +111,29 @@ public class SendWindowController : MonoBehaviour
         }
     }
 
+    public void AddMessage(CapturedMessage msg) {
+        GameObject message = Instantiate(messagePrefab);
+        message.GetComponent<MessageRef>().messageRef = msg;
+        message.GetComponent<MessageRef>().messageText.text = msg.GetMessage();
+        message.transform.SetParent(messageScrollViewContent.transform, false);
+    }
+
     public void ResetMessageView() {
         noMessages.SetActive(false);
         selectedMessage.SetActive(false);
         selectedMessageEdits.SetActive(false);
         messageView.SetActive(false);
+    }
+
+    public void ResetView() {
+        ResetFromButton();
+        ResetToButton();
+        ResetMessageView();
+    }
+
+    public void ResetAll() {
+        ResetView();
+        RemoveAllMessageEdits();
+        RemoveAllMessages();
     }
 }
