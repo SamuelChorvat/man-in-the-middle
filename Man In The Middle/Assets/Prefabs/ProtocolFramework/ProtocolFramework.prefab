@@ -299,6 +299,9 @@ MonoBehaviour:
   sendWindow: {fileID: 7285446190485139290}
   sendWindowController: {fileID: 7285446190485139292}
   lastStepControl: {fileID: 0}
+  aliceBobStep: 0
+  aliceCarolStep: 0
+  bobCarolStep: 0
 --- !u!114 &1927712672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,7 +684,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -71923.07, y: 42124.086}
+  m_AnchoredPosition: {x: -128900.88, y: 56470.3}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7285446190583400203
