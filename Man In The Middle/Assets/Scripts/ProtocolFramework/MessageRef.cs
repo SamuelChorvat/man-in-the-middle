@@ -8,5 +8,5 @@ public class MessageRef : MonoBehaviour
     [Header("Message Text")]
     public TextMeshProUGUI messageText;
 
-    public CapturedMessage messageRef;
+    public CapturedMessage capturedMessage;
 }

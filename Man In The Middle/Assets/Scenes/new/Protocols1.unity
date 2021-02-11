@@ -8986,6 +8986,14 @@ PrefabInstance:
       propertyPath: attackRef
       value: 
       objectReference: {fileID: 906239046}
+    - target: {fileID: 7285446189578910509, guid: 7d28d51a29568eb48a997b96a2a12ada, type: 3}
+      propertyPath: contBut
+      value: 
+      objectReference: {fileID: 2063386485}
+    - target: {fileID: 7285446189578910509, guid: 7d28d51a29568eb48a997b96a2a12ada, type: 3}
+      propertyPath: attack1AliceBobMessage1Amount
+      value: 
+      objectReference: {fileID: 6009555608051106521, guid: 26fd2027b5d87df45a42affba4499ad2, type: 3}
     - target: {fileID: 7285446190269308753, guid: 7d28d51a29568eb48a997b96a2a12ada, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -8996,11 +9004,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7285446190583400201, guid: 7d28d51a29568eb48a997b96a2a12ada, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -137307.45
+      value: -283021.22
       objectReference: {fileID: 0}
     - target: {fileID: 7285446190583400201, guid: 7d28d51a29568eb48a997b96a2a12ada, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 57707.75
+      value: 158626.14
       objectReference: {fileID: 0}
     - target: {fileID: 7285446190583400201, guid: 7d28d51a29568eb48a997b96a2a12ada, type: 3}
       propertyPath: m_SizeDelta.x

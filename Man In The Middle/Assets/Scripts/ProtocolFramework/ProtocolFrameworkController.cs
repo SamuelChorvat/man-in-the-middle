@@ -10,6 +10,9 @@ public class ProtocolFrameworkController : MonoBehaviour
     public GameObject attackRef;
     public int attackNo;
 
+    [Header("Continue Button")]
+    public RevealContinueButton contBut;
+
     [Header("Prefab Refs")]
     public GameObject protocolStepPrefab;
     public GameObject captureInterceptSendPrefab;
@@ -18,6 +21,9 @@ public class ProtocolFrameworkController : MonoBehaviour
     public GameObject successPrefab;
     public GameObject failPrefab;
     public GameObject spacePrefab;
+
+    [Header("Message Edit Prefabs Attack 1")]
+    public GameObject attack1AliceBobMessage1Amount;
 
     [Header("Scroll View Content")]
     public GameObject scrollViewContentObject;
@@ -34,7 +40,6 @@ public class ProtocolFrameworkController : MonoBehaviour
     private GameObject captureInterceptSendRef = null;
     private GameObject continueRestartRef = null;
     private GameObject restartOnlyRef = null;
-
 
     public CapturedMessage latestMessage = null;
     public int aliceBobStep = 0;
@@ -56,7 +61,7 @@ public class ProtocolFrameworkController : MonoBehaviour
         captureInterceptSendRef = captureInterceptSend;
         captureInterceptSendRef.transform.Find("CaptureButton").GetComponent<Button>().onClick.AddListener(Capture);
         captureInterceptSendRef.transform.Find("InterceptButton").GetComponent<Button>().onClick.AddListener(Intercept);
-        captureInterceptSendRef.transform.Find("SendButton").GetComponent<Button>().onClick.AddListener(Send);
+        captureInterceptSendRef.transform.Find("SendButton").GetComponent<Button>().onClick.AddListener(SendWindow);
         return captureInterceptSend;
     }
 
@@ -128,6 +133,7 @@ public class ProtocolFrameworkController : MonoBehaviour
     }
 
     public void Fail() {
+        PrepareForNewStep();
         InstantiateFail();
         InstantiateRestartOnly();
         InstantiateSpace();
@@ -154,17 +160,16 @@ public class ProtocolFrameworkController : MonoBehaviour
         }
     }
 
-    public void Send() {
+    public void SendWindow() {
         sendWindowController.ShowWindow();
         sendWindowController.ResetView();
+        sendWindowController.sendButton.GetComponent<Button>().interactable = false;
 
         if (sendWindowController.capturedMessages.Count == 0) {
-            sendWindowController.sendButton.GetComponent<Button>().interactable = false;
             sendWindowController.noMessages.SetActive(true);
-            return;
+        } else {
+            sendWindowController.messageView.SetActive(true);
         }
-
-        sendWindowController.messageView.SetActive(true);
 
         if (attackNo == 1) {
             attackRef.GetComponent<ProtocolAttack1Controller>().Send();
@@ -174,7 +179,7 @@ public class ProtocolFrameworkController : MonoBehaviour
     public void Capture() {
         SetInteractableCaptureButton(false);
         sendWindowController.capturedMessages.Add(latestMessage);
-        sendWindowController.AddMessage(latestMessage);
+        sendWindowController.AddMessage(latestMessage).transform.Find("SelectButton").GetComponent<Button>().onClick.AddListener(delegate { SelectMessage(sendWindowController.capturedMessages.Count - 1);});
 
         if (attackNo == 1) {
             attackRef.GetComponent<ProtocolAttack1Controller>().Capture();
@@ -187,7 +192,17 @@ public class ProtocolFrameworkController : MonoBehaviour
         }
     }
 
+    public void SelectMessage(int n) {
+        CapturedMessage selectedMessage = (CapturedMessage) sendWindowController.capturedMessages[n];
+        sendWindowController.ShowSelectedMessage(selectedMessage);
+
+        if (attackNo == 1) {
+            attackRef.GetComponent<ProtocolAttack1Controller>().SelectMessage(selectedMessage);
+        }
+    }
+
     public void RestartProtocol() {
+        contBut.ResetButton();
         sendWindowController.ResetAll();
         RemoveAll();
         this.gameObject.GetComponent<DOTweenAnimation>().DORestart();

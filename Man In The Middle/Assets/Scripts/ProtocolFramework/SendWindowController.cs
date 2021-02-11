@@ -111,11 +111,24 @@ public class SendWindowController : MonoBehaviour
         }
     }
 
-    public void AddMessage(CapturedMessage msg) {
+    public GameObject AddMessage(CapturedMessage msg) {
         GameObject message = Instantiate(messagePrefab);
-        message.GetComponent<MessageRef>().messageRef = msg;
+        message.GetComponent<MessageRef>().capturedMessage = msg;
         message.GetComponent<MessageRef>().messageText.text = msg.GetMessage();
         message.transform.SetParent(messageScrollViewContent.transform, false);
+        return message;
+    }
+
+    public void ShowSelectedMessage(CapturedMessage msg) {
+        ResetMessageView();
+        RemoveAllMessageEdits();
+        selectedMessage.SetActive(true);
+        selectedMessageEdits.SetActive(true);
+        selectedMessage.transform.Find("SelectedMessageText").GetComponent<TextMeshProUGUI>().text = msg.GetMessage();
+    }
+
+    public void SetSelectedMessage(string msg) {
+        selectedMessage.transform.Find("SelectedMessageText").GetComponent<TextMeshProUGUI>().text = msg;
     }
 
     public void ResetMessageView() {
@@ -135,5 +148,10 @@ public class SendWindowController : MonoBehaviour
         ResetView();
         RemoveAllMessageEdits();
         RemoveAllMessages();
+    }
+
+    public void CloseSelectedMessage() {
+        ResetMessageView();
+        messageView.SetActive(true);
     }
 }
