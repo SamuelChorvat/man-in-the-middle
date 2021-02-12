@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using System.Text.RegularExpressions;
 
 public class ProtocolFrameworkController : MonoBehaviour
 {
@@ -45,6 +47,11 @@ public class ProtocolFrameworkController : MonoBehaviour
     public int aliceBobStep = 0;
     public int aliceCarolStep = 0;
     public int bobCarolStep = 0;
+
+    public string toSend = "";
+    public string fromSend = "";
+    public string carolAlias = "";
+    public string toSendMessage = "";
 
     private GameObject InstantiateProtocolStep() {
         GameObject protocolStep = Instantiate(protocolStepPrefab);
@@ -140,7 +147,9 @@ public class ProtocolFrameworkController : MonoBehaviour
     }
 
     public void Success() {
+        PrepareForNewStep();
         InstantiateSuccess();
+        contBut.StartReveal();
     }
 
     public void SetInteractableInterceptButton(bool interactable) {
@@ -165,14 +174,15 @@ public class ProtocolFrameworkController : MonoBehaviour
         sendWindowController.ResetView();
         sendWindowController.sendButton.GetComponent<Button>().interactable = false;
 
+        toSend = "";
+        fromSend = "";
+        carolAlias = "";
+        toSendMessage = "";
+
         if (sendWindowController.capturedMessages.Count == 0) {
             sendWindowController.noMessages.SetActive(true);
         } else {
             sendWindowController.messageView.SetActive(true);
-        }
-
-        if (attackNo == 1) {
-            attackRef.GetComponent<ProtocolAttack1Controller>().Send();
         }
     }
 
@@ -194,11 +204,27 @@ public class ProtocolFrameworkController : MonoBehaviour
 
     public void SelectMessage(int n) {
         CapturedMessage selectedMessage = (CapturedMessage) sendWindowController.capturedMessages[n];
-        sendWindowController.ShowSelectedMessage(selectedMessage);
+        sendWindowController.currentlySelectedMessage = selectedMessage;
+        sendWindowController.ShowSelectedMessage();
 
         if (attackNo == 1) {
-            attackRef.GetComponent<ProtocolAttack1Controller>().SelectMessage(selectedMessage);
+            attackRef.GetComponent<ProtocolAttack1Controller>().SelectMessage();
         }
+    }
+
+    public void SendMessage() {
+        fromSend = "Carol";
+        if (sendWindowController.fromSelected.Equals("Alice") || sendWindowController.fromSelected.Equals("Bob")) {
+            carolAlias = sendWindowController.fromSelected;
+        }
+        toSend = sendWindowController.toSelected;
+        toSendMessage = sendWindowController.selectedMessage.transform.Find("SelectedMessageText").GetComponent<TextMeshProUGUI>().text;
+
+        if (attackNo == 1) {
+            attackRef.GetComponent<ProtocolAttack1Controller>().SendMessage();
+        }
+
+        sendWindowController.ClickCloseWindowButton();
     }
 
     public void RestartProtocol() {

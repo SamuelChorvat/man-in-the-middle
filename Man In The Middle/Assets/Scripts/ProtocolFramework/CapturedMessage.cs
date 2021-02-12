@@ -6,7 +6,7 @@ public class CapturedMessage {
     public string messageName;
     public string message;
     //public int step;
-    
+
     /*public bool aliceBob = false;
     public bool aliceCarol = false;
     public bool bobCarol = false;*/

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
+using System;
 
 public class ProtocolAttack1Controller: MonoBehaviour
 {
@@ -12,23 +13,37 @@ public class ProtocolAttack1Controller: MonoBehaviour
     public ProtocolFrameworkController frameworkControl;
 
     private LastStep lastStep;
-    private CapturedMessage currentlySelectedMessage;
+    private bool intercepted = false;
 
     enum LastStep {
         AliceBobStep1
     }
 
-
     public void RestartProtocol() {
+        intercepted = false;
         SendAliceBobStep1();
     }
     
     public void Intercept() {
-        
+        intercepted = true;
     }
 
-    public void Send() {
-        
+    public void SendMessage() {
+        frameworkControl.NewStep();
+        CapturedMessage newMessage = new CapturedMessage("CarolMessage", frameworkControl.toSendMessage);
+        frameworkControl.latestMessage = newMessage;
+        frameworkControl.lastStepControl.SetMessageArrow(frameworkControl.fromSend, frameworkControl.toSend, frameworkControl.latestMessage.GetMessage(), frameworkControl.carolAlias);
+
+        Match m = Regex.Match(frameworkControl.latestMessage.GetMessage(), @"\d+");
+        if (!frameworkControl.toSend.Equals("Alice")) {
+            if (intercepted && m.Success && (Int32.Parse(m.Value) <= 5)) {
+                frameworkControl.Fail();
+            } else {
+                frameworkControl.Success();
+            }
+        } else {
+            frameworkControl.Fail();
+        }
     }
 
     public void Capture() {
@@ -43,11 +58,10 @@ public class ProtocolAttack1Controller: MonoBehaviour
         }
     }
 
-    public void SelectMessage(CapturedMessage selectedMessage) {
-        switch(selectedMessage.messageName) {
+    public void SelectMessage() {
+        switch(frameworkControl.sendWindowController.currentlySelectedMessage.messageName) {
             case "AliceBobMessage1":
                 InstantiateAliceBobMessage1Amount();
-                currentlySelectedMessage = selectedMessage;
                 break;
         }
     }
@@ -60,7 +74,7 @@ public class ProtocolAttack1Controller: MonoBehaviour
 
         CapturedMessage newMessage = new CapturedMessage("AliceBobMessage1" ,"\"Pay Bob £5\"");
         frameworkControl.latestMessage = newMessage;
-        frameworkControl.lastStepControl.SetAliceBobMessageArrow(frameworkControl.latestMessage.GetMessage());
+        frameworkControl.lastStepControl.SetMessageArrow("Alice", "Bob", frameworkControl.latestMessage.GetMessage(), "");
         lastStep = LastStep.AliceBobStep1;
     }
 
@@ -72,17 +86,15 @@ public class ProtocolAttack1Controller: MonoBehaviour
         temp.transform.SetParent(frameworkControl.sendWindowController.selectedMessageEditsScrollViewContent.transform, false);
     }
 
-
     public void ClickAmount50() {
-        frameworkControl.sendWindowController.SetSelectedMessage(Regex.Replace(currentlySelectedMessage.message, @"\£\d*", "£50"));
+        frameworkControl.sendWindowController.SetSelectedMessage(Regex.Replace(frameworkControl.sendWindowController.currentlySelectedMessage.message, @"\£\d+", "£50"));
     }
 
     public void ClickAmount500() {
-        frameworkControl.sendWindowController.SetSelectedMessage(Regex.Replace(currentlySelectedMessage.message, @"\£\d*", "£500"));
+        frameworkControl.sendWindowController.SetSelectedMessage(Regex.Replace(frameworkControl.sendWindowController.currentlySelectedMessage.message, @"\£\d+", "£500"));
     }
 
     public void ClickAmount5000() {
-        frameworkControl.sendWindowController.SetSelectedMessage(Regex.Replace(currentlySelectedMessage.message, @"\£\d*", "£5000"));
+        frameworkControl.sendWindowController.SetSelectedMessage(Regex.Replace(frameworkControl.sendWindowController.currentlySelectedMessage.message, @"\£\d+", "£5000"));
     }
-
 }

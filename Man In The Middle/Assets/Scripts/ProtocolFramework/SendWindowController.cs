@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SendWindowController : MonoBehaviour
 {
@@ -41,7 +42,12 @@ public class SendWindowController : MonoBehaviour
 
     public ArrayList capturedMessages = new ArrayList();
 
+    public CapturedMessage currentlySelectedMessage = null;
+    public string fromSelected = "";
+    public string toSelected = "";
+
     public void ResetFromButton() {
+        fromSelected = "";
         aliceSelectedLeft.SetActive(false);
         bobSelectedLeft.SetActive(false);
         carolSelectedLeft.SetActive(false);
@@ -53,6 +59,7 @@ public class SendWindowController : MonoBehaviour
     }
 
     public void ResetToButton() {
+        toSelected = "";
         aliceSelectedRight.SetActive(false);
         bobSelectedRight.SetActive(false);
         aliceTextRight.GetComponent<TextMeshProUGUI>().color = Color.white;
@@ -63,39 +70,51 @@ public class SendWindowController : MonoBehaviour
         ResetFromButton();
         aliceSelectedLeft.SetActive(true);
         aliceTextLeft.GetComponent<TextMeshProUGUI>().color = Color.black;
+        fromSelected = "Alice";
+        CheckSelectedFromMessageTo();
     }
 
     public void ClickBobFromButton() {
         ResetFromButton();
         bobSelectedLeft.SetActive(true);
         bobTextLeft.GetComponent<TextMeshProUGUI>().color = Color.black;
+        fromSelected = "Bob";
+        CheckSelectedFromMessageTo();
     }
 
     public void ClickCarolFromButton() {
         ResetFromButton();
         carolSelectedLeft.SetActive(true);
         carolTextLeft.GetComponent<TextMeshProUGUI>().color = Color.black;
+        fromSelected = "Carol";
+        CheckSelectedFromMessageTo();
     }
 
     public void ClickAliceToButton() {
         ResetToButton();
         aliceSelectedRight.SetActive(true);
         aliceTextRight.GetComponent<TextMeshProUGUI>().color = Color.black;
+        toSelected = "Alice";
+        CheckSelectedFromMessageTo();
     }
 
     public void ClickBobToButton() {
         ResetToButton();
         bobSelectedRight.SetActive(true);
         bobTextRight.GetComponent<TextMeshProUGUI>().color = Color.black;
+        toSelected = "Bob";
+        CheckSelectedFromMessageTo();
     }
 
     public void ClickCloseWindowButton() {
+        currentlySelectedMessage = null;
         sendWindow.SetActive(false);
     }
 
     public void ShowWindow() {
         sendWindow.SetActive(true);
         sendWindow.GetComponent<DOTweenAnimation>().DORestart();
+        CheckSelectedFromMessageTo();
     }
 
     public void RemoveAllMessages() {
@@ -119,12 +138,13 @@ public class SendWindowController : MonoBehaviour
         return message;
     }
 
-    public void ShowSelectedMessage(CapturedMessage msg) {
+    public void ShowSelectedMessage() {
         ResetMessageView();
         RemoveAllMessageEdits();
         selectedMessage.SetActive(true);
         selectedMessageEdits.SetActive(true);
-        selectedMessage.transform.Find("SelectedMessageText").GetComponent<TextMeshProUGUI>().text = msg.GetMessage();
+        selectedMessage.transform.Find("SelectedMessageText").GetComponent<TextMeshProUGUI>().text = currentlySelectedMessage.GetMessage();
+        CheckSelectedFromMessageTo();
     }
 
     public void SetSelectedMessage(string msg) {
@@ -151,7 +171,17 @@ public class SendWindowController : MonoBehaviour
     }
 
     public void CloseSelectedMessage() {
+        currentlySelectedMessage = null;
         ResetMessageView();
         messageView.SetActive(true);
+        CheckSelectedFromMessageTo();
+    }
+
+    private void CheckSelectedFromMessageTo() {
+        if (!fromSelected.Equals("") && !toSelected.Equals("") && currentlySelectedMessage != null && !fromSelected.Equals(toSelected)) {
+            sendButton.GetComponent<Button>().interactable = true;
+        } else {
+            sendButton.GetComponent<Button>().interactable = false;
+        }
     }
 }

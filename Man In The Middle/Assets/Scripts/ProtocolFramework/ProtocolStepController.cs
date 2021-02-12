@@ -58,7 +58,7 @@ public class ProtocolStepController : MonoBehaviour
         }
     }
 
-    public void SetCarol(string name) {
+    private void SetCarol(string name) {
         if (name.Equals("Alice")) {
             SetCarolAlice();
         } else if (name.Equals("Bob")) {
@@ -89,7 +89,7 @@ public class ProtocolStepController : MonoBehaviour
         carol.transform.Find("Name").GetComponent<TextMeshProUGUI>().color = Color.red;
     }
 
-    public void SetAliceBobMessageArrow(string msg) {
+    private void SetAliceBobMessageArrow(string msg) {
         alice.SetActive(true);
         bob.SetActive(true);
         aliceBobArrow.SetActive(true);
@@ -97,7 +97,7 @@ public class ProtocolStepController : MonoBehaviour
         aliceBobMessage.GetComponent<TextMeshProUGUI>().text = msg;
     }
 
-    public void SetBobAliceMessageArrow(string msg) {
+    private void SetBobAliceMessageArrow(string msg) {
         alice.SetActive(true);
         bob.SetActive(true);
         bobAliceArrow.SetActive(true);
@@ -105,7 +105,7 @@ public class ProtocolStepController : MonoBehaviour
         bobAliceMessage.GetComponent<TextMeshProUGUI>().text = msg;
     }
 
-    public void SetAliceCarolMessageArrow(string msg, bool red) {
+    private void SetAliceCarolMessageArrow(string msg, bool red) {
         alice.SetActive(true);
         aliceCarolArrow.SetActive(true);
         aliceCarolMessage.SetActive(true);
@@ -117,7 +117,7 @@ public class ProtocolStepController : MonoBehaviour
         } 
     }
 
-    public void SetCarolAliceMessageArrow(string msg, bool red) {
+    private void SetCarolAliceMessageArrow(string msg, bool red) {
         alice.SetActive(true);
         carolAliceArrow.SetActive(true);
         carolAliceMessage.SetActive(true);
@@ -129,7 +129,7 @@ public class ProtocolStepController : MonoBehaviour
         }
     }
 
-    public void SetBobCarolMessageArrow(string msg, bool red) {
+    private void SetBobCarolMessageArrow(string msg, bool red) {
         bob.SetActive(true);
         bobCarolArrow.SetActive(true);
         bobCarolMessage.SetActive(true);
@@ -141,7 +141,7 @@ public class ProtocolStepController : MonoBehaviour
         }
     }
 
-    public void SetCarolBobMessageArrow(string msg, bool red) {
+    private void SetCarolBobMessageArrow(string msg, bool red) {
         bob.SetActive(true);
         carolBobArrow.SetActive(true);
         carolBobMessage.SetActive(true);
@@ -150,6 +150,34 @@ public class ProtocolStepController : MonoBehaviour
             carolBobMessage.GetComponent<TextMeshProUGUI>().color = Color.red;
             carolBobArrow.GetComponent<Image>().color = Color.red;
             carolBobArrow.transform.Find("ArrowHead").GetComponent<Image>().color = Color.red;
+        }
+    }
+
+    public void SetMessageArrow(string from, string to, string msg, string carolAlias) {
+        if (from.Equals("Alice") && to.Equals("Bob")) {
+            SetAliceBobMessageArrow(msg);
+        } else if (from.Equals("Bob") && to.Equals("Alice")) {
+            SetBobAliceMessageArrow(msg);
+        } else if (from.Equals("Alice") && to.Equals("Carol")) {
+            SetCarol(carolAlias);
+            SetAliceCarolMessageArrow(msg, false);
+        } else if (from.Equals("Carol") && to.Equals("Alice")) {
+            SetCarol(carolAlias);
+            if (carolAlias.Equals("Bob")) {
+                SetCarolAliceMessageArrow(msg, true);
+            } else if (carolAlias.Equals("Carol")) {
+                SetCarolAliceMessageArrow(msg, false);
+            }
+        } else if (from.Equals("Bob") && to.Equals("Carol")) {
+            SetCarol(carolAlias);
+            SetBobCarolMessageArrow(msg, false);
+        } else if (from.Equals("Carol") && to.Equals("Bob")) {
+            SetCarol(carolAlias);
+            if (carolAlias.Equals("Alice")) {
+                SetCarolBobMessageArrow(msg, true);
+            } else if (carolAlias.Equals("Carol")) {
+                SetCarolBobMessageArrow(msg, false);
+            }
         }
     }
 
