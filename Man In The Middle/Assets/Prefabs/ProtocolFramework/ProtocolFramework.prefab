@@ -296,6 +296,8 @@ MonoBehaviour:
   successPrefab: {fileID: 7517351447195462576, guid: 914ebe051d78ceb4198d1b2b45e027e3, type: 3}
   failPrefab: {fileID: 8515122516085629378, guid: 96d4342d40c4d43458504d1c0143aa12, type: 3}
   spacePrefab: {fileID: 6779343662250921060, guid: ca4db58dd6f998447861ebb0608139ff, type: 3}
+  endMessagePrefab: {fileID: 830449583050000959, guid: 5ff9978e026da0a408a58a9464dbb0d6, type: 3}
+  attack1AliceBobMessage1Amount: {fileID: 6009555608051106521, guid: 26fd2027b5d87df45a42affba4499ad2, type: 3}
   scrollViewContentObject: {fileID: 7285446190583400214}
   sendWindow: {fileID: 7285446190485139290}
   sendWindowController: {fileID: 7285446190485139292}
@@ -303,6 +305,10 @@ MonoBehaviour:
   aliceBobStep: 0
   aliceCarolStep: 0
   bobCarolStep: 0
+  toSend: 
+  fromSend: 
+  carolAlias: 
+  toSendMessage: 
 --- !u!114 &1927712672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,7 +678,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -154120.58, y: 61961.04}
+  m_AnchoredPosition: {x: -439943.72, y: 244235.7}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7285446190583400203
@@ -1140,6 +1146,34 @@ PrefabInstance:
     - target: {fileID: 4078041237297061621, guid: 581848b7a3efeb4488b43a95a933fac9, type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078041237825755459, guid: 581848b7a3efeb4488b43a95a933fac9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078041237825755459, guid: 581848b7a3efeb4488b43a95a933fac9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7285446189578910509}
+    - target: {fileID: 4078041237825755459, guid: 581848b7a3efeb4488b43a95a933fac9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ProtocolFrameworkController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078041237825755459, guid: 581848b7a3efeb4488b43a95a933fac9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SendMessage
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078041237825755459, guid: 581848b7a3efeb4488b43a95a933fac9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078041237825755459, guid: 581848b7a3efeb4488b43a95a933fac9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4078041237825755459, guid: 581848b7a3efeb4488b43a95a933fac9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4078041238858415425, guid: 581848b7a3efeb4488b43a95a933fac9, type: 3}
       propertyPath: m_Material

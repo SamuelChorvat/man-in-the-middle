@@ -23,6 +23,7 @@ public class ProtocolFrameworkController : MonoBehaviour
     public GameObject successPrefab;
     public GameObject failPrefab;
     public GameObject spacePrefab;
+    public GameObject endMessagePrefab;
 
     [Header("Message Edit Prefabs Attack 1")]
     public GameObject attack1AliceBobMessage1Amount;
@@ -107,6 +108,13 @@ public class ProtocolFrameworkController : MonoBehaviour
         return space;
     }
 
+    public GameObject InstantiateEndMessage(string msg) {
+        GameObject endMessage = Instantiate(endMessagePrefab);
+        endMessage.GetComponent<TextMeshProUGUI>().text = msg;
+        endMessage.transform.SetParent(scrollViewContentObject.transform, false);
+        return endMessage;
+    }
+
     public void RemoveAll() {
         lastStepRef = null;
         captureInterceptSendRef = null;
@@ -139,16 +147,18 @@ public class ProtocolFrameworkController : MonoBehaviour
         InstantiateContinueRestart();
     }
 
-    public void Fail() {
+    public void Fail(string msg) {
         PrepareForNewStep();
         InstantiateFail();
+        InstantiateEndMessage(msg);
         InstantiateRestartOnly();
         InstantiateSpace();
     }
 
-    public void Success() {
+    public void Success(string msg) {
         PrepareForNewStep();
         InstantiateSuccess();
+        InstantiateEndMessage(msg);
         contBut.StartReveal();
     }
 
@@ -214,9 +224,7 @@ public class ProtocolFrameworkController : MonoBehaviour
 
     public void SendMessage() {
         fromSend = "Carol";
-        if (sendWindowController.fromSelected.Equals("Alice") || sendWindowController.fromSelected.Equals("Bob")) {
-            carolAlias = sendWindowController.fromSelected;
-        }
+        carolAlias = sendWindowController.fromSelected;
         toSend = sendWindowController.toSelected;
         toSendMessage = sendWindowController.selectedMessage.transform.Find("SelectedMessageText").GetComponent<TextMeshProUGUI>().text;
 
