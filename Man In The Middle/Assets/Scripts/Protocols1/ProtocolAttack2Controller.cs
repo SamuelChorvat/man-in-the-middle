@@ -53,6 +53,10 @@ public class ProtocolAttack2Controller : MonoBehaviour
     }
 
     public void SelectMessage() {
+        switch (frameworkControl.sendWindowController.currentlySelectedMessage.messageName) {
+            case ("AliceBobMessage1"):
+                break;
+        }
     }
 
     private void SendAliceBobStep1() {
@@ -102,5 +106,4 @@ public class ProtocolAttack2Controller : MonoBehaviour
         frameworkControl.latestMessage = newMessage;
         frameworkControl.lastStepControl.SetMessageArrow("Alice", "Bob", frameworkControl.latestMessage.GetMessage(), "");
     }
-
 }

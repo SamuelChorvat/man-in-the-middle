@@ -45,6 +45,7 @@ public class SendWindowController : MonoBehaviour
     public CapturedMessage currentlySelectedMessage = null;
     public string fromSelected = "";
     public string toSelected = "";
+    public string selectedMessageName = "";
 
     public void ResetFromButton() {
         fromSelected = "";
@@ -139,6 +140,7 @@ public class SendWindowController : MonoBehaviour
     }
 
     public void ShowSelectedMessage() {
+        selectedMessageName = "";
         ResetMessageView();
         RemoveAllMessageEdits();
         selectedMessage.SetActive(true);

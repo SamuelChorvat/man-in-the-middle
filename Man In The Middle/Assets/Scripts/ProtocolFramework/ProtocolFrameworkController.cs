@@ -57,6 +57,7 @@ public class ProtocolFrameworkController : MonoBehaviour
     public string fromSend = "";
     public string carolAlias = "";
     public string toSendMessage = "";
+    public string toMessageName = "";
 
     private int attackNo = -1;
 
@@ -159,14 +160,14 @@ public class ProtocolFrameworkController : MonoBehaviour
         InstantiateEndMessage(msg);
         InstantiateRestartOnly();
         InstantiateSpace();
-        //ScrollToBottomProtocolView();
+        ScrollToBottomProtocolView();
     }
 
     public void Success(string msg) {
         PrepareForNewStep();
         InstantiateSuccess();
         InstantiateEndMessage(msg);
-        //ScrollToBottomProtocolView();
+        ScrollToBottomProtocolView();
         contBut.StartReveal();
     }
 
@@ -198,6 +199,7 @@ public class ProtocolFrameworkController : MonoBehaviour
         fromSend = "";
         carolAlias = "";
         toSendMessage = "";
+        toMessageName = "";
 
         if (sendWindowController.capturedMessages.Count == 0) {
             sendWindowController.noMessages.SetActive(true);
@@ -231,6 +233,8 @@ public class ProtocolFrameworkController : MonoBehaviour
 
         if (attackNo == 1) {
             attack1Ref.SelectMessage();
+        } else if(attackNo == 2) {
+            attack2Ref.SelectMessage();
         }
     }
 
@@ -239,9 +243,10 @@ public class ProtocolFrameworkController : MonoBehaviour
         carolAlias = sendWindowController.fromSelected;
         toSend = sendWindowController.toSelected;
         toSendMessage = sendWindowController.selectedMessage.transform.Find("SelectedMessageText").GetComponent<TextMeshProUGUI>().text;
+        toMessageName = sendWindowController.selectedMessageName;
 
         NewStep();
-        CapturedMessage newMessage = new CapturedMessage("CarolMessage", toSendMessage);
+        CapturedMessage newMessage = new CapturedMessage(toMessageName, toSendMessage);
         latestMessage = newMessage;
         lastStepControl.SetMessageArrow(fromSend, toSend, latestMessage.GetMessage(), carolAlias);
 
