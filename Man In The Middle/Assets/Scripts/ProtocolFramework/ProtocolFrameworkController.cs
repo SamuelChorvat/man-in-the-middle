@@ -5,12 +5,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Text.RegularExpressions;
+using System;
 
 public class ProtocolFrameworkController : MonoBehaviour
 {
     [Header("Protocol Attack")]
     public GameObject attackRef;
-    public int attackNo;
+    private int attackNo = -1;
 
     [Header("Continue Button")]
     public RevealContinueButton contBut;
@@ -27,6 +28,9 @@ public class ProtocolFrameworkController : MonoBehaviour
 
     [Header("Message Edit Prefabs Attack 1")]
     public GameObject attack1AliceBobMessage1Amount;
+
+    [Header("Scroll View")]
+    public GameObject scrollViewObject;
 
     [Header("Scroll View Content")]
     public GameObject scrollViewContentObject;
@@ -153,12 +157,14 @@ public class ProtocolFrameworkController : MonoBehaviour
         InstantiateEndMessage(msg);
         InstantiateRestartOnly();
         InstantiateSpace();
+        ScrollToBottomProtocolView();
     }
 
     public void Success(string msg) {
         PrepareForNewStep();
         InstantiateSuccess();
         InstantiateEndMessage(msg);
+        ScrollToBottomProtocolView();
         contBut.StartReveal();
     }
 
@@ -176,6 +182,8 @@ public class ProtocolFrameworkController : MonoBehaviour
 
         if (attackNo == 1) {
             attackRef.GetComponent<ProtocolAttack1Controller>().Intercept();
+        }else if (attackNo == 2) {
+            attackRef.GetComponent<ProtocolAttack2Controller>().Intercept();
         }
     }
 
@@ -209,6 +217,8 @@ public class ProtocolFrameworkController : MonoBehaviour
     public void Continue() {
         if (attackNo == 1) {
             attackRef.GetComponent<ProtocolAttack1Controller>().Continue();
+        } else if (attackNo == 2) {
+            attackRef.GetComponent<ProtocolAttack2Controller>().Continue();
         }
     }
 
@@ -246,10 +256,19 @@ public class ProtocolFrameworkController : MonoBehaviour
         RemoveAll();
         this.gameObject.GetComponent<DOTweenAnimation>().DORestart();
 
+        Match m = Regex.Match(attackRef.name, @"\d+");
+        attackNo = Int32.Parse(m.Value);
+
         if (attackNo == 1) {
             attackRef.GetComponent<ProtocolAttack1Controller>().RestartProtocol();
         } else if (attackNo == 2) {
             attackRef.GetComponent<ProtocolAttack2Controller>().RestartProtocol();
         }
+    }
+
+    public void ScrollToBottomProtocolView() {
+        Canvas.ForceUpdateCanvases();
+        scrollViewObject.GetComponent<ScrollRect>().verticalNormalizedPosition = 0f;
+        Canvas.ForceUpdateCanvases();
     }
 }
