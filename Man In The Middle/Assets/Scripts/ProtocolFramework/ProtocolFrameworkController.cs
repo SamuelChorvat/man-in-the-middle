@@ -9,9 +9,9 @@ using System;
 
 public class ProtocolFrameworkController : MonoBehaviour
 {
-    [Header("Protocol Attack")]
-    public GameObject attackRef;
-    private int attackNo = -1;
+    [Header("Protocol Attacks")]
+    public ProtocolAttack1Controller attack1Ref;
+    public ProtocolAttack2Controller attack2Ref;
 
     [Header("Continue Button")]
     public RevealContinueButton contBut;
@@ -58,6 +58,8 @@ public class ProtocolFrameworkController : MonoBehaviour
     public string carolAlias = "";
     public string toSendMessage = "";
 
+    private int attackNo = -1;
+
     private GameObject InstantiateProtocolStep() {
         GameObject protocolStep = Instantiate(protocolStepPrefab);
         protocolStep.transform.SetParent(scrollViewContentObject.transform,false);
@@ -82,7 +84,7 @@ public class ProtocolFrameworkController : MonoBehaviour
         continueRestart.transform.SetParent(scrollViewContentObject.transform, false);
         continueRestartRef = continueRestart;
         continueRestartRef.transform.Find("ContinueButton").GetComponent<Button>().onClick.AddListener(Continue);
-        continueRestartRef.transform.Find("RestartButton").GetComponent<Button>().onClick.AddListener(RestartProtocol);
+        continueRestartRef.transform.Find("RestartButton").GetComponent<Button>().onClick.AddListener(delegate { RestartProtocol(attackNo.ToString()); });
         return continueRestart;
     }
 
@@ -90,7 +92,7 @@ public class ProtocolFrameworkController : MonoBehaviour
         GameObject restartOnly = Instantiate(restartOnlyPrefab);
         restartOnly.transform.SetParent(scrollViewContentObject.transform, false);
         restartOnlyRef = restartOnly;
-        restartOnlyRef.transform.Find("RestartButton").GetComponent<Button>().onClick.AddListener(RestartProtocol);
+        restartOnlyRef.transform.Find("RestartButton").GetComponent<Button>().onClick.AddListener(delegate { RestartProtocol(attackNo.ToString()); });
         return restartOnly;
     }
 
@@ -157,14 +159,14 @@ public class ProtocolFrameworkController : MonoBehaviour
         InstantiateEndMessage(msg);
         InstantiateRestartOnly();
         InstantiateSpace();
-        ScrollToBottomProtocolView();
+        //ScrollToBottomProtocolView();
     }
 
     public void Success(string msg) {
         PrepareForNewStep();
         InstantiateSuccess();
         InstantiateEndMessage(msg);
-        ScrollToBottomProtocolView();
+        //ScrollToBottomProtocolView();
         contBut.StartReveal();
     }
 
@@ -181,9 +183,9 @@ public class ProtocolFrameworkController : MonoBehaviour
         SetInteractableInterceptButton(false);
 
         if (attackNo == 1) {
-            attackRef.GetComponent<ProtocolAttack1Controller>().Intercept();
+            attack1Ref.Intercept();
         }else if (attackNo == 2) {
-            attackRef.GetComponent<ProtocolAttack2Controller>().Intercept();
+            attack2Ref.Intercept();
         }
     }
 
@@ -210,15 +212,15 @@ public class ProtocolFrameworkController : MonoBehaviour
         sendWindowController.AddMessage(latestMessage).transform.Find("SelectButton").GetComponent<Button>().onClick.AddListener(delegate { SelectMessage(sendWindowController.capturedMessages.Count - 1);});
 
         if (attackNo == 1) {
-            attackRef.GetComponent<ProtocolAttack1Controller>().Capture();
+            attack1Ref.Capture();
         }
     }
 
     public void Continue() {
         if (attackNo == 1) {
-            attackRef.GetComponent<ProtocolAttack1Controller>().Continue();
+            attack1Ref.Continue();
         } else if (attackNo == 2) {
-            attackRef.GetComponent<ProtocolAttack2Controller>().Continue();
+            attack2Ref.Continue();
         }
     }
 
@@ -228,7 +230,7 @@ public class ProtocolFrameworkController : MonoBehaviour
         sendWindowController.ShowSelectedMessage();
 
         if (attackNo == 1) {
-            attackRef.GetComponent<ProtocolAttack1Controller>().SelectMessage();
+            attack1Ref.SelectMessage();
         }
     }
 
@@ -244,25 +246,23 @@ public class ProtocolFrameworkController : MonoBehaviour
         lastStepControl.SetMessageArrow(fromSend, toSend, latestMessage.GetMessage(), carolAlias);
 
         if (attackNo == 1) {
-            attackRef.GetComponent<ProtocolAttack1Controller>().SendMessage();
+            attack1Ref.SendMessage();
         }
 
         sendWindowController.ClickCloseWindowButton();
     }
 
-    public void RestartProtocol() {
+    public void RestartProtocol(string attackNumber) {
         contBut.ResetButton();
         sendWindowController.ResetAll();
         RemoveAll();
         this.gameObject.GetComponent<DOTweenAnimation>().DORestart();
-
-        Match m = Regex.Match(attackRef.name, @"\d+");
-        attackNo = Int32.Parse(m.Value);
+        attackNo = Int32.Parse(attackNumber);
 
         if (attackNo == 1) {
-            attackRef.GetComponent<ProtocolAttack1Controller>().RestartProtocol();
+            attack1Ref.RestartProtocol();
         } else if (attackNo == 2) {
-            attackRef.GetComponent<ProtocolAttack2Controller>().RestartProtocol();
+            attack2Ref.RestartProtocol();
         }
     }
 
@@ -270,5 +270,12 @@ public class ProtocolFrameworkController : MonoBehaviour
         Canvas.ForceUpdateCanvases();
         scrollViewObject.GetComponent<ScrollRect>().verticalNormalizedPosition = 0f;
         Canvas.ForceUpdateCanvases();
+    }
+
+    public void ResetProtocolAttack() {
+        contBut.ResetButton();
+        sendWindowController.ResetAll();
+        RemoveAll();
+        this.gameObject.transform.localScale = new Vector3(0, 0, 0);
     }
 }
