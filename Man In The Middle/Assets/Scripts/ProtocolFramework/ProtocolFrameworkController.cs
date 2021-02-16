@@ -228,6 +228,11 @@ public class ProtocolFrameworkController : MonoBehaviour
         toSend = sendWindowController.toSelected;
         toSendMessage = sendWindowController.selectedMessage.transform.Find("SelectedMessageText").GetComponent<TextMeshProUGUI>().text;
 
+        NewStep();
+        CapturedMessage newMessage = new CapturedMessage("CarolMessage", toSendMessage);
+        latestMessage = newMessage;
+        lastStepControl.SetMessageArrow(fromSend, toSend, latestMessage.GetMessage(), carolAlias);
+
         if (attackNo == 1) {
             attackRef.GetComponent<ProtocolAttack1Controller>().SendMessage();
         }
@@ -243,6 +248,8 @@ public class ProtocolFrameworkController : MonoBehaviour
 
         if (attackNo == 1) {
             attackRef.GetComponent<ProtocolAttack1Controller>().RestartProtocol();
+        } else if (attackNo == 2) {
+            attackRef.GetComponent<ProtocolAttack2Controller>().RestartProtocol();
         }
     }
 }

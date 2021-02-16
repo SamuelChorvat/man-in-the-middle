@@ -29,11 +29,6 @@ public class ProtocolAttack1Controller: MonoBehaviour
     }
 
     public void SendMessage() {
-        frameworkControl.NewStep();
-        CapturedMessage newMessage = new CapturedMessage("CarolMessage", frameworkControl.toSendMessage);
-        frameworkControl.latestMessage = newMessage;
-        frameworkControl.lastStepControl.SetMessageArrow(frameworkControl.fromSend, frameworkControl.toSend, frameworkControl.latestMessage.GetMessage(), frameworkControl.carolAlias);
-
         Match m = Regex.Match(frameworkControl.latestMessage.GetMessage(), @"\d+");
         if ((intercepted && m.Success && (Int32.Parse(m.Value) > 5) && frameworkControl.carolAlias.Equals("Alice")) || !intercepted && frameworkControl.carolAlias.Equals("Alice")) {
             frameworkControl.Success("As you can probably tell this protocol has no security properties at all.");
@@ -43,9 +38,9 @@ public class ProtocolAttack1Controller: MonoBehaviour
         } else if (frameworkControl.carolAlias.Equals("Carol") && frameworkControl.toSend.Equals("Bob")) {
             frameworkControl.Fail("Attack failed because we just paid Bob £" + m.Value + " and didn't exploit the protocol in any way.");
         } else if (frameworkControl.carolAlias.Equals("Carol") && frameworkControl.toSend.Equals("Alice")) {
-            frameworkControl.Fail("Attack failed because this is not a valid message. Valid message would be \"Pay Alice £"+ m.Value + "\" but to keep this very simple you are not able to do that yet. Even if you were able to do that, it would not be a valid attack as you would have just paid Alice £" + m.Value + " without exploiting the protocol in any way.");
+            frameworkControl.Success("As you can probably tell this protocol has no security properties at all.");
         } else if (frameworkControl.carolAlias.Equals("Bob") && frameworkControl.toSend.Equals("Alice")) {
-            frameworkControl.Fail("Attack failed because this is not a valid message. Valid message would be \"Pay Alice £" + m.Value + "\" but to keep this very simple you are not able to do that yet. This would be a valid attack if you were able to do it though.");
+            frameworkControl.Success("As you can probably tell this protocol has no security properties at all.");
         }
     }
 
