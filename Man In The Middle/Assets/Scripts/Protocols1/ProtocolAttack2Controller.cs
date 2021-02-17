@@ -22,6 +22,7 @@ public class ProtocolAttack2Controller : MonoBehaviour
     private CapturedMessage lastCarolBobMsg;
 
     private int nonceCounter = 0;
+    private int lastABNonce = 0;
 
     public void RestartProtocol() {
         lastStepAB = 0;
@@ -42,6 +43,10 @@ public class ProtocolAttack2Controller : MonoBehaviour
     }
 
     public void SendMessage() {
+        if (frameworkControl.latestMessage.alias.Equals("Alice") || frameworkControl.latestMessage.alias.Equals("Bob")) {
+            lastStepAB += 1;
+        }
+
         if (frameworkControl.latestMessage.to.Equals("Alice")) {
             AliceReply(frameworkControl.latestMessage);
         } else if (frameworkControl.latestMessage.to.Equals("Bob")) {
@@ -73,7 +78,7 @@ public class ProtocolAttack2Controller : MonoBehaviour
     }
 
     private void AliceReply(CapturedMessage msg) {
-        if (msg.from.Equals("Bob")) {
+        if (msg.from.Equals("Bob")) { // merge with carol alias bob
             if(lastStepAB == 2) {
                 Match m = Regex.Match(msg.GetMessage(), @"\>\d+");
                 string toSend = Regex.Replace("{ N<sub><size=110%>1</size></sub> + 1 }<sub><size=130%>Kab</size></sub> , { Pay Carol £5 }<sub><size=130%>Kab</size>", @"\>\d+", m.Value);
@@ -101,14 +106,15 @@ public class ProtocolAttack2Controller : MonoBehaviour
                 }
 
                 if (msg.message.Equals("B")) {
-                    frameworkControl.Fail("Unexpected message.");
+                    frameworkControl.Fail("Starting a new conversation is not needed to exploit this protocol.");
                     return;
                 }
 
             } else if (msg.alias.Equals("Carol")) {
-                if (msg.message.Equals("B")) {
+                if (msg.message.Equals("C")) {
+                    frameworkControl.Fail("Starting a new conversation is not needed to exploit this protocol.");
+                } else {
                     frameworkControl.Fail("Invalid message.");
-                    return;
                 }
             }
         }
@@ -120,11 +126,7 @@ public class ProtocolAttack2Controller : MonoBehaviour
                 frameworkControl.Fail("Attack failed because the protocol finished without being exploited.");
                 return;
             }
-            lastStepAB += 1;
-            frameworkControl.NewStep();
-            CapturedMessage newMessage = new CapturedMessage("AliceBobMessage" + lastStepAB, "{ " + GenerateNonce() + " }<sub><size=130%>Kab</sub>", "Bob", "Alice", "");
-            SetMessages(newMessage);
-            frameworkControl.lastStepControl.SetMessageArrow("Bob", "Alice", frameworkControl.latestMessage.GetMessage(), "");
+            SendNonce("Bob", "Alice", msg);
         } else if (msg.from.Equals("Carol")) {
             if (msg.message.Equals("B")) {
                 frameworkControl.Fail("Invalid message.");
@@ -135,16 +137,13 @@ public class ProtocolAttack2Controller : MonoBehaviour
                 }
 
                 if (msg.message.Equals("A")) {
-                    if(lastAliceBobMsg.message.Equals("A")) {
-                        frameworkControl.Fail("Unexpected message.");
+                    if(secondLastAliceBobMsg.message.Equals("A")) {
+                        frameworkControl.Fail("Starting a new conversation is not needed to exploit this protocol.");
                         return;
                     } else {
-                        if (lastStepAB == 0 || lastStepAB == 3) {
-                            lastStepAB += 2;
-                            frameworkControl.NewStep();
-                            CapturedMessage newMessage = new CapturedMessage("AliceBobMessage" + lastStepAB, "{ " + GenerateNonce() + " }<sub><size=130%>Kab</sub>", "Bob", "Alice", "");
-                            SetMessages(newMessage);
-                            frameworkControl.lastStepControl.SetMessageArrow("Bob", "Alice", frameworkControl.latestMessage.GetMessage(), "");
+                        if (lastStepAB == 1 || lastStepAB == 4) {
+                            SendNonce("Bob", "Alice", msg);
+                            return;
                         } else {
                             frameworkControl.Fail("Unexpected message.");
                             return;
@@ -159,6 +158,19 @@ public class ProtocolAttack2Controller : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void SendNonce(string from, string to, CapturedMessage msg) {
+        lastStepAB += 1;
+        frameworkControl.NewStep();
+        if(!msg.alias.Equals("")) {
+            msg.from = msg.alias;
+        }
+        string nonce = GenerateNonce();
+        lastABNonce = nonceCounter;
+        CapturedMessage newMessage = new CapturedMessage("NonceMessage" + nonceCounter, "{ " + nonce + " }<sub><size=130%>Kab</sub>", from, to, "");
+        SetMessages(newMessage);
+        frameworkControl.lastStepControl.SetMessageArrow(from, to, frameworkControl.latestMessage.GetMessage(), "");
     }
 
     private void SendAliceBobStep1() {
@@ -206,5 +218,10 @@ public class ProtocolAttack2Controller : MonoBehaviour
         this.secondLastAliceBobMsg = lastAliceBobMsg;
         lastAliceBobMsg = msg;
         frameworkControl.latestMessage = msg;
+    }
+
+    private void SetABLastMessage(CapturedMessage msg) {
+        this.secondLastAliceBobMsg = lastAliceBobMsg;
+        lastAliceBobMsg = msg;
     }
 }
