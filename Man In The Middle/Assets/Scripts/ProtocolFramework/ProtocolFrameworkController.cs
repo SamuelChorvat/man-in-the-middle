@@ -29,6 +29,9 @@ public class ProtocolFrameworkController : MonoBehaviour
     [Header("Message Edit Prefabs Attack 1")]
     public GameObject attack1AliceBobMessage1Amount;
 
+    [Header("Message Edit Prefabs Attack 2")]
+    public GameObject attack2AliceBobMessage1Letter;
+
     [Header("Scroll View")]
     public GameObject scrollViewObject;
 
@@ -246,12 +249,14 @@ public class ProtocolFrameworkController : MonoBehaviour
         toMessageName = sendWindowController.selectedMessageName;
 
         NewStep();
-        CapturedMessage newMessage = new CapturedMessage(toMessageName, toSendMessage);
+        CapturedMessage newMessage = new CapturedMessage(toMessageName, toSendMessage, fromSend, toSend, carolAlias);
         latestMessage = newMessage;
         lastStepControl.SetMessageArrow(fromSend, toSend, latestMessage.GetMessage(), carolAlias);
 
         if (attackNo == 1) {
             attack1Ref.SendMessage();
+        } else if (attackNo == 2) {
+            attack2Ref.SendMessage();
         }
 
         sendWindowController.ClickCloseWindowButton();

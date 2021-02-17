@@ -9139,6 +9139,10 @@ PrefabInstance:
       propertyPath: attack2Ref
       value: 
       objectReference: {fileID: 2046458864}
+    - target: {fileID: 7285446189578910509, guid: 7d28d51a29568eb48a997b96a2a12ada, type: 3}
+      propertyPath: attack2AliceBobMessage1Letter
+      value: 
+      objectReference: {fileID: 3061086691640462798, guid: cf67dbb5dc0e0f14699e50eb8ba0bdab, type: 3}
     - target: {fileID: 7285446190269308753, guid: 7d28d51a29568eb48a997b96a2a12ada, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -9149,11 +9153,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7285446190583400201, guid: 7d28d51a29568eb48a997b96a2a12ada, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -553899.4
+      value: -602470.6
       objectReference: {fileID: 0}
     - target: {fileID: 7285446190583400201, guid: 7d28d51a29568eb48a997b96a2a12ada, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 283496.2
+      value: 309830.66
       objectReference: {fileID: 0}
     - target: {fileID: 7285446190583400201, guid: 7d28d51a29568eb48a997b96a2a12ada, type: 3}
       propertyPath: m_SizeDelta.x
