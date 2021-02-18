@@ -47,10 +47,6 @@ public class ProtocolAttack1Controller: MonoBehaviour
         }
     }
 
-    public void Capture() {
-
-    }
-
     public void Continue() {
         switch(lastStep) {
             case LastStep.AliceBobStep1:

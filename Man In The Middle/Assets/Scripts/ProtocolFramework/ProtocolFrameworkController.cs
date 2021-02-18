@@ -31,6 +31,8 @@ public class ProtocolFrameworkController : MonoBehaviour
 
     [Header("Message Edit Prefabs Attack 2")]
     public GameObject attack2AliceBobMessage1Letter;
+    public GameObject attack2AliceBobMessage3Nonce;
+    public GameObject attack2AliceBobMessage6Message;
 
     [Header("Scroll View")]
     public GameObject scrollViewObject;
@@ -214,11 +216,8 @@ public class ProtocolFrameworkController : MonoBehaviour
     public void Capture() {
         SetInteractableCaptureButton(false);
         sendWindowController.capturedMessages.Add(latestMessage);
-        sendWindowController.AddMessage(latestMessage).transform.Find("SelectButton").GetComponent<Button>().onClick.AddListener(delegate { SelectMessage(sendWindowController.capturedMessages.Count - 1);});
-
-        if (attackNo == 1) {
-            attack1Ref.Capture();
-        }
+        int index = sendWindowController.capturedMessages.Count - 1;
+        sendWindowController.AddMessage(latestMessage).transform.Find("SelectButton").GetComponent<Button>().onClick.AddListener(delegate { SelectMessage(index);});
     }
 
     public void Continue() {

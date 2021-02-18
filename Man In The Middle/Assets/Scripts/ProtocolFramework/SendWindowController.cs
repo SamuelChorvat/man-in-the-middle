@@ -153,6 +153,10 @@ public class SendWindowController : MonoBehaviour
         selectedMessage.transform.Find("SelectedMessageText").GetComponent<TextMeshProUGUI>().text = msg;
     }
 
+    public string GetSelectedMessage() {
+        return selectedMessage.transform.Find("SelectedMessageText").GetComponent<TextMeshProUGUI>().text;
+    }
+
     public void ResetMessageView() {
         noMessages.SetActive(false);
         selectedMessage.SetActive(false);

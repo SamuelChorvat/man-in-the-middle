@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using UnityEditor.VersionControl;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,25 +13,25 @@ public class ProtocolAttack2Controller : MonoBehaviour
     public ProtocolFrameworkController frameworkControl;
 
     private int lastStepAB = 0;
-    private int lastStepCA = 0;
-    private int lastStepCB = 0;
 
     private CapturedMessage secondLastAliceBobMsg = new CapturedMessage("", "", "", "", "");
     private CapturedMessage lastAliceBobMsg = new CapturedMessage("","","","","");
 
-    private CapturedMessage lastCarolAliceMsg;
-    private CapturedMessage lastCarolBobMsg;
-
     private int nonceCounter = 0;
     private int lastABNonce = 0;
+    private bool aliceStartedSecondRun = false;
+
+    private string aliceBobNonce1 = "";
+    private string aliceBobNonce2 = "";
 
     public void RestartProtocol() {
         lastStepAB = 0;
-        lastStepCA = 0;
-        lastStepCB = 0;
         nonceCounter = 0;
         lastAliceBobMsg = new CapturedMessage("", "", "", "", "");
+        aliceStartedSecondRun = false;
         secondLastAliceBobMsg = new CapturedMessage("", "", "", "", "");
+        aliceBobNonce1 = "";
+        aliceBobNonce2 = "";
         SendAliceBobStep1();
     }
 
@@ -71,93 +72,131 @@ public class ProtocolAttack2Controller : MonoBehaviour
             case ("AliceBobMessage1"):
                 InstantiateAliceBobMessage1Letter();
                 break;
+            case ("AliceBobMessage3"):
+                InstantiateAliceBobMessage3Nonce();
+                InstantiateAliceBobMessage6Message();
+                break;
             case ("AliceBobMessage4"):
                 InstantiateAliceBobMessage1Letter();
+                break;
+            case ("AliceBobMessage6"):
+                InstantiateAliceBobMessage3Nonce();
+                InstantiateAliceBobMessage6Message();
                 break;
         }
     }
 
     private void AliceReply(CapturedMessage msg) {
-        if (msg.from.Equals("Bob")) { // merge with carol alias bob
-            if(lastStepAB == 2) {
+        if (msg.from.Equals("Bob") || msg.alias.Equals("Bob")) { 
+            if (msg.message.Equals("C") || msg.message.Equals("A")) {
+                frameworkControl.Fail("Invalid message.");
+                return;
+            }
+
+            if (msg.message.Equals("B")) {
+                frameworkControl.Fail("Unexpected message.");
+                return;
+            }
+
+            if (lastStepAB == 2) {
                 Match m = Regex.Match(msg.GetMessage(), @"\>\d+");
                 string toSend = Regex.Replace("{ N<sub><size=110%>1</size></sub> + 1 }<sub><size=130%>Kab</size></sub> , { Pay Carol £5 }<sub><size=130%>Kab</size>", @"\>\d+", m.Value);
+                aliceBobNonce1 = m.Value;
                 frameworkControl.NewStep();
                 lastStepAB += 1;
                 CapturedMessage newMessage = new CapturedMessage("AliceBobMessage" + lastStepAB, toSend, "Alice", "Bob", "");
                 SetMessages(newMessage);
                 frameworkControl.lastStepControl.SetMessageArrow("Alice", "Bob", frameworkControl.latestMessage.GetMessage(), "");
+                return;
             } else if (lastStepAB == 5) {
                 Match m = Regex.Match(msg.GetMessage(), @"\>\d+");
                 string toSend = Regex.Replace("{ N<sub><size=110%>2</size></sub> + 1 }<sub><size=130%>Kab</size></sub> , { Pay Bob £5 }<sub><size=130%>Kab</size>", @"\>\d+", m.Value);
+                aliceBobNonce2 = m.Value;
                 frameworkControl.NewStep();
                 lastStepAB += 1;
                 CapturedMessage newMessage = new CapturedMessage("AliceBobMessage" + lastStepAB, toSend, "Alice", "Bob", "");
                 SetMessages(newMessage);
                 frameworkControl.lastStepControl.SetMessageArrow("Alice", "Bob", frameworkControl.latestMessage.GetMessage(), "");
+                return;
             } 
         } else if (msg.from.Equals("Carol")) {
             if (msg.message.Equals("A")) {
                 frameworkControl.Fail("Invalid message.");
-            } else if(msg.alias.Equals("Bob")) {
-                if (msg.message.Equals("C")) {
-                    frameworkControl.Fail("Invalid message.");
-                    return;
-                }
-
-                if (msg.message.Equals("B")) {
-                    frameworkControl.Fail("Starting a new conversation is not needed to exploit this protocol.");
-                    return;
-                }
-
-            } else if (msg.alias.Equals("Carol")) {
-                if (msg.message.Equals("C")) {
-                    frameworkControl.Fail("Starting a new conversation is not needed to exploit this protocol.");
-                } else {
-                    frameworkControl.Fail("Invalid message.");
-                }
+                return;
+            } else if (msg.message.Equals("C")) {
+                frameworkControl.Fail("Starting a new conversation is not needed to exploit this protocol.");
+                return;
+            } else {
+                frameworkControl.Fail("Invalid or unexpected message.");
+                return;
             }
         }
+
+        frameworkControl.Fail("Invalid or unexpected message.");
     }
 
     private void BobReply(CapturedMessage msg) {
-        if(msg.from.Equals("Alice")) {
-            if (lastStepAB == 6) {
-                frameworkControl.Fail("Attack failed because the protocol finished without being exploited.");
+        if(msg.from.Equals("Alice") || msg.alias.Equals("Alice")) {
+            if (msg.message.Equals("C")) {
+                frameworkControl.Fail("Invalid message.");
                 return;
             }
-            SendNonce("Bob", "Alice", msg);
-        } else if (msg.from.Equals("Carol")) {
-            if (msg.message.Equals("B")) {
-                frameworkControl.Fail("Invalid message.");
-            } else if (msg.alias.Equals("Alice")) {
-                if (msg.message.Equals("C")) {
-                    frameworkControl.Fail("Invalid message.");
+
+            if ((msg.message.Equals("A") && (lastStepAB != 1) && lastStepAB != 4)) {
+                frameworkControl.Fail("Unexpected message.");
+                return;
+            }
+
+            if (lastStepAB == 6) {
+                Match m = Regex.Match(msg.GetMessage(), @"\>\d+");
+                int nonceReceived = Int32.Parse(m.Value.Substring(1));
+                if (nonceReceived != lastABNonce) {
+                    frameworkControl.Fail("Unexpected nonce. Expected N<sub><size=110%>" + lastABNonce + "</size></sub> instead received N<sub><size=110%>" + nonceReceived+ "</size></sub> .");
                     return;
                 }
 
-                if (msg.message.Equals("A")) {
-                    if(secondLastAliceBobMsg.message.Equals("A")) {
-                        frameworkControl.Fail("Starting a new conversation is not needed to exploit this protocol.");
-                        return;
-                    } else {
-                        if (lastStepAB == 1 || lastStepAB == 4) {
-                            SendNonce("Bob", "Alice", msg);
-                            return;
-                        } else {
-                            frameworkControl.Fail("Unexpected message.");
-                            return;
-                        }
-                    }
-                }
-
-            } else if (msg.alias.Equals("Carol")) {
-                if (msg.message.Equals("A")) {
-                    frameworkControl.Fail("Invalid message.");
+                m = Regex.Match(msg.GetMessage(), @"Pay\sCarol");
+                if (m.Success) {
+                    frameworkControl.Success("Even though you are not able to change the text itself because of the pre-shared symmetric key encryption, you can still exploit this protocol because of the fact that the nonce is encrypted separately instead of encrypting it together with the message. This allows us to reuse all the previously encrypted messages without the recipient realising it.");
+                    return;
+                } else {
+                    frameworkControl.Fail("Attack failed because the protocol finished without being exploited.");
                     return;
                 }
             }
+
+            if ((lastStepAB == 1 || lastStepAB == 4) && msg.message.Equals("A")) {
+                SendNonce("Bob", "Alice", msg);
+                if (lastStepAB == (4 + 1) && !aliceStartedSecondRun) {
+                    frameworkControl.Fail("Unexpected message.");
+                }
+                return;
+            }
+
+            if (lastStepAB == 3) {
+                Match m = Regex.Match(msg.GetMessage(), @"\>\d+");
+                int nonceReceived = Int32.Parse(m.Value.Substring(1));
+                if (nonceReceived != lastABNonce) {
+                    frameworkControl.Fail("Unexpected nonce. Expected N<sub><size=110%>" + lastABNonce + "</size></sub> instead received N<sub><size=110%>" + nonceReceived + "</size></sub> .");
+                    return;
+                } else {
+                    SendAliceBobStep4();
+                    return;
+                }
+                
+            }
+
+        } else if (msg.from.Equals("Carol")) {
+            if (msg.message.Equals("C")) {
+                frameworkControl.Fail("Starting a new conversation is not needed to exploit this protocol.");
+                return;
+            } else {
+                frameworkControl.Fail("Invalid or unexpected message.");
+                return;
+            }
         }
+
+        frameworkControl.Fail("Invalid or unexpected message.");
     }
 
     private void SendNonce(string from, string to, CapturedMessage msg) {
@@ -187,6 +226,7 @@ public class ProtocolAttack2Controller : MonoBehaviour
         CapturedMessage newMessage = new CapturedMessage("AliceBobMessage" + lastStepAB, "A", "Alice", "Bob", "");
         SetMessages(newMessage);
         frameworkControl.lastStepControl.SetMessageArrow("Alice", "Bob", frameworkControl.latestMessage.GetMessage(), "");
+        aliceStartedSecondRun = true;
     }
 
     private void InstantiateAliceBobMessage1Letter() {
@@ -197,16 +237,52 @@ public class ProtocolAttack2Controller : MonoBehaviour
         temp.transform.SetParent(frameworkControl.sendWindowController.selectedMessageEditsScrollViewContent.transform, false);
     }
 
+    private void InstantiateAliceBobMessage6Message() {
+        if (aliceBobNonce2 != "") {
+            GameObject temp = Instantiate(frameworkControl.attack2AliceBobMessage6Message);
+            temp.transform.Find("CarolButton").GetComponent<Button>().onClick.AddListener(ClickCarol);
+            temp.transform.Find("BobButton").GetComponent<Button>().onClick.AddListener(ClickBob);
+            temp.transform.SetParent(frameworkControl.sendWindowController.selectedMessageEditsScrollViewContent.transform, false);
+        }
+    }
+
+    private void InstantiateAliceBobMessage3Nonce() {
+        if (aliceBobNonce2 != "") {
+            GameObject temp = Instantiate(frameworkControl.attack2AliceBobMessage3Nonce);
+            temp.transform.Find("Nonce1Button").Find("ButtonText").GetComponent<TextMeshProUGUI>().text = "{ N<sub><size=110%" + aliceBobNonce1 + "</size></sub> + 1 }<sub><size=130%>Kab</size></sub>";
+            temp.transform.Find("Nonce2Button").Find("ButtonText").GetComponent<TextMeshProUGUI>().text = "{ N<sub><size=110%" + aliceBobNonce2 + "</size></sub> + 1 }<sub><size=130%>Kab</size></sub>";
+            temp.transform.Find("Nonce1Button").GetComponent<Button>().onClick.AddListener(ClickNonce1);
+            temp.transform.Find("Nonce2Button").GetComponent<Button>().onClick.AddListener(ClickNonce2);
+            temp.transform.SetParent(frameworkControl.sendWindowController.selectedMessageEditsScrollViewContent.transform, false);
+        }
+    }
+
     public void ClickA() {
-        frameworkControl.sendWindowController.SetSelectedMessage(Regex.Replace(frameworkControl.sendWindowController.currentlySelectedMessage.message, @"[ABC]", "A"));
+        frameworkControl.sendWindowController.SetSelectedMessage(Regex.Replace(frameworkControl.sendWindowController.GetSelectedMessage(), @"[ABC]", "A"));
     }
 
     public void ClickB() {
-        frameworkControl.sendWindowController.SetSelectedMessage(Regex.Replace(frameworkControl.sendWindowController.currentlySelectedMessage.message, @"[ABC]", "B"));
+        frameworkControl.sendWindowController.SetSelectedMessage(Regex.Replace(frameworkControl.sendWindowController.GetSelectedMessage(), @"[ABC]", "B"));
     }
 
     public void ClickC() {
-        frameworkControl.sendWindowController.SetSelectedMessage(Regex.Replace(frameworkControl.sendWindowController.currentlySelectedMessage.message, @"[ABC]", "C"));
+        frameworkControl.sendWindowController.SetSelectedMessage(Regex.Replace(frameworkControl.sendWindowController.GetSelectedMessage(), @"[ABC]", "C"));
+    }
+
+    public void ClickCarol() {
+        frameworkControl.sendWindowController.SetSelectedMessage(Regex.Replace(frameworkControl.sendWindowController.GetSelectedMessage(), @"Bob", "Carol"));
+    }
+
+    public void ClickBob() {
+        frameworkControl.sendWindowController.SetSelectedMessage(Regex.Replace(frameworkControl.sendWindowController.GetSelectedMessage(), @"Carol", "Bob"));
+    }
+
+    public void ClickNonce1() {
+        frameworkControl.sendWindowController.SetSelectedMessage(Regex.Replace(frameworkControl.sendWindowController.GetSelectedMessage(), @"\>\d+", aliceBobNonce1));
+    }
+
+    public void ClickNonce2() {
+        frameworkControl.sendWindowController.SetSelectedMessage(Regex.Replace(frameworkControl.sendWindowController.GetSelectedMessage(), @"\>\d+", aliceBobNonce2));
     }
 
     private string GenerateNonce() {
@@ -218,10 +294,5 @@ public class ProtocolAttack2Controller : MonoBehaviour
         this.secondLastAliceBobMsg = lastAliceBobMsg;
         lastAliceBobMsg = msg;
         frameworkControl.latestMessage = msg;
-    }
-
-    private void SetABLastMessage(CapturedMessage msg) {
-        this.secondLastAliceBobMsg = lastAliceBobMsg;
-        lastAliceBobMsg = msg;
     }
 }
