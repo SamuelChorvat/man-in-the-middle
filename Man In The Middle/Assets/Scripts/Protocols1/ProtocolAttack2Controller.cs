@@ -157,7 +157,7 @@ public class ProtocolAttack2Controller : MonoBehaviour
 
                 m = Regex.Match(msg.GetMessage(), @"Pay\sCarol");
                 if (m.Success) {
-                    frameworkControl.Success("Even though you are not able to change the text itself because of the pre-shared symmetric key encryption, you can still exploit this protocol because of the fact that the nonce is encrypted separately instead of encrypting it together with the message. This allows us to reuse all the previously encrypted messages without the recipient realising it.");
+                    frameworkControl.Success("Even though you are not able to change the text itself because of the pre-shared symmetric key encryption, you can still exploit this protocol because of the fact that the nonce is encrypted separately instead of encrypting it together with the message. This allows us to re-use all the previously encrypted messages without the recipient realising it.");
                     return;
                 } else {
                     frameworkControl.Fail("Attack failed because the protocol finished without being exploited.");
