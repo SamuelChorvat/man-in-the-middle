@@ -35,6 +35,9 @@ public class ProtocolFrameworkController : MonoBehaviour
     public GameObject attack2AliceBobMessage3Nonce;
     public GameObject attack2AliceBobMessage6Message;
 
+    [Header("Message Edit Prefabs Attack 3")]
+    public GameObject attack3AliceCarolMessage1Encryption;
+
     [Header("Scroll View")]
     public GameObject scrollViewObject;
 
