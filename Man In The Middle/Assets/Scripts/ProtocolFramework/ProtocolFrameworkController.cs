@@ -13,6 +13,7 @@ public class ProtocolFrameworkController : MonoBehaviour
     public ProtocolAttack1Controller attack1Ref;
     public ProtocolAttack2Controller attack2Ref;
     public ProtocolAttack3Controller attack3Ref;
+    public ProtocolAttack4Controller attack4Ref;
 
     [Header("Continue Button")]
     public RevealContinueButton contBut;

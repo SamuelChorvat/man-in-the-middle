@@ -286,9 +286,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2314ca05e4f1cb8409cabb0bdc32df0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRef:
-  - {fileID: 0}
-  - {fileID: 0}
+  attack1Ref: {fileID: 0}
+  attack2Ref: {fileID: 0}
+  attack3Ref: {fileID: 0}
+  attack4Ref: {fileID: 0}
   contBut: {fileID: 0}
   protocolStepPrefab: {fileID: 725444305308263288, guid: d89e6560923c01e48a6a1954733cd6fb, type: 3}
   captureInterceptSendPrefab: {fileID: 6895188776956604942, guid: 68487c999ab7ecc44bcc75acf0df33e8, type: 3}
@@ -299,6 +300,10 @@ MonoBehaviour:
   spacePrefab: {fileID: 6779343662250921060, guid: ca4db58dd6f998447861ebb0608139ff, type: 3}
   endMessagePrefab: {fileID: 830449583050000959, guid: 5ff9978e026da0a408a58a9464dbb0d6, type: 3}
   attack1AliceBobMessage1Amount: {fileID: 6009555608051106521, guid: 26fd2027b5d87df45a42affba4499ad2, type: 3}
+  attack2AliceBobMessage1Letter: {fileID: 3061086691640462798, guid: cf67dbb5dc0e0f14699e50eb8ba0bdab, type: 3}
+  attack2AliceBobMessage3Nonce: {fileID: 2422880324373906235, guid: c683004f0ec34f44bb772998e00f0a94, type: 3}
+  attack2AliceBobMessage6Message: {fileID: 7298466132176374539, guid: e2c77d5ff7c97a54f939852e79f7ea13, type: 3}
+  attack3AliceCarolMessage1Encryption: {fileID: 2476576830878822545, guid: 0e80c4a1ad3f5924b8ebdc3592468b3f, type: 3}
   scrollViewObject: {fileID: 7285446189254954796}
   scrollViewContentObject: {fileID: 7285446190583400214}
   sendWindow: {fileID: 7285446190485139290}
@@ -311,6 +316,7 @@ MonoBehaviour:
   fromSend: 
   carolAlias: 
   toSendMessage: 
+  toMessageName: 
 --- !u!114 &1927712672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,7 +686,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -538020.3, y: 268896.78}
+  m_AnchoredPosition: {x: -864008.1, y: 1192265.4}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7285446190583400203
