@@ -39,6 +39,9 @@ public class ProtocolFrameworkController : MonoBehaviour
     [Header("Message Edit Prefabs Attack 3")]
     public GameObject attack3AliceCarolMessage1Encryption;
 
+    [Header("Message Edit Prefabs Attack 4")]
+    public GameObject attack4AliceCarolMessage2Signature;
+
     [Header("Scroll View")]
     public GameObject scrollViewObject;
 
@@ -199,6 +202,8 @@ public class ProtocolFrameworkController : MonoBehaviour
             attack2Ref.Intercept();
         } else if (attackNo == 3) {
             attack3Ref.Intercept();
+        } else if (attackNo == 4) {
+            attack4Ref.Intercept();
         }
     }
 
@@ -234,6 +239,8 @@ public class ProtocolFrameworkController : MonoBehaviour
             attack2Ref.Continue();
         } else if (attackNo == 3) {
             attack3Ref.Continue();
+        } else if (attackNo == 4) {
+            attack4Ref.Continue();
         }
     }
 
@@ -248,6 +255,8 @@ public class ProtocolFrameworkController : MonoBehaviour
             attack2Ref.SelectMessage();
         } else if (attackNo == 3) {
             attack3Ref.SelectMessage();
+        } else if (attackNo == 4) {
+            attack4Ref.SelectMessage();
         }
     }
 
@@ -269,6 +278,8 @@ public class ProtocolFrameworkController : MonoBehaviour
             attack2Ref.SendMessage();
         } else if (attackNo == 3) {
             attack3Ref.SendMessage();
+        } else if (attackNo == 4) {
+            attack4Ref.SendMessage();
         }
 
         sendWindowController.ClickCloseWindowButton();
@@ -287,6 +298,8 @@ public class ProtocolFrameworkController : MonoBehaviour
             attack2Ref.RestartProtocol();
         } else if (attackNo == 3) {
             attack3Ref.RestartProtocol();
+        } else if (attackNo == 4) {
+            attack4Ref.RestartProtocol();
         }
     }
 

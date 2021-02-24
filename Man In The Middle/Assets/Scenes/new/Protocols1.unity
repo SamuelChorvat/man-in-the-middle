@@ -1406,7 +1406,19 @@ MonoBehaviour:
   triggerEventsOnSkip: 0
   onTextShowed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1383143542}
+        m_TargetAssemblyTypeName: ProtocolFrameworkController, Assembly-CSharp
+        m_MethodName: RestartProtocol
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 4
+          m_BoolArgument: 0
+        m_CallState: 2
   onTypewriterStart:
     m_PersistentCalls:
       m_Calls: []
@@ -1501,8 +1513,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Exploit the introduced vulnerability, so that Bob thinks he is communicating
-    with Alice
+  m_text: Exploit the introduced vulnerability, to trick Alice into communicating
+    with Bob
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 70b6ad6f58d76564fb70b705683bb513, type: 2}
   m_sharedMaterial: {fileID: -8765385849567795585, guid: 70b6ad6f58d76564fb70b705683bb513, type: 2}
@@ -22019,6 +22031,10 @@ PrefabInstance:
       propertyPath: contBut
       value: 
       objectReference: {fileID: 2063386485}
+    - target: {fileID: 7285446189578910509, guid: 7d28d51a29568eb48a997b96a2a12ada, type: 3}
+      propertyPath: attack4AliceCarolMessage2Signature
+      value: 
+      objectReference: {fileID: 4996258920609181696, guid: 82ae445656d5da945a44941a47748080, type: 3}
     - target: {fileID: 7285446190269308753, guid: 7d28d51a29568eb48a997b96a2a12ada, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -22029,11 +22045,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7285446190583400201, guid: 7d28d51a29568eb48a997b96a2a12ada, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -867744.4
+      value: -880821.25
       objectReference: {fileID: 0}
     - target: {fileID: 7285446190583400201, guid: 7d28d51a29568eb48a997b96a2a12ada, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1194901.1
+      value: 1228357.8
       objectReference: {fileID: 0}
     - target: {fileID: 7285446190583400201, guid: 7d28d51a29568eb48a997b96a2a12ada, type: 3}
       propertyPath: m_SizeDelta.x
