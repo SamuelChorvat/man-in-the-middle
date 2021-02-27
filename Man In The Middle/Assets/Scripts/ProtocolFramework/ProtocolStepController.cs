@@ -68,6 +68,14 @@ public class ProtocolStepController : MonoBehaviour
         }
     }
 
+    //Attack 5
+    public void SetBob(string name) {
+        bob.SetActive(true);
+        bob.GetComponent<Image>().color = Color.white;
+        bob.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = name;
+        bob.transform.Find("Name").GetComponent<TextMeshProUGUI>().color = Color.white;
+    }
+
     private void SetCarolCarol() {
         carol.SetActive(true);
         carol.GetComponent<Image>().color = Color.white;
