@@ -15,6 +15,7 @@ public class ProtocolFrameworkController : MonoBehaviour
     public ProtocolAttack3Controller attack3Ref;
     public ProtocolAttack4Controller attack4Ref;
     public ProtocolAttack5Controller attack5Ref;
+    public ProtocolAttack6Controller attack6Ref;
 
     [Header("Continue Button")]
     public RevealContinueButton contBut;
@@ -214,6 +215,8 @@ public class ProtocolFrameworkController : MonoBehaviour
             attack4Ref.Intercept();
         } else if (attackNo == 5) {
             attack5Ref.Intercept();
+        } else if (attackNo == 6) {
+            attack6Ref.Intercept();
         }
     }
 
@@ -259,6 +262,8 @@ public class ProtocolFrameworkController : MonoBehaviour
             attack4Ref.Continue();
         } else if (attackNo == 5) {
             attack5Ref.Continue();
+        } else if (attackNo == 6) {
+            attack6Ref.Continue();
         }
     }
 
@@ -277,6 +282,8 @@ public class ProtocolFrameworkController : MonoBehaviour
             attack4Ref.SelectMessage();
         } else if (attackNo == 5) {
             attack5Ref.SelectMessage();
+        } else if (attackNo == 6) {
+            attack6Ref.SelectMessage();
         }
     }
 
@@ -302,6 +309,8 @@ public class ProtocolFrameworkController : MonoBehaviour
             attack4Ref.SendMessage();
         } else if (attackNo == 5) {
             attack5Ref.SendMessage();
+        } else if (attackNo == 6) {
+            attack6Ref.SendMessage();
         }
 
         sendWindowController.ClickCloseWindowButton();
@@ -324,6 +333,8 @@ public class ProtocolFrameworkController : MonoBehaviour
             attack4Ref.RestartProtocol();
         } else if (attackNo == 5) {
             attack5Ref.RestartProtocol();
+        } else if (attackNo == 6) {
+            attack6Ref.RestartProtocol();
         }
     }
 
