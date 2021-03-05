@@ -12,12 +12,17 @@ public class ProtocolAttack3Controller : MonoBehaviour {
     private int lastStepAB = 0;
     private int lastStepAC = 0;
 
+    private CapturedMessage lastAliceBobMsg = new CapturedMessage("", "", "", "", "");
+
     private bool intercepted = false;
+    private bool abSent = false;
 
     public void RestartProtocol() {
         lastStepAB = 0;
         lastStepAC = 0;
         intercepted = false;
+        abSent = false;
+        lastAliceBobMsg = new CapturedMessage("", "", "", "", "");
         SendAliceCarolStep1();
     }
 
@@ -30,7 +35,14 @@ public class ProtocolAttack3Controller : MonoBehaviour {
     }
 
     public void SendMessage() {
+        if (abSent && !intercepted) {
+            frameworkControl.Fail("Invalid or unexpected message.");
+            return;
+        }
+
         intercepted = false;
+        abSent = false;
+
         if (frameworkControl.latestMessage.alias.Equals("Alice") || frameworkControl.latestMessage.alias.Equals("Bob")) {
             lastStepAB += 1;
         }
@@ -50,6 +62,13 @@ public class ProtocolAttack3Controller : MonoBehaviour {
         if ((frameworkControl.latestMessage.to.Equals("Alice") || frameworkControl.latestMessage.to.Equals("Bob")) && !intercepted) {
             frameworkControl.Fail("Invalid or unexpected message. Try intercepting the message so that it doesn't reach " + frameworkControl.latestMessage.to + ".");
             return;
+        }
+
+        if (!lastAliceBobMsg.messageName.Equals("")) {
+            frameworkControl.NewStep();
+            frameworkControl.latestMessage = lastAliceBobMsg;
+            frameworkControl.lastStepControl.SetMessageArrow("Bob", "Alice", frameworkControl.latestMessage.GetMessage(), "");
+            abSent = true;
         }
 
         intercepted = false;
@@ -92,6 +111,7 @@ public class ProtocolAttack3Controller : MonoBehaviour {
                 lastStepAB = 2;
                 CapturedMessage newMessage = new CapturedMessage("AliceBobMessage" + lastStepAB, "E<sub>A</sub>( " + GetNonce("Alice") + " , " + GetNonce("Bob") + " )", "Bob", "Alice", "");
                 frameworkControl.latestMessage = newMessage;
+                lastAliceBobMsg = newMessage;
                 frameworkControl.lastStepControl.SetMessageArrow("Bob", "Alice", frameworkControl.latestMessage.GetMessage(), "");
                 return;
             }
@@ -101,6 +121,7 @@ public class ProtocolAttack3Controller : MonoBehaviour {
                 lastStepAB = 4;
                 CapturedMessage newMessage = new CapturedMessage("AliceBobMessage" + lastStepAB, "{ M }<sub><size=130%>Key(Na,Nb)</size></sub>", "Bob", "Alice", "");
                 frameworkControl.latestMessage = newMessage;
+                lastAliceBobMsg = newMessage;
                 frameworkControl.lastStepControl.SetMessageArrow("Bob", "Alice", frameworkControl.latestMessage.GetMessage(), "");
                 return;
             }
