@@ -26984,6 +26984,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239341512}
   m_CullTransparentMesh: 0
+--- !u!1 &1240516337 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7535947122399927757, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
+  m_PrefabInstance: {fileID: 7535947123285860491}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1240516342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240516337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &1255734059
 GameObject:
   m_ObjectHideFlags: 0
@@ -30481,11 +30512,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7285446190583400201, guid: 7d28d51a29568eb48a997b96a2a12ada, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1362818.5
+      value: -1379632.8
       objectReference: {fileID: 0}
     - target: {fileID: 7285446190583400201, guid: 7d28d51a29568eb48a997b96a2a12ada, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2409391
+      value: 2436365.8
       objectReference: {fileID: 0}
     - target: {fileID: 7285446190583400201, guid: 7d28d51a29568eb48a997b96a2a12ada, type: 3}
       propertyPath: m_SizeDelta.x
@@ -34969,6 +35000,7 @@ GameObject:
   - component: {fileID: 1603327060}
   - component: {fileID: 1603327061}
   - component: {fileID: 1603327062}
+  - component: {fileID: 1603327063}
   m_Layer: 0
   m_Name: Protocols1Controller
   m_TagString: Untagged
@@ -35040,6 +35072,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   continueButton: {fileID: 2063386485}
+  hintsControl: {fileID: 1603327063}
+  hintButton: {fileID: 1698914831}
   sections:
   - {fileID: 918737178}
   - {fileID: 990452037}
@@ -35156,6 +35190,23 @@ MonoBehaviour:
   s5p5protocol8Text: {fileID: 726607045}
   s5p5protocol8: {fileID: 151504507}
   s5p6protocolAttack8Text: {fileID: 790106612}
+--- !u!114 &1603327063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603327059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00cff5de30fc14a488bd5343ecb29f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintButton: {fileID: 1698914831}
+  hintPrefab: {fileID: 7343096491454912451, guid: f0823fc95ff18f74db7c77d577a5ff2b, type: 3}
+  getHintPrefab: {fileID: 2370056419956319625, guid: b42bc453087db954bafc9e10ce3f7c25, type: 3}
+  hintsWindow: {fileID: 7535947123285860493}
+  scrollViewContentObject: {fileID: 7535947123285860492}
 --- !u!1 &1625727656
 GameObject:
   m_ObjectHideFlags: 0
@@ -37256,7 +37307,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1698914833}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1603327063}
+        m_TargetAssemblyTypeName: HintsController, Assembly-CSharp
+        m_MethodName: OpenHintsWindow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1705573012
 GameObject:
   m_ObjectHideFlags: 0
@@ -49073,6 +49136,34 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: -17
       objectReference: {fileID: 0}
+    - target: {fileID: 7535947122497156067, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7535947122497156067, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7535947122497156067, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7535947122497156067, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1603327063}
+    - target: {fileID: 7535947122497156067, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: HintsController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7535947122497156067, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseHintsWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7535947122497156067, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7535947122641720886, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -49181,9 +49272,33 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7535947124095017040, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
+      propertyPath: m_VerticalFit
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7535947124095017041, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -965.6508
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7535947124095017041, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7535947124095017041, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7535947124095017041, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7535947124095017047, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
+      propertyPath: m_ChildForceExpandHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7535947124095017047, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
+      propertyPath: m_Padding.m_Top
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7535947124222065652, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
       propertyPath: m_AnchorMax.x
@@ -49203,6 +49318,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
+--- !u!1 &7535947123285860492 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7535947124095017042, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
+  m_PrefabInstance: {fileID: 7535947123285860491}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7535947123285860493 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7535947123749846264, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
+  m_PrefabInstance: {fileID: 7535947123285860491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!222 &8515563717978673689
 CanvasRenderer:
   m_ObjectHideFlags: 0
