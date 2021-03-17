@@ -10,6 +10,10 @@ public class Intro2Controller : MonoBehaviour
     [Header("Continue Button")]
     public RevealContinueButton continueButton;
 
+    [Header("Hints")]
+    public HintsController hintsControl;
+    public GameObject hintButton;
+
     [Header("Sections")]
     public GameObject[] sections;
 
@@ -165,6 +169,7 @@ public class Intro2Controller : MonoBehaviour
     }
 
     private void SetCurrentSection(int n) {
+        hintButton.SetActive(false);
         HideAllSections();
         leftArrow.interactable = true;
         rightArrow.interactable = true;
@@ -207,6 +212,7 @@ public class Intro2Controller : MonoBehaviour
     }
 
     public void SetCurrentPart(int cPart) {
+        hintButton.SetActive(false);
         continueButton.ResetButton();
         currentPart = cPart;
         currentPartText.text = currentPart.ToString();
