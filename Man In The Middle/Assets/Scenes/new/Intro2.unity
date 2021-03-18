@@ -14694,6 +14694,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7535947123749846264, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
   m_PrefabInstance: {fileID: 1416281531}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1416281535 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7535947122833729482, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
+  m_PrefabInstance: {fileID: 1416281531}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1423797814
 GameObject:
   m_ObjectHideFlags: 0
@@ -16250,6 +16255,7 @@ MonoBehaviour:
   hintPrefab: {fileID: 7343096491454912451, guid: f0823fc95ff18f74db7c77d577a5ff2b, type: 3}
   getHintPrefab: {fileID: 2370056419956319625, guid: b42bc453087db954bafc9e10ce3f7c25, type: 3}
   hintsWindow: {fileID: 1416281534}
+  scrollViewObject: {fileID: 1416281535}
   scrollViewContentObject: {fileID: 1416281532}
 --- !u!1 &1622929482
 GameObject:

@@ -155,6 +155,7 @@ public class Intro1Controller : MonoBehaviour
     public void ShowSection2Part2() {
         SetCurrentSection(2);
         SetCurrentPart(2);
+        hintsControl.SetCurrentPuzzle("CaesarPuzzle");
 
         s2p1caesarTitle.SetActive(true);
         s2p2caesarIntroPuzzleTextAnimated.SetActive(true);

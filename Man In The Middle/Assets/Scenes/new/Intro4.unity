@@ -24619,6 +24619,7 @@ MonoBehaviour:
   hintPrefab: {fileID: 7343096491454912451, guid: f0823fc95ff18f74db7c77d577a5ff2b, type: 3}
   getHintPrefab: {fileID: 2370056419956319625, guid: b42bc453087db954bafc9e10ce3f7c25, type: 3}
   hintsWindow: {fileID: 1630230741}
+  scrollViewObject: {fileID: 1630230742}
   scrollViewContentObject: {fileID: 1630230739}
 --- !u!1 &1625553867
 GameObject:
@@ -24825,6 +24826,11 @@ RectTransform:
 --- !u!1 &1630230741 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7535947123749846264, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
+  m_PrefabInstance: {fileID: 1630230738}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1630230742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7535947122833729482, guid: 400f02eb1804ccd44b645dc33bf95387, type: 3}
   m_PrefabInstance: {fileID: 1630230738}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1635046139

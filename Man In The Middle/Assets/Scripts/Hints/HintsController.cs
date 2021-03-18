@@ -17,6 +17,9 @@ public class HintsController : MonoBehaviour
     [Header("Hints Window")]
     public GameObject hintsWindow;
 
+    [Header("Scroll View")]
+    public GameObject scrollViewObject;
+
     [Header("Scroll View Content")]
     public GameObject scrollViewContentObject;
 
@@ -62,6 +65,63 @@ public class HintsController : MonoBehaviour
         currentHintNo += 1;
 
         switch (currentPuzzle) {
+            case "CaesarPuzzle":
+                if (currentHintNo == 1) {
+                    NewHint("1. A = D");
+                } else if (currentHintNo == 2) {
+                    NewHint("2. B = E");
+                } else if (currentHintNo == 3) {
+                    NewHint("3. C = F");
+                } else if (currentHintNo == 4) {
+                    NewHint("4. D = G");
+                } else if (currentHintNo == 5) {
+                    NewHint("5. E = H");
+                } else if (currentHintNo == 6) {
+                    NewHint("6. F = I");
+                } else if (currentHintNo == 7) {
+                    NewHint("7. G = J");
+                } else if (currentHintNo == 8) {
+                    NewHint("8. H = K");
+                } else if (currentHintNo == 9) {
+                    NewHint("9. I = L");
+                } else if (currentHintNo == 10) {
+                    NewHint("10. J = M");
+                } else if (currentHintNo == 11) {
+                    NewHint("11. K = N");
+                } else if (currentHintNo == 12) {
+                    NewHint("12. L = O");
+                } else if (currentHintNo == 13) {
+                    NewHint("13. M = P");
+                } else if (currentHintNo == 14) {
+                    NewHint("14. N = Q");
+                } else if (currentHintNo == 15) {
+                    NewHint("15. O = R");
+                } else if (currentHintNo == 16) {
+                    NewHint("16. P = S");
+                } else if (currentHintNo == 17) {
+                    NewHint("17. Q = T");
+                } else if (currentHintNo == 18) {
+                    NewHint("18. R = U");
+                } else if (currentHintNo == 19) {
+                    NewHint("19. S = V");
+                } else if (currentHintNo == 20) {
+                    NewHint("20. T = W");
+                } else if (currentHintNo == 21) {
+                    NewHint("21. U = X");
+                } else if (currentHintNo == 22) {
+                    NewHint("22. V = Y");
+                } else if (currentHintNo == 23) {
+                    NewHint("23. W = Z");
+                } else if (currentHintNo == 24) {
+                    NewHint("24. X = A");
+                } else if (currentHintNo == 25) {
+                    NewHint("25. Y = B");
+                } else if (currentHintNo == 26) {
+                    NewHint("26. Z = C");
+                }
+
+                break;
+
             case "ProtocolAttack1":
                 if (currentHintNo == 1) {
                     NewHint("\n1. Try to intercept and capture the first message.");
@@ -151,6 +211,8 @@ public class HintsController : MonoBehaviour
         if (currentHintNo >= maxHintNo) {
             Destroy(getHintRef);
         }
+
+        ScrollToBottomProtocolView();
     }
 
     private void PrepareForNewHint() {
@@ -169,6 +231,9 @@ public class HintsController : MonoBehaviour
         hintButton.SetActive(true);
         currentPuzzle = pName;
         switch(currentPuzzle) {
+            case "CaesarPuzzle":
+                maxHintNo = 26;
+                break;
             case "ProtocolAttack1":
                 maxHintNo = 3;
                 break;
@@ -202,5 +267,11 @@ public class HintsController : MonoBehaviour
 
     public void CloseHintsWindow() {
         hintsWindow.gameObject.SetActive(false);
+    }
+
+    public void ScrollToBottomProtocolView() {
+        Canvas.ForceUpdateCanvases();
+        scrollViewObject.GetComponent<ScrollRect>().verticalNormalizedPosition = 0f;
+        Canvas.ForceUpdateCanvases();
     }
 }
