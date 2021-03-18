@@ -25,11 +25,13 @@ public class ProtocolAttack7Controller : MonoBehaviour {
     }
 
     public void Intercept() {
-        if (lastStepAB > 0) {
-            lastStepAB -= 1;
-        }
+        if ((frameworkControl.latestMessage.from.Equals("Bob") || frameworkControl.latestMessage.from.Equals("Alice")) && (frameworkControl.latestMessage.to.Equals("Bob") || frameworkControl.latestMessage.to.Equals("Alice"))) {
+            if (lastStepAB > 0) {
+                lastStepAB -= 1;
+            }
 
-        lastAliceBobMsg = secondLastAliceBobMsg;
+            lastAliceBobMsg = secondLastAliceBobMsg;
+        }
     }
 
     public void SendMessage() {

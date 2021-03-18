@@ -269,6 +269,7 @@ public class Protocols1Controller : MonoBehaviour
     public void ShowSection1Part2() {
         SetCurrentSection(1);
         SetCurrentPart(2);
+        hintsControl.SetCurrentPuzzle("ProtocolAttack1");
 
         s1p2simpleAttackTitle.SetActive(true);
         protocolAttackFramework.SetActive(true);
@@ -288,6 +289,7 @@ public class Protocols1Controller : MonoBehaviour
     public void ShowSection1Part4() {
         SetCurrentSection(1);
         SetCurrentPart(4);
+        hintsControl.SetCurrentPuzzle("ProtocolAttack2");
 
         s1p3nonceTitle.SetActive(true);
         protocolAttackFramework.SetActive(true);
@@ -329,6 +331,7 @@ public class Protocols1Controller : MonoBehaviour
     public void ShowSection2Part3() {
         SetCurrentSection(2);
         SetCurrentPart(3);
+        hintsControl.SetCurrentPuzzle("ProtocolAttack3");
 
         s2p2needhamTitle.SetActive(true);
         protocolAttackFramework.SetActive(true);
@@ -391,6 +394,7 @@ public class Protocols1Controller : MonoBehaviour
     public void ShowSection3Part5() {
         SetCurrentSection(3);
         SetCurrentPart(5);
+        hintsControl.SetCurrentPuzzle("ProtocolAttack4");
 
         s3p3stationToStationTitle.SetActive(true);
         protocolAttackFramework.SetActive(true);
@@ -421,6 +425,7 @@ public class Protocols1Controller : MonoBehaviour
     public void ShowSection4Part3() {
         SetCurrentSection(4);
         SetCurrentPart(3);
+        hintsControl.SetCurrentPuzzle("ProtocolAttack5");
 
         s4p1certificateTitle.SetActive(true);
         protocolAttackFramework.SetActive(true);
@@ -451,6 +456,7 @@ public class Protocols1Controller : MonoBehaviour
     public void ShowSection5Part2() {
         SetCurrentSection(5);
         SetCurrentPart(2);
+        hintsControl.SetCurrentPuzzle("ProtocolAttack6");
 
         s5p1protocolAttacksTitle.SetActive(true);
         protocolAttackFramework.SetActive(true);
@@ -472,6 +478,7 @@ public class Protocols1Controller : MonoBehaviour
     public void ShowSection5Part4() {
         SetCurrentSection(5);
         SetCurrentPart(4);
+        hintsControl.SetCurrentPuzzle("ProtocolAttack7");
 
         s5p1protocolAttacksTitle.SetActive(true);
         protocolAttackFramework.SetActive(true);

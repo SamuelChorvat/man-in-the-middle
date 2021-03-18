@@ -11,16 +11,20 @@ public class ProtocolAttack6Controller : MonoBehaviour
     public ProtocolFrameworkController frameworkControl;
 
     private int lastStepAB = 0;
+    private bool aliceLoginSent = false;
 
     public void RestartProtocol() {
         lastStepAB = 0;
+        aliceLoginSent = false;
         SendAliceBobStep1();
         frameworkControl.AddCapturedMessage(new CapturedMessage("CarolBobMessage1", "E<sub>B</sub>( LoginCarol , PasswordCarol )", "Carol", "Bob", "Carol"));
     }
 
     public void Intercept() {
-        if (lastStepAB > 0) {
-            lastStepAB -= 1;
+        if ((frameworkControl.latestMessage.from.Equals("Bob") || frameworkControl.latestMessage.from.Equals("Alice")) && (frameworkControl.latestMessage.to.Equals("Bob") || frameworkControl.latestMessage.to.Equals("Alice"))) {
+            if (lastStepAB > 0) {
+                lastStepAB -= 1;
+            }
         }
     }
 
@@ -58,7 +62,7 @@ public class ProtocolAttack6Controller : MonoBehaviour
                 return;
             }
 
-            if (msg.message.Equals("E<sub>A</sub>( K<sub>CB</sub> )") && lastStepAB == 2) {
+            if (msg.message.Equals("E<sub>A</sub>( K<sub>CB</sub> )") && aliceLoginSent) {
                 frameworkControl.Success("You are now able to decrypt messages that Alice encrypts using the symmetric key.");
                 return;
             }
@@ -96,6 +100,7 @@ public class ProtocolAttack6Controller : MonoBehaviour
     }
 
     private void SendAliceBobStep1() {
+        aliceLoginSent = true;
         frameworkControl.NewStep();
         lastStepAB = 1;
         CapturedMessage newMessage = new CapturedMessage("AliceBobMessage" + lastStepAB, "E<sub>B</sub>( LoginAlice , PasswordAlice )", "Alice", "Bob", "");
