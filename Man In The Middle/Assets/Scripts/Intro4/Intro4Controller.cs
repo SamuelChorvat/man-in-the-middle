@@ -313,6 +313,7 @@ public class Intro4Controller : MonoBehaviour
         SetCurrentPart(6);
         partControl.SetActive(false);
         altPartControl.SetActive(true);
+        hintsControl.SetCurrentPuzzle("DiffieHellman");
 
         s1p3diffieHellmanTitle.SetActive(true);
         s1p6diffieHellmanDemo.SetActive(true);
@@ -387,6 +388,7 @@ public class Intro4Controller : MonoBehaviour
     public void ShowSection4Part2() {
         SetCurrentSection(4);
         SetCurrentPart(2);
+        hintsControl.SetCurrentPuzzle("DiffieHellman");
 
         s4p1hashesTitle.SetActive(true);
         s4p2hashesDemoText.SetActive(true);
@@ -414,6 +416,7 @@ public class Intro4Controller : MonoBehaviour
     public void ShowSection4Part5() {
         SetCurrentSection(4);
         SetCurrentPart(5);
+        hintsControl.SetCurrentPuzzle("Birthday");
 
         s4p5birthdayTitle.SetActive(true);
         s4p5birthdayText.SetActive(true);
@@ -459,6 +462,7 @@ public class Intro4Controller : MonoBehaviour
     public void ShowSection5Part4() {
         SetCurrentSection(5);
         SetCurrentPart(4);
+        hintsControl.SetCurrentPuzzle("KnownText");
 
         s5p3knownTitle.SetActive(true);
         s5p4knownAttackDemoText.SetActive(true);

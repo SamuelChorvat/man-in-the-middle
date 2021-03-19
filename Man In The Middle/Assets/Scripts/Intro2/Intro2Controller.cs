@@ -121,6 +121,7 @@ public class Intro2Controller : MonoBehaviour
     public void ShowSection1Part2() {
         SetCurrentSection(1);
         SetCurrentPart(2);
+        hintsControl.SetCurrentPuzzle("VigenereCipher");
 
         s1p1padsTitle.SetActive(true);
         s1p2vignerePuzzleText.SetActive(true);
@@ -141,6 +142,7 @@ public class Intro2Controller : MonoBehaviour
     public void ShowSection2Part2() {
         SetCurrentSection(2);
         SetCurrentPart(2);
+        hintsControl.SetCurrentPuzzle("ModuloArithmetic");
 
         s2p1moduloTitle.SetActive(true);
         s2p2moduloPuzzleText.SetActive(true);
@@ -161,6 +163,7 @@ public class Intro2Controller : MonoBehaviour
     public void ShowSection3Part2() {
         SetCurrentSection(3);
         SetCurrentPart(2);
+        hintsControl.SetCurrentPuzzle("XOR");
 
         s3p1xorTitle.SetActive(true);
         s3p2xorPuzzleText.SetActive(true);

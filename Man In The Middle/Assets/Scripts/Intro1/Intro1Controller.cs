@@ -185,6 +185,7 @@ public class Intro1Controller : MonoBehaviour
     public void ShowSection3Part2() {
         SetCurrentSection(3);
         SetCurrentPart(2);
+        hintsControl.SetCurrentPuzzle("CaesarPuzzleRotations");
 
         s3p1caesarTitle.SetActive(true);
         s3p2caesarImprovementPuzzleTextAnimated.SetActive(true);
@@ -213,6 +214,7 @@ public class Intro1Controller : MonoBehaviour
     public void ShowSection4Part3() {
         SetCurrentSection(4);
         SetCurrentPart(3);
+        hintsControl.SetCurrentPuzzle("CaesarPuzzleFrequencies");
 
         s4p1caesarTitle.SetActive(true);
         s4p3caesarPuzzleText.SetActive(true);

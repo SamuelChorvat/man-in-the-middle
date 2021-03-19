@@ -119,7 +119,90 @@ public class HintsController : MonoBehaviour
                 } else if (currentHintNo == 26) {
                     NewHint("26. Z = C");
                 }
+                break;
 
+            case "CaesarPuzzleRotations":
+                if (currentHintNo == 1) {
+                    NewHint("\n1. Try to using the arrows until you find the correct rotation.");
+                } 
+                break;
+
+            case "CaesarPuzzleFrequencies":
+                if (currentHintNo == 1) {
+                    NewHint("\n1. Compare the english letter frequencies with the frequencies of the letters in the cipher text.");
+                } else if (currentHintNo == 2) {
+                    NewHint("\n2. Substitute letters with similar frequencies.");
+                } 
+                break;
+
+            case "VigenereCipher":
+                if (currentHintNo == 1) {
+                    NewHint("\n1. Look up the letter substitutions in the Vigenere table.");
+                } 
+                break;
+
+            case "ModuloArithmetic":
+                if (currentHintNo == 1) {
+                    NewHint("\n1. a mod b = r for largest whole number k such that a = b.k + r");
+                } else if (currentHintNo == 2) {
+                    NewHint("\n2. 5 mod 2 = 1 because 5 = 2*2 + 1");
+                }
+                break;
+
+            case "XOR":
+                if (currentHintNo == 1) {
+                    NewHint("\n1. 0 xor 0 = 0");
+                } else if (currentHintNo == 2) {
+                    NewHint("\n2. 0 xor 1 = 1");
+                } else if (currentHintNo == 3) {
+                    NewHint("\n3. 1 xor 1 = 0");
+                } else if (currentHintNo == 4) {
+                    NewHint("\n4. 1 xor 0 = 1");
+                }
+                break;
+
+            case "DESBruteforce":
+                if (currentHintNo == 1) {
+                    NewHint("\n1. Click on all the bruteforce buttons.");
+                } 
+                break;
+
+            case "ECBPicture":
+                if (currentHintNo == 1) {
+                    NewHint("\n1. It has black and white fur.");
+                } else if (currentHintNo == 2) {
+                    NewHint("\n2. It is panda.");
+                }
+                break;
+
+            case "GameConsole":
+                if (currentHintNo == 1) {
+                    NewHint("\n1. Follow the steps.");
+                } 
+                break;
+
+            case "DiffieHellman":
+                if (currentHintNo == 1) {
+                    NewHint("\n1. Follow the steps.");
+                }
+                break;
+
+            case "Hashes":
+                if (currentHintNo == 1) {
+                    NewHint("\n1. Hash one message.");
+                }
+                break;
+
+            case "Birthday":
+                if (currentHintNo == 1) {
+                    NewHint("\n1. Try pressing the ask button.");
+                }
+                break;
+
+            case "KnownText":
+                if (currentHintNo == 1) {
+                    NewHint("\n1. Follow the steps.");
+                }
                 break;
 
             case "ProtocolAttack1":
@@ -233,6 +316,42 @@ public class HintsController : MonoBehaviour
         switch(currentPuzzle) {
             case "CaesarPuzzle":
                 maxHintNo = 26;
+                break;
+            case "CaesarPuzzleRotations":
+                maxHintNo = 1;
+                break;
+            case "CaesarPuzzleFrequencies":
+                maxHintNo = 2;
+                break;
+            case "VigenereCipher":
+                maxHintNo = 1;
+                break;
+            case "ModuloArithmetic":
+                maxHintNo = 2;
+                break;
+            case "XOR":
+                maxHintNo = 4;
+                break;
+            case "DESBruteforce":
+                maxHintNo = 1;
+                break;
+            case "ECBPicture":
+                maxHintNo = 2;
+                break;
+            case "GameConsole":
+                maxHintNo = 1;
+                break;
+            case "DiffieHellman":
+                maxHintNo = 1;
+                break;
+            case "Hashes":
+                maxHintNo = 1;
+                break;
+            case "Birthday":
+                maxHintNo = 1;
+                break;
+            case "KnownText":
+                maxHintNo = 1;
                 break;
             case "ProtocolAttack1":
                 maxHintNo = 3;

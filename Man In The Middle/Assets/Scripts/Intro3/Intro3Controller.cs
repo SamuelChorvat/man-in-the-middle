@@ -158,6 +158,7 @@ public class Intro3Controller : MonoBehaviour
     public void ShowSection2Part1() {
         SetCurrentSection(2);
         SetCurrentPart(1);
+        hintsControl.SetCurrentPuzzle("DESBruteforce");
 
         s2p1desBruteforceTitle.SetActive(true);
         s2p1desBruteforceText.SetActive(true);
@@ -177,6 +178,7 @@ public class Intro3Controller : MonoBehaviour
     public void ShowSection3Part2() {
         SetCurrentSection(3);
         SetCurrentPart(2);
+        hintsControl.SetCurrentPuzzle("ECBPicture");
 
         s3p2ecbTitle.SetActive(true);
         s3p2ecbText.SetActive(true);
@@ -205,6 +207,7 @@ public class Intro3Controller : MonoBehaviour
     public void ShowSection4Part2() {
         SetCurrentSection(4);
         SetCurrentPart(2);
+        hintsControl.SetCurrentPuzzle("GameConsole");
 
         s4p2consoleAttackTitle.SetActive(true);
         s4p2consoleAttackText.SetActive(true);
