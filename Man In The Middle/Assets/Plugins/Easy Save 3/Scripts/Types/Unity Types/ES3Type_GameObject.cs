@@ -99,7 +99,6 @@ namespace ES3Types
                 {
                     if (obj != null || ES3ReferenceMgrBase.Current == null)
                     {
-                        reader.ReadRefProperty(); // Skip the ref as we don't need it.
                         reader.ReadInto<GameObject>(obj); // ReadInto to apply the prefab references.
                     }
                     else
@@ -199,13 +198,16 @@ namespace ES3Types
                         if (type == null)
                             throw new InvalidOperationException("Cannot load Component because no type data has been stored with it, so it's not possible to determine it's type");
 
-                        reader.Read_ref(); // We don't load Components by reference when loading GameObjects, so read the ref and ignore it.
+                        var componentRef = reader.Read_ref();
 
                         // Rather than loading by reference, load using the Components list.
                         var c = components.Find(x => x.GetType() == type);
                         // If the Component exists in the Component list, load into it and remove it from the list.
                         if (c != null)
                         {
+                            if (ES3ReferenceMgrBase.Current != null)
+                                ES3ReferenceMgrBase.Current.Add(c, componentRef);
+
                             ES3TypeMgr.GetOrCreateES3Type(type).ReadInto<Component>(reader, c);
                             components.Remove(c);
                         }

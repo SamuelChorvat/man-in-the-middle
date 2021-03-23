@@ -578,7 +578,7 @@ namespace ES3Internal
                 return true;
 
             foreach (var flag in invalidHideFlags)
-                if ((obj.hideFlags & flag) != 0)
+                if ((obj.hideFlags & flag) != 0 && obj.hideFlags != HideFlags.HideInHierarchy && obj.hideFlags != HideFlags.HideInInspector)
                     if (!(obj is Mesh || obj is Material))
                         return false;
 

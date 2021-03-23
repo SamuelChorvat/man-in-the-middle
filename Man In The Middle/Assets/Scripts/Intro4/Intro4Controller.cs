@@ -4,7 +4,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Febucci.UI;
-using UnityEngine.SocialPlatforms.GameCenter;
 
 public class Intro4Controller : MonoBehaviour
 {

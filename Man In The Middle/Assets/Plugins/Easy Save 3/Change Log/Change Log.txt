@@ -1,3 +1,11 @@
+3.3.2f1
+- Resolved issue where Components on prefabs would sometimes not be added to the reference manager.
+- Resolved issue where reference ID was read unnecesserily, causing format exception.
+- Resolved issue where child prefabs would not be recognised by manager.
+
+3.3.1p12
+- Resolved case where certain references would not be added to manager.
+
 3.3.1f11
 - Fixed issue where using ES3.CacheFile with an encrypted file could fail.
 - Fixed issue where Directory.GetFiles cannot process a full path on certain configurations.

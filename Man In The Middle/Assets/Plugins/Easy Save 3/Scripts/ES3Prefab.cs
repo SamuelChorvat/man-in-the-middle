@@ -96,8 +96,15 @@ namespace ES3Internal
 
             // Create a new reference list so that any objects which are no longer dependencies are removed.
             var tempLocalRefs = new ES3RefIdDictionary();
+
+            // Get dependencies of children also.
+            var transforms = GetComponentsInChildren<Transform>();
+            var gos = new GameObject[transforms.Length];
+            for (int i = 0; i < transforms.Length; i++)
+                gos[i] = transforms[i].gameObject;
+
             // Add the GameObject's dependencies to the reference list.
-            foreach (var obj in ES3ReferenceMgr.CollectDependencies(this.gameObject))
+            foreach (var obj in ES3ReferenceMgr.CollectDependencies(gos))
             {
                 var dependency = (UnityEngine.Object)obj;
                 if (obj == null || !ES3ReferenceMgr.CanBeSaved(dependency))
