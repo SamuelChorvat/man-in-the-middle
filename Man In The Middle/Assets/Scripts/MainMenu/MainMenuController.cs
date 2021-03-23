@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -20,14 +21,26 @@ public class MainMenuController : MonoBehaviour
     private bool titleRevealed = false;
     private bool attacksRevealed = false;
     private bool attackTextRevealed = false;
+    private bool firstTime = true;
     
 
     private void Awake() {
-        introText.text = "abc";
-        attackText.text = "abc";
-        introSec.SetActive(false);
-        attackSec.SetActive(false);
-        logo.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+        firstTime = ES3.Load("mainMenuFirstTime", true);
+
+        if (firstTime) {
+            introText.text = "abc";
+            attackText.text = "abc";
+            title.GetComponent<DOTweenAnimation>().DOPlayById("1");
+            introSec.SetActive(false);
+            attackSec.SetActive(false);
+            logo.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+        } else {
+            title.GetComponent<TextDecoder>().forceText = true;
+            introSec.transform.Find("Text").GetComponent<TextDecoder>().forceText = true;
+            StartCoroutine(introSec.transform.Find("Image").GetComponent<RemoveNoise>().Remove());
+            title.GetComponent<Text>().text = "<color=red>MAN</color> IN THE MIDDLE";
+        }
+        
     }
 
     // Start is called before the first frame update
@@ -41,12 +54,17 @@ public class MainMenuController : MonoBehaviour
     {
         if (title.GetComponent<Text>().text.Equals("MAN IN THE MIDDLE") && !titleRevealed) {
             title.GetComponent<Text>().text = "<color=red>MAN</color> IN THE MIDDLE";
-            title.GetComponent<DOTweenAnimation>().DOPlayById("2");
+            if(firstTime) {
+                title.GetComponent<DOTweenAnimation>().DOPlayById("2");
+            }
             titleRevealed = true;
         }
 
         if (introText.text.Equals("INTRO TO CRYPTOGRAPHY") && !attacksRevealed) {
-            ShowAttack();
+            if(firstTime) {
+                ShowAttack();
+                ES3.Save("mainMenuFirstTime", false);
+            }
             attacksRevealed = true;
         }
 
@@ -67,5 +85,13 @@ public class MainMenuController : MonoBehaviour
         attackSec.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
         attackSec.SetActive(true);
         attackSec.GetComponent<DOTweenAnimation>().DOPlay();
+    }
+
+    public void ClickIntroCrypto() {
+        SceneManager.LoadScene("IntroCryptoMain");
+    }
+
+    public void ClickProtocolAttack() {
+        SceneManager.LoadScene("Protocols1");
     }
 }
