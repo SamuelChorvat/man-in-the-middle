@@ -13,6 +13,8 @@ public class MainMenuController : MonoBehaviour
     public GameObject introSec;
     public GameObject attackSec;
     public GameObject keyHoleIm;
+    public GameObject lockedWindow;
+    public GameObject lockedWindowBg;
 
     public Text introText;
     public Text attackText;
@@ -39,6 +41,10 @@ public class MainMenuController : MonoBehaviour
             introSec.transform.Find("Text").GetComponent<TextDecoder>().forceText = true;
             StartCoroutine(introSec.transform.Find("Image").GetComponent<RemoveNoise>().Remove());
             title.GetComponent<Text>().text = "<color=red>MAN</color> IN THE MIDDLE";
+            if (ES3.Load("protocolAttacksUnlocked", false)) {
+                keyHoleIm.SetActive(false);
+                attackSec.transform.Find("Text").GetComponent<TextDecoderInfinite>().forceText = true;
+            }
         }
         
     }
@@ -92,6 +98,21 @@ public class MainMenuController : MonoBehaviour
     }
 
     public void ClickProtocolAttack() {
-        SceneManager.LoadScene("Protocols1");
+        bool unlocked = ES3.Load("protocolAttacksUnlocked", false);
+
+        if (unlocked) {
+            SceneManager.LoadScene("Protocols1");
+        } else {
+            lockedWindow.SetActive(true);
+            lockedWindowBg.SetActive(true);
+        }
+    }
+
+    public void ClickSkipButton() {
+        ES3.Save("protocolAttacksUnlocked", true);
+        lockedWindow.SetActive(false);
+        lockedWindowBg.SetActive(false);
+        keyHoleIm.SetActive(false);
+        attackSec.transform.Find("Text").GetComponent<TextDecoderInfinite>().forceText = true;
     }
 }

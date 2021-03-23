@@ -42,23 +42,27 @@ public class TextDecoderInfinite : MonoBehaviour
     // Call this coroutine to begin text decoder
     private IEnumerator TextDecode()
     {
+        bool decoded = false;
+        
         PopulateRandomText(); // Populates the random letter string with same length as text to write
         InvokeRepeating("RandomizeLetters", 0f, randomizeDelay); // Start randomizing text
-        
+
         // Start revealing letters after elapsed time
         yield return new WaitForSeconds(textShowDelay);
-        //reveal = true; // Reveal
+        
+        while (!decoded) {
+            // Force Text to show after specified seconds (Counts after show delay)
+            if (forceText == true & textBox.text != textToWrite) {
+                reveal = true;
+                yield return new WaitForSeconds(forceTime);
+                CancelInvoke();
+                textBox.text = textToWrite;
+                decoded = true;
+            }
 
-        // Force Text to show after specified seconds (Counts after show delay)
-       /* if (forceText == true & textBox.text != textToWrite)
-        {
-            yield return new WaitForSeconds(forceTime);
-            Debug.Log("force");
-            CancelInvoke();
-            textBox.text = textToWrite;
+            yield return new WaitForSeconds(0.1f);
         }
-
-        yield return null;*/
+        
     }
 
 
