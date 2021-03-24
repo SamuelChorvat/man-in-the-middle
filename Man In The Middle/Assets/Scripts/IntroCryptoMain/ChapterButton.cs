@@ -35,6 +35,7 @@ public class ChapterButton : MonoBehaviour {
             arrow.GetComponent<Image>().color = new Color32(255, 143, 0, 255);
             line.GetComponent<Image>().color = new Color32(255, 143, 0, 255);
             keyFragment.SetActive(true);
+            //keyFragment.GetComponent<Image>().color = new Vector4(255, 255, 255, 128);
             for (int i = 0; i < bulletPoints.Length; i++) {
                 bulletPoints[i].color = new Color32(255, 143, 0, 255);
             }
@@ -49,6 +50,18 @@ public class ChapterButton : MonoBehaviour {
             HideGoButton();
         }
         unlocked = b;
+    }
+
+    public void SetCompleted() {
+        title.color = Color.white;
+        arrow.GetComponent<Image>().color = Color.green;
+        line.GetComponent<Image>().color = Color.green;
+        keyFragment.SetActive(true);
+        keyFragment.GetComponent<Image>().color = Color.green;
+        goButton.GetComponent<Image>().color = Color.green;
+        for (int i = 0; i < bulletPoints.Length; i++) {
+            bulletPoints[i].color = Color.green;
+        }
     }
 
     public void ShowInfo() {
