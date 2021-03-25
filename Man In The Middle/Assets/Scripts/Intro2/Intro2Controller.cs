@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Febucci.UI;
+using UnityEngine.SceneManagement;
 
 public class Intro2Controller : MonoBehaviour
 {
@@ -239,5 +240,8 @@ public class Intro2Controller : MonoBehaviour
 
     public void ClickSection3() {
         ShowSection3Part1();
+    }
+    public void ClickHomeButton() {
+        SceneManager.LoadScene("IntroCryptoMain");
     }
 }

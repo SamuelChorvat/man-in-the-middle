@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Febucci.UI;
+using UnityEngine.SceneManagement;
 
 public class Intro4Controller : MonoBehaviour
 {
@@ -581,4 +582,7 @@ public class Intro4Controller : MonoBehaviour
         ShowSection5Part1();
     }
 
+    public void ClickHomeButton() {
+        SceneManager.LoadScene("IntroCryptoMain");
+    }
 }
