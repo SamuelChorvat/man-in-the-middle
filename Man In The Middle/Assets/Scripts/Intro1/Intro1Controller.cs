@@ -430,8 +430,15 @@ public class Intro1Controller : MonoBehaviour
     }
 
     public void ClickYesSkipSectionWindow() {
-        ES3.Save("chapter" + chapterNo + "Section" + currentSection + "Completed", true);
-        ES3.Save("chapter" + chapterNo + "Section" + (currentSection + 1) + "Unlocked", true);
+        ES3.Save("chapter" + chapterNo + "Section" + sectionClicked + "Unlocked", true);
+        for (int i = 1; i < sectionClicked; i++) {
+            ES3.Save("chapter" + chapterNo + "Section" + i + "Unlocked", true);
+            ES3.Save("chapter" + chapterNo + "Section" + i + "Completed", true);
+            for (int j = 1; j <= maxPartSection[i - 1]; j++) {
+                ES3.Save("chapter" + chapterNo + "Section" + i + "Part" + j, true);
+            }
+        } 
+
         skipSectionWindow.SetActive(false);
         skipWindowDarkening.SetActive(false);
         
