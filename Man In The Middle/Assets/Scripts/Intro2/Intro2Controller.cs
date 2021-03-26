@@ -23,11 +23,20 @@ public class Intro2Controller : MonoBehaviour
     public GameObject[] s2objects;
     public GameObject[] s3objects;
 
+    [Header("Section Control Objects")]
+    public Image[] sectionImages;
+    public Image[] sectionFrames;
+
     [Header("Part Control Objects")]
     public Button leftArrow;
     public Button rightArrow;
     public TextMeshProUGUI currentPartText;
     public TextMeshProUGUI maxPartText;
+
+    [Header("Skip Window")]
+    public GameObject skipPartWindow;
+    public GameObject skipSectionWindow;
+    public GameObject skipWindowDarkening;
 
     [Header("Section 1 Part 1")]
     public GameObject s1p1padsTitle;
@@ -55,33 +64,71 @@ public class Intro2Controller : MonoBehaviour
     public GameObject s3p2xorPuzzleText;
     public XORController s3p2xorPuzzleScript;
 
+    private int chapterNo = 2;
     private int maxSection = 3;
     private int[] maxPartSection = new int[] { 2, 2, 2 };
 
     private int currentSection;
     private int currentPart;
+    private int sectionClicked = 0;
 
-    void Start()
-    {
-        ShowSection1Part1();
+    public void Awake() {
+        CheckSaveSections();
+    }
+
+    void Start() {
+        if (ES3.Load("chapter" + chapterNo + "LastSection", 1) == 1) {
+            if (ES3.Load("chapter" + chapterNo + "LastPart", 1) == 1) {
+                ShowSection1Part1();
+            } else if (ES3.Load("chapter" + chapterNo + "LastPart", 2) == 2) {
+                ShowSection1Part2();
+            }
+        } else if (ES3.Load("chapter" + chapterNo + "LastSection", 1) == 2) {
+            if (ES3.Load("chapter" + chapterNo + "LastPart", 1) == 1) {
+                ShowSection2Part1();
+            } else if (ES3.Load("chapter" + chapterNo + "LastPart", 1) == 2) {
+                ShowSection2Part2();
+            } 
+        } else if (ES3.Load("chapter" + chapterNo + "LastSection", 1) == 3) {
+            if (ES3.Load("chapter" + chapterNo + "LastPart", 1) == 1) {
+                ShowSection3Part1();
+            } else if (ES3.Load("chapter" + chapterNo + "LastPart", 1) == 2) {
+                ShowSection3Part2();
+            }
+        } 
+    }
+
+    private void CheckSaveSections() {
+        for (int i = 0; i < maxSection; i++) {
+            if (i == 0) {
+                ES3.Save("chapter" + chapterNo + "Section" + (i + 1) + "Unlocked", true);
+            }
+
+            if (ES3.Load("chapter" + chapterNo + "Section" + (i + 1) + "Unlocked", false)) {
+                sectionImages[i].color = new Color32(255, 143, 0, 255);
+                if (ES3.Load("chapter" + chapterNo + "Section" + (i + 1) + "Completed", false)) {
+                    sectionImages[i].color = Color.green;
+                }
+            }
+        }
     }
 
     public void PressLeftPartArow() {
         if (currentSection == 1) {
             if (currentPart == 1) {
-                //nothing
+                ClickHomeButton();
             } else if (currentPart == 2) {
                 ShowSection1Part1();
             }
         } else if (currentSection == 2) {
             if (currentPart == 1) {
-                //nothing
+                ShowSection1Part2();
             } else if (currentPart == 2) {
                 ShowSection2Part1();
             } 
         } else if (currentSection == 3) {
             if (currentPart == 1) {
-                //nothing
+                ShowSection2Part2();
             } else if (currentPart == 2) {
                 ShowSection3Part1();
             }
@@ -89,23 +136,42 @@ public class Intro2Controller : MonoBehaviour
     }
 
     public void PressRightPartArrow() {
+        if (!ES3.Load("chapter" + chapterNo + "Section" + currentSection + "Part" + currentPart, false)) {
+            skipPartWindow.SetActive(true);
+            skipWindowDarkening.SetActive(true);
+            return;
+        }
+
+        ES3.Save("chapter" + chapterNo + "Section" + currentSection + "Part" + currentPart, true);
+
+        if (currentPart == maxPartSection[currentSection - 1]) {
+            ES3.Save("chapter" + chapterNo + "Section" + currentSection + "Completed", true);
+            ES3.Save("chapter" + chapterNo + "Section" + (currentSection + 1) + "Unlocked", true);
+        }
+
+        if (currentSection == maxSection && currentPart == maxPartSection[currentSection - 1]) {
+            ES3.Save("introChapter" + chapterNo + "Completed", true);
+            ES3.Save("chapter" + (chapterNo + 1) + "Section1Unlocked", true);
+            ES3.Save("introChapter" + (chapterNo + 1) + "Unlocked", true);
+        }
+
         if (currentSection == 1) {
             if (currentPart == 1) {
                 ShowSection1Part2();
             } else if (currentPart == 2) {
-                //nothing
+                ShowSection2Part1();
             }
         } else if (currentSection == 2) {
             if (currentPart == 1) {
                 ShowSection2Part2();
             } else if (currentPart == 2) {
-                //nothing
+                ShowSection3Part1();
             } 
         } else if (currentSection == 3) {
             if (currentPart == 1) {
                 ShowSection3Part2();
             } else if (currentPart == 2) {
-                //nothing
+                ClickHomeButton();
             }
         }
     }
@@ -179,6 +245,7 @@ public class Intro2Controller : MonoBehaviour
         rightArrow.interactable = true;
         maxPartText.text = maxPartSection[n - 1].ToString();
         currentSection = n;
+        ES3.Save("chapter" + chapterNo + "LastSection", currentSection);
 
         if (n == 1) {
             HideSection1();
@@ -186,14 +253,16 @@ public class Intro2Controller : MonoBehaviour
             HideSection2();
         } else if (n == 3) {
             HideSection3();
-        } 
-
+        }
+        
+        sectionFrames[n - 1].gameObject.SetActive(true);
         sections[n - 1].SetActive(true);
     }
 
     private void HideAllSections() {
         for (int i = 0; i < sections.Length; i++) {
             sections[i].SetActive(false);
+            sectionFrames[i].gameObject.SetActive(false);
         }
     }
 
@@ -220,28 +289,75 @@ public class Intro2Controller : MonoBehaviour
         continueButton.ResetButton();
         currentPart = cPart;
         currentPartText.text = currentPart.ToString();
+        ES3.Save("chapter" + chapterNo + "LastPart", currentPart);
 
-        if (currentPart == 1) {
-            leftArrow.interactable = false;
+        if (ES3.Load("chapter" + chapterNo + "Section" + currentSection + "Part" + currentPart, false)) {
+            rightArrow.gameObject.GetComponent<Image>().color = Color.white;
+        } else {
+            rightArrow.gameObject.GetComponent<Image>().color = Color.red;
         }
 
-        if (currentPart == maxPartSection[currentSection - 1]) {
-            rightArrow.interactable = false;
-        }
+        CheckSaveSections();
     }
 
     public void ClickSection1() {
+        if (!ES3.Load("chapter" + chapterNo + "Section1Unlocked", false)) {
+            skipSectionWindow.SetActive(true);
+            skipWindowDarkening.SetActive(true);
+            sectionClicked = 1;
+            return;
+        }
         ShowSection1Part1();
     }
 
     public void ClickSection2() {
+        if (!ES3.Load("chapter" + chapterNo + "Section2Unlocked", false)) {
+            skipSectionWindow.SetActive(true);
+            skipWindowDarkening.SetActive(true);
+            sectionClicked = 2;
+            return;
+        }
         ShowSection2Part1();
     }
 
     public void ClickSection3() {
+        if (!ES3.Load("chapter" + chapterNo + "Section3Unlocked", false)) {
+            skipSectionWindow.SetActive(true);
+            skipWindowDarkening.SetActive(true);
+            sectionClicked = 3;
+            return;
+        }
         ShowSection3Part1();
     }
+
     public void ClickHomeButton() {
         SceneManager.LoadScene("IntroCryptoMain");
+    }
+
+    public void ClickContinue() {
+        ES3.Save("chapter" + chapterNo + "Section" + currentSection + "Part" + currentPart, true);
+        PressRightPartArrow();
+    }
+
+    public void ClickYesSkipPartWindow() {
+        ES3.Save("chapter" + chapterNo + "Section" + currentSection + "Part" + currentPart, true);
+        skipPartWindow.SetActive(false);
+        skipWindowDarkening.SetActive(false);
+        PressRightPartArrow();
+    }
+
+    public void ClickYesSkipSectionWindow() {
+        ES3.Save("chapter" + chapterNo + "Section" + currentSection + "Completed", true);
+        ES3.Save("chapter" + chapterNo + "Section" + (currentSection + 1) + "Unlocked", true);
+        skipSectionWindow.SetActive(false);
+        skipWindowDarkening.SetActive(false);
+
+        if (sectionClicked == 1) {
+            ShowSection1Part1();
+        } else if (sectionClicked == 2) {
+            ShowSection2Part1();
+        } else if (sectionClicked == 3) {
+            ShowSection3Part1();
+        } 
     }
 }
