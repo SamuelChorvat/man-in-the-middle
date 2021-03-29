@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Protocols1Controller : MonoBehaviour
@@ -604,5 +605,9 @@ public class Protocols1Controller : MonoBehaviour
 
     public void ClickSection5() {
         ShowSection5Part1();
+    }
+
+    public void ClickHomeButton() {
+        SceneManager.LoadScene("MainMenu");
     }
 }
