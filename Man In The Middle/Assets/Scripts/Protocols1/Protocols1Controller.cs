@@ -26,16 +26,20 @@ public class Protocols1Controller : MonoBehaviour
     public GameObject[] s4objects;
     public GameObject[] s5objects;
 
+    [Header("Section Control Objects")]
+    public Image[] sectionImages;
+    public Image[] sectionFrames;
+
     [Header("Part Control Objects")]
     public Button leftArrow;
     public Button rightArrow;
     public TextMeshProUGUI currentPartText;
     public TextMeshProUGUI maxPartText;
 
-    private int[] maxPartSection = new int[] { 5, 4, 5, 4, 6};
-
-    private int currentSection;
-    private int currentPart;
+    [Header("Skip Window")]
+    public GameObject skipPartWindow;
+    public GameObject skipSectionWindow;
+    public GameObject skipWindowDarkening;
 
     [Header("General")]
     public GameObject protocolAttackFramework;
@@ -134,14 +138,98 @@ public class Protocols1Controller : MonoBehaviour
     [Header("Section 5 Part 6")]
     public GameObject s5p6protocolAttack8Text;
 
+    private int maxSection = 5;
+    private int[] maxPartSection = new int[] { 5, 4, 5, 4, 6 };
+
+    private int currentSection;
+    private int currentPart;
+    private int sectionClicked = 0;
+
+    public void Awake() {
+        CheckSaveSections();
+    }
+
     void Start() {
-        ShowSection1Part1();
+        if (ES3.Load("protocolsLastSection", 1) == 1) {
+            if (ES3.Load("protocolsLastPart", 1) == 1) {
+                ShowSection1Part1();
+            } else if (ES3.Load("protocolsLastPart", 1) == 2) {
+                ShowSection1Part2();
+            } else if (ES3.Load("protocolsLastPart", 1) == 3) {
+                ShowSection1Part3();
+            } else if (ES3.Load("protocolsLastPart", 1) == 4) {
+                ShowSection1Part4();
+            } else if (ES3.Load("protocolsLastPart", 1) == 5) {
+                ShowSection1Part5();
+            }
+        } else if (ES3.Load("protocolsLastSection", 1) == 2) {
+            if (ES3.Load("protocolsLastPart", 1) == 1) {
+                ShowSection2Part1();
+            } else if (ES3.Load("protocolsLastPart", 1) == 2) {
+                ShowSection2Part2();
+            } else if (ES3.Load("protocolsLastPart", 1) == 3) {
+                ShowSection2Part3();
+            } else if (ES3.Load("protocolsLastPart", 1) == 4) {
+                ShowSection2Part4();
+            }
+        } else if (ES3.Load("protocolsLastSection", 1) == 3) {
+            if (ES3.Load("protocolsLastPart", 1) == 1) {
+                ShowSection3Part1();
+            } else if (ES3.Load("protocolsLastPart", 1) == 2) {
+                ShowSection3Part2();
+            } else if (ES3.Load("protocolsLastPart", 1) == 3) {
+                ShowSection3Part3();
+            } else if (ES3.Load("protocolsLastPart", 1) == 4) {
+                ShowSection3Part4();
+            } else if (ES3.Load("protocolsLastPart", 1) == 5) {
+                ShowSection3Part5();
+            }
+        } else if (ES3.Load("protocolsLastSection", 1) == 4) {
+            if (ES3.Load("protocolsLastPart", 1) == 1) {
+                ShowSection4Part1();
+            } else if (ES3.Load("protocolsLastPart", 1) == 2) {
+                ShowSection4Part2();
+            } else if (ES3.Load("protocolsLastPart", 1) == 3) {
+                ShowSection4Part3();
+            } else if (ES3.Load("protocolsLastPart", 1) == 4) {
+                ShowSection4Part4();
+            }
+        } else if (ES3.Load("protocolsLastSection", 1) == 5) {
+            if (ES3.Load("protocolsLastPart", 1) == 1) {
+                ShowSection5Part1();
+            } else if (ES3.Load("protocolsLastPart", 1) == 2) {
+                ShowSection5Part2();
+            } else if (ES3.Load("protocolsLastPart", 1) == 3) {
+                ShowSection5Part3();
+            } else if (ES3.Load("protocolsLastPart", 1) == 4) {
+                ShowSection5Part4();
+            } else if (ES3.Load("protocolsLastPart", 1) == 5) {
+                ShowSection5Part5();
+            } else if (ES3.Load("protocolsLastPart", 1) == 6) {
+                ShowSection5Part6();
+            }
+        }
+    }
+
+    private void CheckSaveSections() {
+        for (int i = 0; i < maxSection; i++) {
+            if (i == 0) {
+                ES3.Save("protocolsSection" + (i + 1) + "Unlocked", true);
+            }
+
+            if (ES3.Load("protocolsSection" + (i + 1) + "Unlocked", false)) {
+                sectionImages[i].color = new Color32(255, 143, 0, 255);
+                if (ES3.Load("protocolsSection" + (i + 1) + "Completed", false)) {
+                    sectionImages[i].color = Color.green;
+                }
+            }
+        }
     }
 
     public void PressLeftPartArow() {
         if (currentSection == 1) {
             if (currentPart == 1) {
-                //nothing
+                ClickHomeButton();
             } else if (currentPart == 2) {
                 ShowSection1Part1();
             } else if (currentPart == 3) {
@@ -153,7 +241,7 @@ public class Protocols1Controller : MonoBehaviour
             } 
         } else if (currentSection == 2) {
             if (currentPart == 1) {
-                //nothing
+                ShowSection1Part5();
             } else if (currentPart == 2) {
                 ShowSection2Part1();
             } else if (currentPart == 3) {
@@ -163,7 +251,7 @@ public class Protocols1Controller : MonoBehaviour
             } 
         } else if (currentSection == 3) {
             if (currentPart == 1) {
-                //nothing
+                ShowSection2Part4();
             } else if (currentPart == 2) {
                 ShowSection3Part1();
             } else if (currentPart == 3) {
@@ -175,7 +263,7 @@ public class Protocols1Controller : MonoBehaviour
             }
         } else if (currentSection == 4) {
             if (currentPart == 1) {
-                //nothing
+                ShowSection3Part5();
             } else if (currentPart == 2) {
                 ShowSection4Part1();
             } else if (currentPart == 3) {
@@ -185,7 +273,7 @@ public class Protocols1Controller : MonoBehaviour
             } 
         } else if (currentSection == 5) {
             if (currentPart == 1) {
-                //nothing
+                ShowSection4Part4();
             } else if (currentPart == 2) {
                 ShowSection5Part1();
             } else if (currentPart == 3) {
@@ -201,6 +289,23 @@ public class Protocols1Controller : MonoBehaviour
     }
 
     public void PressRightPartArow() {
+        if (!ES3.Load("protocolsSection" + currentSection + "Part" + currentPart, false)) {
+            skipPartWindow.SetActive(true);
+            skipWindowDarkening.SetActive(true);
+            return;
+        }
+
+        ES3.Save("protocolsSection" + currentSection + "Part" + currentPart, true);
+
+        if (currentPart == maxPartSection[currentSection - 1]) {
+            ES3.Save("protocolsSection" + currentSection + "Completed", true);
+            ES3.Save("protocolsSection" + (currentSection + 1) + "Unlocked", true);
+        }
+
+        if (currentSection == maxSection && currentPart == maxPartSection[currentSection - 1]) {
+            ES3.Save("protocolsCompleted", true);
+        }
+
         if (currentSection == 1) {
             if (currentPart == 1) {
                 ShowSection1Part2();
@@ -210,7 +315,9 @@ public class Protocols1Controller : MonoBehaviour
                 ShowSection1Part4();
             } else if (currentPart == 4) {
                 ShowSection1Part5();
-            } 
+            } else if (currentPart == 5) {
+                ShowSection2Part1();
+            }
 
         } else if (currentSection == 2) {
             if (currentPart == 1) {
@@ -219,7 +326,9 @@ public class Protocols1Controller : MonoBehaviour
                 ShowSection2Part3();
             } else if (currentPart == 3) {
                 ShowSection2Part4();
-            } 
+            } else if (currentPart == 4) {
+                ShowSection3Part1();
+            }
 
         } else if (currentSection == 3) {
             if (currentPart == 1) {
@@ -230,7 +339,9 @@ public class Protocols1Controller : MonoBehaviour
                 ShowSection3Part4();
             } else if (currentPart == 4) {
                 ShowSection3Part5();
-            } 
+            } else if (currentPart == 5) {
+                ShowSection4Part1();
+            }
 
         } else if (currentSection == 4) {
             if (currentPart == 1) {
@@ -239,7 +350,9 @@ public class Protocols1Controller : MonoBehaviour
                 ShowSection4Part3();
             } else if (currentPart == 3) {
                 ShowSection4Part4();
-            } 
+            } else if (currentPart == 4) {
+                ShowSection5Part1();
+            }
 
         } else if (currentSection == 5) {
             if (currentPart == 1) {
@@ -252,6 +365,8 @@ public class Protocols1Controller : MonoBehaviour
                 ShowSection5Part5();
             } else if (currentPart == 5) {
                 ShowSection5Part6();
+            } else if (currentPart == 6) {
+                ClickHomeButton();
             }
         }
     }
@@ -512,6 +627,7 @@ public class Protocols1Controller : MonoBehaviour
     private void HideAllSections() {
         for (int i = 0; i < sections.Length; i++) {
             sections[i].SetActive(false);
+            sectionFrames[i].gameObject.SetActive(false);
         }
     }
 
@@ -552,14 +668,15 @@ public class Protocols1Controller : MonoBehaviour
         currentPartText.text = currentPart.ToString();
         protocolAttackFramework.transform.localScale = new Vector3(0, 0, 0);
         protocolAttackFramework.SetActive(false);
+        ES3.Save("protocolsLastPart", currentPart);
 
-        if (currentPart == 1) {
-            leftArrow.interactable = false;
+        if (ES3.Load("protocolsSection" + currentSection + "Part" + currentPart, false)) {
+            rightArrow.gameObject.GetComponent<Image>().color = Color.white;
+        } else {
+            rightArrow.gameObject.GetComponent<Image>().color = Color.red;
         }
 
-        if (currentPart == maxPartSection[currentSection - 1]) {
-            rightArrow.interactable = false;
-        }
+        CheckSaveSections();
     }
 
     private void SetCurrentSection(int n) {
@@ -571,6 +688,7 @@ public class Protocols1Controller : MonoBehaviour
         currentSection = n;
         protocolAttackFramework.transform.localScale = new Vector3(0, 0, 0);
         protocolAttackFramework.SetActive(false);
+        ES3.Save("protocolsLastSection", currentSection);
 
         if (n == 1) {
             HideSection1();
@@ -584,30 +702,99 @@ public class Protocols1Controller : MonoBehaviour
             HideSection5();
         }
 
+        sectionFrames[n - 1].gameObject.SetActive(true);
         sections[n - 1].SetActive(true);
     }
 
     public void ClickSection1() {
+        if (!ES3.Load("protocolsSection1Unlocked", false)) {
+            skipSectionWindow.SetActive(true);
+            skipWindowDarkening.SetActive(true);
+            sectionClicked = 1;
+            return;
+        }
         ShowSection1Part1();
     }
 
     public void ClickSection2() {
+        if (!ES3.Load("protocolsSection2Unlocked", false)) {
+            skipSectionWindow.SetActive(true);
+            skipWindowDarkening.SetActive(true);
+            sectionClicked = 2;
+            return;
+        }
         ShowSection2Part1();
     }
 
     public void ClickSection3() {
+        if (!ES3.Load("protocolsSection3Unlocked", false)) {
+            skipSectionWindow.SetActive(true);
+            skipWindowDarkening.SetActive(true);
+            sectionClicked = 3;
+            return;
+        }
         ShowSection3Part1();
     }
 
     public void ClickSection4() {
+        if (!ES3.Load("protocolsSection4Unlocked", false)) {
+            skipSectionWindow.SetActive(true);
+            skipWindowDarkening.SetActive(true);
+            sectionClicked = 4;
+            return;
+        }
         ShowSection4Part1();
     }
 
     public void ClickSection5() {
+        if (!ES3.Load("protocolsSection5Unlocked", false)) {
+            skipSectionWindow.SetActive(true);
+            skipWindowDarkening.SetActive(true);
+            sectionClicked = 5;
+            return;
+        }
         ShowSection5Part1();
     }
 
     public void ClickHomeButton() {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ClickContinue() {
+        ES3.Save("protocolsSection" + currentSection + "Part" + currentPart, true);
+        PressRightPartArow();
+    }
+
+    public void ClickYesSkipPartWindow() {
+        ES3.Save("protocolsSection" + currentSection + "Part" + currentPart, true);
+        skipPartWindow.SetActive(false);
+        skipWindowDarkening.SetActive(false);
+        PressRightPartArow();
+    }
+
+    public void ClickYesSkipSectionWindow() {
+        ES3.Save("protocolsSection" + sectionClicked + "Unlocked", true);
+        for (int i = 1; i < sectionClicked; i++) {
+            ES3.Save("protocolsSection" + i + "Unlocked", true);
+            ES3.Save("protocolsSection" + i + "Completed", true);
+            for (int j = 1; j <= maxPartSection[i - 1]; j++) {
+                ES3.Save("protocolsSection" + i + "Part" + j, true);
+            }
+        }
+
+        skipSectionWindow.SetActive(false);
+        skipWindowDarkening.SetActive(false);
+
+        if (sectionClicked == 1) {
+            ShowSection1Part1();
+        } else if (sectionClicked == 2) {
+            ShowSection2Part1();
+        } else if (sectionClicked == 3) {
+            ShowSection3Part1();
+        } else if (sectionClicked == 4) {
+            ShowSection4Part1();
+        } else if (sectionClicked == 5) {
+            ShowSection5Part1();
+        }
     }
 }
