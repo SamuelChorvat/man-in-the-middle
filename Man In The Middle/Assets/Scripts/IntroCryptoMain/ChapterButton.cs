@@ -23,7 +23,6 @@ public class ChapterButton : MonoBehaviour {
     private bool clicked = false;
 
     public void Awake() {
-        SetUnlocked(unlocked);
         arrow.GetComponent<RectTransform>().transform.eulerAngles = new Vector3(0, 0, -90);
         StartCoroutine(HideExtraInfo());
         clicked = false;

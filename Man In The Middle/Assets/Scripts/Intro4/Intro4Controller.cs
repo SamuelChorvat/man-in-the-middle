@@ -304,6 +304,7 @@ public class Intro4Controller : MonoBehaviour
             ES3.Save("introChapter" + chapterNo + "Completed", true);
             ES3.Save("chapter" + (chapterNo + 1) + "Section1Unlocked", true);
             ES3.Save("introChapter" + (chapterNo + 1) + "Unlocked", true);
+            ES3.Save("protocolAttacksUnlocked", true);
         }
 
         if (currentSection == 1) {
