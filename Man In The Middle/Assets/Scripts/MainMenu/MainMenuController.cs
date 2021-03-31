@@ -58,7 +58,7 @@ public class MainMenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (title.GetComponent<Text>().text.Equals("MAN IN THE MIDDLE") && !titleRevealed) {
+        if (title.GetComponent<Text>().text.Equals("MAN IN THE MIDDLE")) {
             title.GetComponent<Text>().text = "<color=red>MAN</color> IN THE MIDDLE";
             if(firstTime) {
                 title.GetComponent<DOTweenAnimation>().DOPlayById("2");
