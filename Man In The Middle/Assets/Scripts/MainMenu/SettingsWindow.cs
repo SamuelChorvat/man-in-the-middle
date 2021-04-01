@@ -15,6 +15,8 @@ public class SettingsWindow : MonoBehaviour {
 
     public GameObject settingWindow;
     public GameObject settingsWindowBackground;
+    public GameObject confirmResetWindow;
+    public GameObject confirmResetBackground;
 
     Resolution[] resolutions;
 
@@ -22,20 +24,20 @@ public class SettingsWindow : MonoBehaviour {
         resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
         resolutions = Screen.resolutions;
-        int currentResolutionIndex = 0;
 
         for (int i = 0; i < resolutions.Length; i++) {
-            string option = resolutions[i].width + " x " +
-                     resolutions[i].height;
+            string option = resolutions[i].width + "x" + resolutions[i].height + " " + resolutions[i].refreshRate + "Hz";
             options.Add(option);
-            if (resolutions[i].width == Screen.currentResolution.width
-                  && resolutions[i].height == Screen.currentResolution.height)
-                currentResolutionIndex = i;
+
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height && resolutions[i].refreshRate == Screen.currentResolution.refreshRate) {
+                ES3.Save("currentResolutionIndex", i);
+            }   
         }
 
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.RefreshShownValue();
 
+        resolutionDropdown.value = ES3.Load("currentResolutionIndex", 1);
         volumeSlider.value = (float) ES3.Load("currentVolume", 0.5f);
         soundToggle.isOn = ES3.Load("soundEnabled", true);
         fullScreenToggle.isOn = Screen.fullScreen;
@@ -64,8 +66,7 @@ public class SettingsWindow : MonoBehaviour {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width,
                   resolution.height, Screen.fullScreen);
-        ES3.Save("currentHeight", resolution.height);
-        ES3.Save("currentWidth", resolution.width);
+        ES3.Save("currentResolutionIndex", resolutionIndex);
     }
 
 	public void SetQuality(int qualityIndex) {
@@ -85,6 +86,20 @@ public class SettingsWindow : MonoBehaviour {
     }
 
     public void ResetGame() {
+        confirmResetWindow.SetActive(true);
+        confirmResetBackground.SetActive(true);
+    }
+
+    public void NoConfirmResetWindow() {
+        confirmResetWindow.SetActive(false);
+        confirmResetBackground.SetActive(false);
+    }
+
+    public void YesConfirmResetWindow() {
+        confirmResetWindow.SetActive(false);
+        confirmResetBackground.SetActive(false);
+        settingWindow.SetActive(false);
+        settingsWindowBackground.SetActive(false);
         ES3.DeleteFile("SaveFile.es3");
         SceneManager.LoadScene("MainMenu");
     }
