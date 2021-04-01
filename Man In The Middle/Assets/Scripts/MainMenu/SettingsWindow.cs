@@ -103,4 +103,8 @@ public class SettingsWindow : MonoBehaviour {
         ES3.DeleteFile("SaveFile.es3");
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void ExitGame() {
+        Application.Quit();
+    }
 }
