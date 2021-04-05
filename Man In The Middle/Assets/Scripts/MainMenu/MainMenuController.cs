@@ -27,6 +27,7 @@ public class MainMenuController : MonoBehaviour
     
 
     private void Awake() {
+        Application.runInBackground = true;
         firstTime = ES3.Load("mainMenuFirstTime", true);
 
         if (firstTime) {
