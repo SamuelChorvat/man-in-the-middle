@@ -44,7 +44,9 @@ public class SettingsWindow : MonoBehaviour {
     }
 
     public void SetVolume(float volume) {
-        AudioListener.volume = volume;
+        if(ES3.Load("soundEnabled", true)) {
+            AudioListener.volume = volume;
+        }
         ES3.Save("currentVolume", volume);
     }
 
