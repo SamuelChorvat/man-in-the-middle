@@ -44,7 +44,7 @@ public class SettingsWindow : MonoBehaviour {
     }
 
     public void SetVolume(float volume) {
-        if(ES3.Load("soundEnabled", true)) {
+        if (ES3.Load("soundEnabled", true)) {
             AudioListener.volume = volume;
         }
         ES3.Save("currentVolume", volume);
@@ -102,7 +102,13 @@ public class SettingsWindow : MonoBehaviour {
         confirmResetBackground.SetActive(false);
         settingWindow.SetActive(false);
         settingsWindowBackground.SetActive(false);
+        int resolution = ES3.Load("currentResolutionIndex", 1);
+        float currentVol = ES3.Load("currentVolume", 0.5f);
+        bool soundOn = ES3.Load("soundEnabled", true);
         ES3.DeleteFile("SaveFile.es3");
+        ES3.Save("currentResolutionIndex", resolution);
+        ES3.Save("currentVolume", currentVol);
+        ES3.Save("soundEnabled", soundOn);
         SceneManager.LoadScene("MainMenu");
     }
 
