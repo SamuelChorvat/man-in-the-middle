@@ -35,7 +35,7 @@ public class KnownDemoControl : MonoBehaviour
     public GameObject attackerText2Res;
 
 
-    private int step = 0;
+    public int step = 0;
     
     public void ShowStep() {
         if (step == 0) {

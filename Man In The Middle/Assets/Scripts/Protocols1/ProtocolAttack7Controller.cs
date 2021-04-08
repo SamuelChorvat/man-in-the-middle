@@ -8,10 +8,10 @@ public class ProtocolAttack7Controller : MonoBehaviour {
     public GameObject protocolFramework;
     public ProtocolFrameworkController frameworkControl;
 
-    private int lastStepAB = 0;
+    public int lastStepAB = 0;
 
     private CapturedMessage secondLastAliceBobMsg = new CapturedMessage("", "", "", "", "");
-    private CapturedMessage lastAliceBobMsg = new CapturedMessage("", "", "", "", "");
+    public CapturedMessage lastAliceBobMsg = new CapturedMessage("", "", "", "", "");
 
     private bool gzReceived = false;
 

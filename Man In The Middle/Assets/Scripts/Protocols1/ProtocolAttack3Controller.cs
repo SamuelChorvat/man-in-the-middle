@@ -14,7 +14,7 @@ public class ProtocolAttack3Controller : MonoBehaviour {
 
     private CapturedMessage lastAliceBobMsg = new CapturedMessage("", "", "", "", "");
 
-    private bool intercepted = false;
+    public bool intercepted = false;
     private bool abSent = false;
 
     public void RestartProtocol() {
@@ -134,7 +134,7 @@ public class ProtocolAttack3Controller : MonoBehaviour {
         frameworkControl.Fail("Invalid or unexpected message.");
     }
 
-    private string GetNonce(string name) {
+    public string GetNonce(string name) {
         if (name.Equals("Alice")) {
             return "N<sub><size=120%>a</size></sub>";
         } else if (name.Equals("Bob")) {

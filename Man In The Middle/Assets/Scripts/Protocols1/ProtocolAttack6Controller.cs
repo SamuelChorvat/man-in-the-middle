@@ -10,7 +10,7 @@ public class ProtocolAttack6Controller : MonoBehaviour
     public GameObject protocolFramework;
     public ProtocolFrameworkController frameworkControl;
 
-    private int lastStepAB = 0;
+    public int lastStepAB = 0;
     private bool aliceLoginSent = false;
 
     public void RestartProtocol() {

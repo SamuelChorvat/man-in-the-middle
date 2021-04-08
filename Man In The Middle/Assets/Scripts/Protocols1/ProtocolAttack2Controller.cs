@@ -15,7 +15,7 @@ public class ProtocolAttack2Controller : MonoBehaviour
     private int lastStepAB = 0;
 
     private CapturedMessage secondLastAliceBobMsg = new CapturedMessage("", "", "", "", "");
-    private CapturedMessage lastAliceBobMsg = new CapturedMessage("","","","","");
+    public CapturedMessage lastAliceBobMsg = new CapturedMessage("","","","","");
 
     private int nonceCounter = 0;
     private int lastABNonce = 0;
@@ -287,7 +287,7 @@ public class ProtocolAttack2Controller : MonoBehaviour
         frameworkControl.sendWindowController.SetSelectedMessage(Regex.Replace(frameworkControl.sendWindowController.GetSelectedMessage(), @"\>\d+", aliceBobNonce2));
     }
 
-    private string GenerateNonce() {
+    public string GenerateNonce() {
         nonceCounter += 1;
         return "N<sub><size=110%>" + nonceCounter + "</size></sub>";
     }
