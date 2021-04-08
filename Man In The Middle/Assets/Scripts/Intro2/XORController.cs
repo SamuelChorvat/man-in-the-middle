@@ -14,7 +14,7 @@ public class XORController : MonoBehaviour
 
     public XORNum[] xorNums;
 
-    private int correct = 0;
+    public int correct = 0;
 
     
     public void ShowPuzzle() {

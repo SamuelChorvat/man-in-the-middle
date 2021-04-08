@@ -31,7 +31,7 @@ public class IntroCaesarPuzzle : MonoBehaviour
     public GameObject oldText;
     public GameObject newText;
 
-    private bool experienceSolved = false;
+    public bool experienceSolved = false;
     private bool isSolved = false;
     private bool theSolved = false;
     private bool teacherSolved = false;
@@ -424,7 +424,7 @@ public class IntroCaesarPuzzle : MonoBehaviour
         }
     }
 
-    private void ResetBooleans() {
+    public void ResetBooleans() {
         experienceSolved = false;
         isSolved = false;
         theSolved = false;

@@ -13,7 +13,7 @@ public class DESBruteforceControl : MonoBehaviour
 
     public DESBruteforce[] scripts;
 
-    private int forced = 0;
+    public int forced = 0;
 
     public void ShowBruteForce() {
         demo.SetActive(true);
