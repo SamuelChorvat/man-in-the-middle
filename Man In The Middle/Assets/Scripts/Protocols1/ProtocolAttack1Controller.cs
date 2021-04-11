@@ -13,8 +13,8 @@ public class ProtocolAttack1Controller: MonoBehaviour
     public ProtocolFrameworkController frameworkControl;
 
     private LastStep lastStep;
-    public bool intercepted = false;
-    public bool interceptedOnce = false;
+    private bool intercepted = false;
+    private bool interceptedOnce = false;
 
     enum LastStep {
         AliceBobStep1

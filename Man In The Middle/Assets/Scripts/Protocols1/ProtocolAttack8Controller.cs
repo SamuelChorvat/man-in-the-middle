@@ -15,7 +15,7 @@ public class ProtocolAttack8Controller : MonoBehaviour {
 
     private CapturedMessage lastAliceBobMsg = new CapturedMessage("", "", "", "", "");
 
-    public bool intercepted = false;
+    private bool intercepted = false;
     private bool abSent = false;
 
     public void RestartProtocol() {
@@ -150,7 +150,7 @@ public class ProtocolAttack8Controller : MonoBehaviour {
         frameworkControl.sendWindowController.SetSelectedMessage(Regex.Replace(frameworkControl.sendWindowController.GetSelectedMessage(), @"\<[a-z]*\>[A-Z]<\/[a-z]*\>", "<sub>C</sub>"));
     }
 
-    public string GetNonce(string name) {
+    private string GetNonce(string name) {
         if (name.Equals("Alice")) {
             return "N<sub><size=120%>A</size></sub>";
         } else if (name.Equals("Bob")) {

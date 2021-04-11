@@ -109,7 +109,7 @@ public class RotationsCaesarCipher : MonoBehaviour {
         ChangeStr();
     }
 
-    public string GetAlphabet() {
+    private string GetAlphabet() {
         string temp = "";
         temp += alphabetRot[0];
         for (int i = 1; i < alphabetRot.Length; i++) {
@@ -118,7 +118,7 @@ public class RotationsCaesarCipher : MonoBehaviour {
         return temp;
     }
 
-    public int GetIndex(char val) {
+    private int GetIndex(char val) {
         string tmp = "" + val;
         for (int i = 0; i < alphabetOrg.Length; i++) {
             if (alphabetOrg[i].Equals(tmp)) {

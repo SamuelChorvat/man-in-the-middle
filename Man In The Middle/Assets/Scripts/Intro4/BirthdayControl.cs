@@ -45,7 +45,12 @@ public class BirthdayControl : MonoBehaviour
                 double pb1 = Math.Pow(bdayProb, pairs);
                 pb1 = 1 - pb1;
                 int result = (int)(pb1 * 100);
-                probability.text = result.ToString() + "%";
+                if (result < 1) {
+                    probability.text = "<1%";
+                } else {
+                    probability.text = result.ToString() + "%";
+                }
+                
             }
 
             if (currentNo == 23) {

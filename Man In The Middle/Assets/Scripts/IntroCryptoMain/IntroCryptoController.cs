@@ -10,6 +10,11 @@ public class IntroCryptoController : MonoBehaviour
     public ChapterButton chapter3Script;
     public ChapterButton chapter4Script;
 
+    public GameObject skipWindow;
+    public GameObject skipWindowBackground;
+
+    private int clickedChapter = 0;
+
     public void ClickBackButton() {
         SceneManager.LoadScene("MainMenu");
     }
@@ -56,24 +61,45 @@ public class IntroCryptoController : MonoBehaviour
     public void ClickGoChapter1() {
         if (ES3.Load("introChapter1Unlocked", true)) {
             SceneManager.LoadScene("Intro1");
+        } else {
+            clickedChapter = 1;
+            skipWindow.SetActive(true);
+            skipWindowBackground.SetActive(true);
         }
     }
 
     public void ClickGoChapter2() {
         if (ES3.Load("introChapter2Unlocked", false)) {
             SceneManager.LoadScene("Intro2");
+        } else {
+            clickedChapter = 2;
+            skipWindow.SetActive(true);
+            skipWindowBackground.SetActive(true);
         }
     }
 
     public void ClickGoChapter3() {
         if (ES3.Load("introChapter3Unlocked", false)) {
             SceneManager.LoadScene("Intro3");
+        } else {
+            clickedChapter = 3;
+            skipWindow.SetActive(true);
+            skipWindowBackground.SetActive(true);
         }
     }
 
     public void ClickGoChapter4() {
         if (ES3.Load("introChapter3Unlocked", false)) {
             SceneManager.LoadScene("Intro4");
+        } else {
+            clickedChapter = 4;
+            skipWindow.SetActive(true);
+            skipWindowBackground.SetActive(true);
         }
+    }
+
+    public void ClickSkipYes() {
+        ES3.Save("introChapter" + clickedChapter + "Unlocked", true);
+        SceneManager.LoadScene("Intro" + clickedChapter);
     }
 }

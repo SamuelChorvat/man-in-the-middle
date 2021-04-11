@@ -32,7 +32,7 @@ public class RevealContinueButton : MonoBehaviour
     private IEnumerator Reveal() {
         this.GetComponent<Image>().fillOrigin = (int)Image.OriginHorizontal.Left;
         while (this.GetComponent<Image>().fillAmount < 1) {
-            this.GetComponent<Image>().fillAmount += 0.01f;
+            this.GetComponent<Image>().fillAmount += 0.05f;
             yield return new WaitForSeconds(delay);
         }
         textrev.SetActive(true);
@@ -49,7 +49,7 @@ public class RevealContinueButton : MonoBehaviour
     private IEnumerator Disapear() {
         this.GetComponent<Image>().fillOrigin = (int)Image.OriginHorizontal.Right;
         while (this.GetComponent<Image>().fillAmount > 0) {
-            this.GetComponent<Image>().fillAmount -= 0.01f;
+            this.GetComponent<Image>().fillAmount -= 0.05f;
             yield return new WaitForSeconds(delay);
         }
         this.GetComponent<Image>().fillAmount = 0f;

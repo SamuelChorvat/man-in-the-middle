@@ -60,10 +60,10 @@ public class ProtocolFrameworkController : MonoBehaviour
     public ProtocolStepController lastStepControl = null;
 
     //References
-    public GameObject lastStepRef = null;
+    private GameObject lastStepRef = null;
     private GameObject captureInterceptSendRef = null;
     private GameObject continueRestartRef = null;
-    public GameObject restartOnlyRef = null;
+    private GameObject restartOnlyRef = null;
 
     public CapturedMessage latestMessage = null;
     public int aliceBobStep = 0;
@@ -155,7 +155,7 @@ public class ProtocolFrameworkController : MonoBehaviour
         }
     }
 
-    public void PrepareForNewStep() {
+    private void PrepareForNewStep() {
         Destroy(captureInterceptSendRef);
         Destroy(continueRestartRef);
         Destroy(restartOnlyRef);

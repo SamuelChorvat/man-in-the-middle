@@ -26,7 +26,7 @@ public class HintsController : MonoBehaviour
     private string currentPuzzle = "";
     private int maxHintNo = 0;
     private int currentHintNo = 0;
-    public GameObject getHintRef = null;
+    private GameObject getHintRef = null;
 
     private void ResetHintWindow() {
         RemoveAllHints();
@@ -298,7 +298,7 @@ public class HintsController : MonoBehaviour
         ScrollToBottomProtocolView();
     }
 
-    public void PrepareForNewHint() {
+    private void PrepareForNewHint() {
         Destroy(getHintRef);
         getHintRef = null;
     }

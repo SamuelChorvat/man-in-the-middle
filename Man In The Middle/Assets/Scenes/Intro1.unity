@@ -7387,6 +7387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frequenciesButton: {fileID: 249507750}
   substituteButton: {fileID: 425646626}
+  partNavigation: {fileID: 1650787308}
   window: {fileID: 205578182}
   englishFrequencies: {fileID: 726399681}
   cipherFrequencies: {fileID: 1520745233}

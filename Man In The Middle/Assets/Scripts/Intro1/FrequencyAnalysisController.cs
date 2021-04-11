@@ -64,7 +64,7 @@ public class FrequencyAnalysisController : MonoBehaviour {
 
     private string orgCipherText;
     private bool solved = false;
-    public int correct = 0;
+    private int correct = 0;
     private string[] alphabet = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "Q", "K", "L", "M", "N", "O", "P", "R", "S", "T", "U", "W", "V", "X", "Y", "Z" };
 
     private bool orgSet = false;
@@ -464,7 +464,7 @@ public class FrequencyAnalysisController : MonoBehaviour {
         }
     }
 
-    public bool IsLetter(char toCheck) {
+    private bool IsLetter(char toCheck) {
         string temp = toCheck.ToString();
         return temp.Equals("a", StringComparison.OrdinalIgnoreCase) ||
                temp.Equals("b", StringComparison.OrdinalIgnoreCase) ||

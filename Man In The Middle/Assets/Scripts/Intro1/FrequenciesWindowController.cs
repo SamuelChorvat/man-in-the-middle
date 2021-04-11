@@ -9,6 +9,8 @@ public class FrequenciesWindowController : MonoBehaviour
     public GameObject frequenciesButton;
     public GameObject substituteButton;
 
+    public GameObject partNavigation;
+
     public GameObject window;
     public GameObject englishFrequencies;
     public GameObject cipherFrequencies;
@@ -45,12 +47,14 @@ public class FrequenciesWindowController : MonoBehaviour
         window.SetActive(false);
         frequenciesButton.SetActive(true);
         substituteButton.SetActive(true);
+        partNavigation.SetActive(true);
     }
 
     public void OpenWindow() {
         frequenciesButton.SetActive(false);
         substituteButton.SetActive(false);
         window.SetActive(true);
+        partNavigation.SetActive(false);
 
         if (englishButton.interactable) {
             ClickCipher();

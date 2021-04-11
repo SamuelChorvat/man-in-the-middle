@@ -31,7 +31,7 @@ public class IntroCaesarPuzzle : MonoBehaviour
     public GameObject oldText;
     public GameObject newText;
 
-    public bool experienceSolved = false;
+    private bool experienceSolved = false;
     private bool isSolved = false;
     private bool theSolved = false;
     private bool teacherSolved = false;
@@ -73,7 +73,7 @@ public class IntroCaesarPuzzle : MonoBehaviour
             line.fillOrigin = (int) Image.OriginHorizontal.Right;
             line.fillAmount = 0;
             while (line.fillAmount < 1) {
-                line.fillAmount += 0.05f;
+                line.fillAmount += 0.15f;
                 yield return new WaitForSeconds(0.01f);
             }
             currentObj.transform.Find(currentWord + "Letter" + i).gameObject.SetActive(true);
@@ -112,7 +112,7 @@ public class IntroCaesarPuzzle : MonoBehaviour
             line.fillOrigin = (int)Image.OriginHorizontal.Right;
             line.fillAmount = 0;
             while (line.fillAmount < 1) {
-                line.fillAmount += 0.05f;
+                line.fillAmount += 0.15f;
                 yield return new WaitForSeconds(0.01f);
             }
             currentObj.transform.Find(currentWord + "Letter" + i).gameObject.SetActive(true);
@@ -130,7 +130,7 @@ public class IntroCaesarPuzzle : MonoBehaviour
             line.fillOrigin = (int)Image.OriginHorizontal.Right;
             line.fillAmount = 0;
             while (line.fillAmount < 1) {
-                line.fillAmount += 0.05f;
+                line.fillAmount += 0.15f;
                 yield return new WaitForSeconds(0.01f);
             }
             currentObj.transform.Find(currentWord + "Letter" + i).gameObject.SetActive(true);
@@ -148,7 +148,7 @@ public class IntroCaesarPuzzle : MonoBehaviour
             line.fillOrigin = (int)Image.OriginHorizontal.Right;
             line.fillAmount = 0;
             while (line.fillAmount < 1) {
-                line.fillAmount += 0.05f;
+                line.fillAmount += 0.15f;
                 yield return new WaitForSeconds(0.01f);
             }
             currentObj.transform.Find(currentWord + "Letter" + i).gameObject.SetActive(true);
@@ -166,7 +166,7 @@ public class IntroCaesarPuzzle : MonoBehaviour
             line.fillOrigin = (int)Image.OriginHorizontal.Right;
             line.fillAmount = 0;
             while (line.fillAmount < 1) {
-                line.fillAmount += 0.05f;
+                line.fillAmount += 0.15f;
                 yield return new WaitForSeconds(0.01f);
             }
             currentObj.transform.Find(currentWord + "Letter" + i).gameObject.SetActive(true);
@@ -184,7 +184,7 @@ public class IntroCaesarPuzzle : MonoBehaviour
             line.fillOrigin = (int)Image.OriginHorizontal.Right;
             line.fillAmount = 0;
             while (line.fillAmount < 1) {
-                line.fillAmount += 0.05f;
+                line.fillAmount += 0.15f;
                 yield return new WaitForSeconds(0.01f);
             }
             currentObj.transform.Find(currentWord + "Letter" + i).gameObject.SetActive(true);
@@ -202,7 +202,7 @@ public class IntroCaesarPuzzle : MonoBehaviour
             line.fillOrigin = (int)Image.OriginHorizontal.Right;
             line.fillAmount = 0;
             while (line.fillAmount < 1) {
-                line.fillAmount += 0.05f;
+                line.fillAmount += 0.15f;
                 yield return new WaitForSeconds(0.01f);
             }
             currentObj.transform.Find(currentWord + "Letter" + i).gameObject.SetActive(true);
@@ -424,7 +424,7 @@ public class IntroCaesarPuzzle : MonoBehaviour
         }
     }
 
-    public void ResetBooleans() {
+    private void ResetBooleans() {
         experienceSolved = false;
         isSolved = false;
         theSolved = false;

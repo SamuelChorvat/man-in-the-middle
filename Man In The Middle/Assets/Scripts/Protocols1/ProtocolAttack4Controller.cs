@@ -13,7 +13,7 @@ public class ProtocolAttack4Controller : MonoBehaviour
     private int lastStepAB = 0;
     private int lastStepAC = 0;
 
-    public bool intercepted = false;
+    private bool intercepted = false;
 
     public void RestartProtocol() {
         lastStepAB = 0;

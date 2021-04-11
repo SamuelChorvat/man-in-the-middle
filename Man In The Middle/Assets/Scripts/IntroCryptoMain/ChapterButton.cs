@@ -33,6 +33,7 @@ public class ChapterButton : MonoBehaviour {
             title.color = Color.white;
             arrow.GetComponent<Image>().color = new Color32(255, 143, 0, 255);
             line.GetComponent<Image>().color = new Color32(255, 143, 0, 255);
+            goButton.GetComponent<Image>().color = new Color32(255, 143, 0, 255);
             keyFragment.SetActive(true);
             //keyFragment.GetComponent<Image>().color = new Vector4(255, 255, 255, 128);
             for (int i = 0; i < bulletPoints.Length; i++) {
@@ -42,6 +43,7 @@ public class ChapterButton : MonoBehaviour {
             title.color = Color.red;
             arrow.GetComponent<Image>().color = Color.red;
             line.GetComponent<Image>().color = Color.red;
+            goButton.GetComponent<Image>().color = Color.red;
             keyFragment.SetActive(false);
             for (int i = 0; i < bulletPoints.Length; i++) {
                 bulletPoints[i].color = Color.red;
@@ -77,7 +79,7 @@ public class ChapterButton : MonoBehaviour {
 
     private IEnumerator ShowGoButton() {
         while (goButton.GetComponent<Image>().fillAmount < 1) {
-            goButton.GetComponent<Image>().fillAmount += 0.05f;
+            goButton.GetComponent<Image>().fillAmount += 0.15f;
             yield return new WaitForSeconds(0.005f);
         }
         goButtonText.SetActive(true);
@@ -91,21 +93,23 @@ public class ChapterButton : MonoBehaviour {
     private IEnumerator ShowExtraInfo() {
         extraInfo.SetActive(true);
         while (clipper.GetComponent<Image>().fillAmount > 0) {
-            clipper.GetComponent<Image>().fillAmount -= 0.05f;
+            clipper.GetComponent<Image>().fillAmount -= 0.15f;
             yield return new WaitForSeconds(0.005f);
         }
         clipper.SetActive(false);
 
-        if (unlocked) {
+/*        if (unlocked) {
             StartCoroutine(ShowGoButton());
-        }
+        }*/
+
+        StartCoroutine(ShowGoButton());
     }
 
     private IEnumerator HideExtraInfo() {
         HideGoButton();
         clipper.SetActive(true);
         while (clipper.GetComponent<Image>().fillAmount < 1) {
-            clipper.GetComponent<Image>().fillAmount += 0.05f;
+            clipper.GetComponent<Image>().fillAmount += 0.15f;
             yield return new WaitForSeconds(0.005f);
         }
         extraInfo.SetActive(false);

@@ -60,7 +60,7 @@ public class EBCDemoControl : MonoBehaviour {
     private IEnumerator ShowArrowLine() {
         arrowLine.fillAmount = 0;
         while (arrowLine.fillAmount < 1f) {
-            arrowLine.fillAmount += 0.01f;
+            arrowLine.fillAmount += 0.05f;
             if (!arrowHeadRevealed && arrowLine.fillAmount > 0.87) {
                 arrowHead.SetActive(true);
                 arrowHeadRevealed = true;

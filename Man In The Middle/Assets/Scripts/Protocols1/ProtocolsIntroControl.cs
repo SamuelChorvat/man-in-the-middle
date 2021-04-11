@@ -139,7 +139,7 @@ public class ProtocolsIntroControl : MonoBehaviour
 
         arrowLine.GetComponent<Image>().fillAmount = 0;
         while (!arrowHeadRevealed) {
-            arrowLine.GetComponent<Image>().fillAmount += 0.02f;
+            arrowLine.GetComponent<Image>().fillAmount += 0.08f;
             if (!arrowHeadRevealed && arrowLine.GetComponent<Image>().fillAmount > 0.96f) {
                 arrowHead.SetActive(true);
                 arrowHeadRevealed = true;
