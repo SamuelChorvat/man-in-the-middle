@@ -221,6 +221,9 @@ public class Intro1Controller : MonoBehaviour
         s1p1cipherTitle.SetActive(true);
         s1p1cipherText.SetActive(true);
         s1p1cipherText.GetComponent<TextAnimatorPlayer>().ShowText(s1p1cipherText.GetComponent<TextMeshProUGUI>().text);
+        if (ES3.Load("chapter" + chapterNo + "Section" + currentSection + "Part" + currentPart, false)) {
+            s1p1cipherText.GetComponent<TextAnimatorPlayer>().SkipTypewriter();
+        }
     }
 
     public void ShowSection2Part1() {
