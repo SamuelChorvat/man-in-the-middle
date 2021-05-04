@@ -43,9 +43,9 @@ public class HintsController : MonoBehaviour
         }
     }
 
-    private GameObject InstantiateHint(string msg) {
+    private GameObject InstantiateHint(string hintText) {
         GameObject hint = Instantiate(hintPrefab);
-        hint.GetComponent<TextMeshProUGUI>().text = msg;
+        hint.GetComponent<TextMeshProUGUI>().text = hintText;
         hint.transform.SetParent(scrollViewContentObject.transform, false);
         return hint;
     }
