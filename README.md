@@ -1,5 +1,5 @@
 # Man In The Middle
-An educational puzzle game about breaking ciphers and cryptographic protocols. This was my final year project at university.
+An educational puzzle game about breaking ciphers and cryptographic protocols. This was my final year project at university.<br>
 ![Preview1](Preview/mitm-1.png)
 ![Preview2](Preview/mitm-2.png)
 ![Preview3](Preview/mitm-3.png)
